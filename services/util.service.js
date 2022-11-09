@@ -1,11 +1,11 @@
 export const utilService = {
-    save: saveToStorage,
-    load: loadFromStorage,
+    saveToStorage,
+    loadFromStorage,
     makeId,
-    lorem: makeLoremEng,
-    random: getRandomInt,
-    evPos: getEventPositions,
-    evDelta: getPositionsDelta
+    makeLoremEng,
+    getRandomInt,
+    getEventPositions,
+    getPositionsDelta
 }
 
 function saveToStorage(key, value) {

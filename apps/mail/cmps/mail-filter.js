@@ -1,3 +1,1 @@
-function demoBlabla(){
-
-}
+export default {}

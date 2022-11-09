@@ -1,3 +1,7 @@
-.demo {
-    color:black;
+.mail-list{
+    background-color: rgba(255, 255, 255, 0.29);
+}
+
+.mail-list header, .mail-preview.unread{
+    background-color: rgba(255, 255, 255, 0.536);
 }

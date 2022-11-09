@@ -11,7 +11,7 @@ const options = {
         <section>
             <app-header />
             <router-view />
-            <app-footer />
+            <!-- <app-footer /> -->
             <user-msg />
         </section>
     `,

@@ -26,6 +26,10 @@
     color: solid var(--clr5);
 }
 
+.capitalized {
+    text-transform: capitalize;
+}
+
 /* list helpers */
 
 .clean-list {

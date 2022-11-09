@@ -1,7 +1,7 @@
 export default {
     template: `
-    <form class="book-filter" @submit.prevent="filter" >
-        <button>🔍</button>
+    <form class="mail-filter" @submit.prevent="filter" >
+        <button title="Search">🔍</button>
         <input 
             v-model="searchStr" 
             type="text" 

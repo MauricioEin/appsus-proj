@@ -7,19 +7,27 @@ import appFooter from './cmps/app-footer.cmp.js'
 import userMsg from './cmps/user-msg.cmp.js'
 
 const options = {
-	template: `
+    template: `
         <section>
-            <app-header />
-            <router-view />
+            <app-header v-if="!isApp" />
+            <router-view @isApp="inApp" />
             <!-- <app-footer /> -->
             <user-msg />
         </section>
     `,
-	components: {
-		appHeader,
-		appFooter,
-		userMsg,
-	},
+    data() {
+        return { isApp: false }
+    },
+    methods:{
+        inApp(isApp){
+            this.isApp=isApp;
+        }
+    },
+    components: {
+        appHeader,
+        appFooter,
+        userMsg,
+    },
 }
 
 const app = createApp(options)

@@ -1,19 +1,31 @@
 export default {
     props: ['mail'],
     template: `
-    <article class="mail-preview flex">
+    <article class="mail-preview flex justify-between">
         <div>drag</div>
         <div><input type="checkbox" @change="check" title="Select"></div>
-        <div>star</div>
-        <div>important</div>
+        <div>⭐</div>
+        <div>🚩</div>
+        <div class="capitalized">{{formattedFrom}}</div>
         <div>{{mail.subject}}</div>
-        <div>{{mail.body}}</div>
-        <div>attachment</div>
-        <div>{{mail.sentAt}}</div>
+        <div>📎</div>
+        <div>{{formattedDate}}</div>
     </article>
     `,
-    methods:{
-        check({target:{checked}}){
+    computed: {
+        formattedDate() {
+            const sentAtYear = new Date(this.mail.sentAt).getFullYear()
+            const currYear = new Date().getFullYear()
+            if (sentAtYear === currYear)
+                return new Date(this.mail.sentAt).toLocaleString('en-US', { month: 'short', day: 'numeric' })
+            return new Date(this.mail.sentAt).toLocaleString('en-US', { month: 'numeric', day: 'numeric', year:'numeric' })
+        },
+        formattedFrom(){
+            return this.mail.from.split('@')[0]
+        }
+    },
+    methods: {
+        check({ target: { checked } }) {
             this.$emit('checked', checked)
         }
     }

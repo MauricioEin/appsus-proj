@@ -13,8 +13,7 @@ export default {
         }
     },
     created() {
-        console.log('info', this.info)
-        console.log('style',this.style)
+        // console.log(this.note)
     },
     methods: {
 

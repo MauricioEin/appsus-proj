@@ -1,0 +1,22 @@
+.note-preview-item{
+    margin-block: 20px;
+}
+
+.note-preview-item >  *{
+    border-radius: 20px;
+    min-height: 40px;
+}
+
+.note-preview-item > p{
+    margin-bottom: 0;
+}
+
+.notes-preview-container{
+    column-width: 200px;
+    max-width: 100%;
+}
+
+.note-vid-cmp{
+    aspect-ratio: 16 / 9;
+    width: 100%;
+}

@@ -17,6 +17,26 @@
     max-width: 880px;
 }
 
+.columns {
+    column-count: auto;
+}
+
+.nav-width {
+    width: var(--nav-width);
+}
+
+/* border-radius helpers */
+.pill {
+    border-radius: 9999px;
+}
+
+.pill-right{
+    
+    border-start-end-radius: 9999px;
+    border-end-end-radius: 9999px;
+
+}
+
 /* flex helpers */
 
 .flex {
@@ -86,10 +106,6 @@
     list-style-type: none;
 }
 
-/* layout helpers */
-.columns {
-    column-count: auto;
-}
 
 /* font awsome */
 

@@ -3,7 +3,8 @@ export default {
     <section class="new-mail fixed" @submit.prevent="" >
         <header class="flex justify-between">
             <div>New Message</div>     
-            <div>
+ 
+             <div>
                 <button title="Minimize" @click="minimize">-</button>
                 <button title="Full screen" @click="toFullScreen">↕</button>
                 <button title="Save & close" @click="close">x</button>

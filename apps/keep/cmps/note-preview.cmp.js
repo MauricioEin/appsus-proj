@@ -8,11 +8,9 @@ export default {
     props:['note'],
     template:`
         <component :is="note.type" class="note-preview-item" :note="note"> 
-            {{note.type}}
         </component> 
     `,
     created(){
-        console.log(this.note)
     },
     components: {
         noteTxt,

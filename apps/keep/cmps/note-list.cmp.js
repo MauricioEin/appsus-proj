@@ -1,5 +1,4 @@
 import notePreview from '../cmps/note-preview.cmp.js'
-import noteFilter from '../cmps/note-filter.cmp.js'
 
 export default {
     props: ['notes'],
@@ -21,7 +20,6 @@ export default {
     computed: {
     },
     components: {
-        notePreview,
-        noteFilter
+        notePreview
     }
 }

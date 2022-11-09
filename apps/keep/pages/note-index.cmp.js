@@ -1,5 +1,6 @@
 import { noteService } from "../services/note.service.js"
 
+import noteHeader from '../cmps/note-header.cmp.js'
 import noteList from '../cmps/note-list.cmp.js'
 import noteNav from '../cmps/note-nav.cmp.js'
 
@@ -35,7 +36,9 @@ export default {
     },
     components: {
         noteList,
-        noteNav
+        noteNav,
+        noteHeader
+
     }
 }
 // export default {

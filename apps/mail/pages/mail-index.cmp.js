@@ -7,6 +7,7 @@ import mailAppHeader from '../cmps/mail-app-header.cmp.js'
 
 export default {
     template: `
+    <section class="mail-app">
     <mail-app-header @filter="setFilter"/>
 
     <div class="main-container flex">
@@ -15,8 +16,9 @@ export default {
             <mail-list :mails="mailsToShow" />
         </main>
     </div>
-
+    
     <new-mail v-if="isCompose" />
+</section>
     `,
     data() {
         return {

@@ -5,11 +5,9 @@ import mailList from '../cmps/mail-list.cmp.js'
 
 export default {
     template: `
-    <h1>HOWDY!</h1>
     <main class="mail-container">
         <mail-list :mails="mails" />
     </main>
-    <pre>{{mails}}</pre>
 
     `
     ,

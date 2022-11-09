@@ -8,4 +8,11 @@ export default {
             </nav>
         </header>
     `,
+    data(){
+        return{
+        }
+    },
+    computed:{
+
+    }
 }

@@ -39,34 +39,31 @@ function compose() {
 
 function search(val) {
     if (!val) return query()
-    const vals = val.split
+    const vals = val.trim.split().map(val => val.trim)
     const regexes = vals.map(val => new RegExp(val, 'i'))
     return query()
-        .then(notes => notes.filter(note => {
-            const { info } = note
-            if (info.txt && regexes.every(regex => regex.test(info.txt))) return true
-            if (info.title && regexes.every(regex => regex.test(info.title))) return true
-            if (info.url && regexes.every(regex => regex.test(info.url))) return true
-            if (info.todos && info.todos.some(todo => regexes.every(regex => regex.test(todo.txt)))) return true
-        }))
+        .then(notes => notes.filter(note => regexes.every(regex => regex.test(JSON.stringify(note)))))
 
 }
 
 function _createEntitits(key) {
-    if (key === NOTE_KEY) return utilService.saveToStorage([
+    if (key === NOTE_KEY) return utilService.saveToStorage(key, [
         {
             id: "n101",
             type: "note-txt",
             isPinned: true,
             info: {
                 txt: "Fullstack Me Baby!"
+            },
+            style: {
+                backgroundColor: "#00d"
             }
         },
         {
             id: "n102",
-            type: "note-img",
+            type: "note-url",
             info: {
-                url: "http://some-img/me",
+                url: "https://google.com",
                 title: "Bobi and Me"
             },
             style: {
@@ -77,7 +74,8 @@ function _createEntitits(key) {
             id: "n103",
             type: "note-todos",
             info: {
-                label: "Get my stuff together", todos: [
+                label: "Get my stuff together",
+                todos: [
                     { txt: "Driving liscence", doneAt: null },
                     { txt: "Coding power", doneAt: 187111111 }]
             }

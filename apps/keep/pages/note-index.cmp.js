@@ -1,20 +1,20 @@
-import { noteService } from "../../../services/note.service.js"
+import { noteService } from "../services/note.service.js"
 
 import noteText from '../cmps/note-text.cmp.js'
 import noteTodos from '../cmps/note-todos.cmp.js'
-// import noteVid from '../cmps/note-vid.cmp.js'
-// import noteImg from '../cmps/note-img.cmp.js'
+import noteVid from '../cmps/note-vid.cmp.js'
+import noteImg from '../cmps/note-img.cmp.js'
 import noteUrl from '../cmps/note-url.cmp.js'
+import noteFilter from '../cmps/note-filter.cmp.js'
 
 export default {
     template: `
+<note-vid  />
 
-    <h1>notes</h1>
-     <section v-if="notes">
-        <div v-for="note in notes">
-            <note-url v-if="note.type==='note-url'" :note="note"/>
-        </div>
-     </section>
+    <note-filter />
+    <!-- <h1>notes</h1>
+     <section v-if="getNotes">
+     </section> -->
     `,
     data() {
         return {
@@ -38,7 +38,10 @@ export default {
     components: {
         noteText,
         noteTodos,
-        noteUrl
+        noteUrl,
+        noteImg,
+        noteVid,
+        noteFilter
     }
 }
 // export default {

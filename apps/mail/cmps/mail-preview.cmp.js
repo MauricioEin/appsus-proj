@@ -3,7 +3,7 @@ export default {
     template: `
     <article class="mail-preview flex">
         <div>drag</div>
-        <div><input type="checkbox" @change="check"></div>
+        <div><input type="checkbox" @change="check" title="Select"></div>
         <div>star</div>
         <div>important</div>
         <div>{{mail.subject}}</div>

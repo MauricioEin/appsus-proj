@@ -1,42 +1,27 @@
-import noteText from '../cmps/note-text.cmp.js'
-import noteTodos from '../cmps/note-todos.cmp.js'
-import noteVid from '../cmps/note-vid.cmp.js'
-import noteImg from '../cmps/note-img.cmp.js'
-import noteUrl from '../cmps/note-url.cmp.js'
+import notePreview from '../cmps/note-preview.cmp.js'
 import noteFilter from '../cmps/note-filter.cmp.js'
 
 export default {
     props: ['notes'],
     template: `
         <main class="notes-preview-container columns">
-            <note-vid />
-            <div class="note-preview" v-for="note in notes">
-                <!-- {{'type}} -->
-                <component :is="note.type" class="note-preview-item" :note="note"> </component> 
-             </div>
-             <note-vid />
-             <note-vid />
-             <note-vid />
+            <note-preview v-for="note in notes" :note="note" />
         </main>
     `,
     data() {
         return {
-            notes: []
         }
     },
     created() {
     },
     methods: {
 
+
     },
     computed: {
     },
     components: {
-        noteText,
-        noteTodos,
-        noteUrl,
-        noteImg,
-        noteVid,
+        notePreview,
         noteFilter
     }
 }

@@ -1,18 +1,25 @@
 export default {
+    props:['note'],
     template: `
-        <article class="note-url-cmp" >
-        <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-</iframe>
-
-
-        <!-- <iframe width="420" height="315"
-src="https://www.youtube.com/embed/jVUY7j3aUd8" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe> -->
-        <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/jVUY7j3aUd8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-
-
-        </article>
+    <article class="note-vid-cmp" >
+        <h3 v-if="info.title" class="note-title">{{info.title}}</h3>
+        <p v-if="info.txt" class="note-text">{{info.txt}}</p>
+        <iframe  
+            class="inline-block" 
+            width="100%" height="100%" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            :src="info.url">
+        </iframe>
+    </article>
     `,
+    data() {
+        return {
+            info: this.note.info
+        }
+    },
+    created(){
+        console.log(this.note)
+    }
     // data() {
     //     return {
     //     }

@@ -7,7 +7,7 @@ export default {
     template: `
         <section class="note-app flex">
             <note-nav :labels="labels"/>
-            <note-list :notes="notes"/>
+            <note-list v-if="notes" :notes="notes"/>
         </section>
     `,
     data() {
@@ -17,17 +17,17 @@ export default {
         }
     },
     created() {
-        this.notes = this.getNotes()
-        this.labels = this.getLabels()
+        this.getNotes()
+        this.getLabels()
     },
     methods: {
         getNotes(){
             noteService.query(true)
-                .then(notes => this.note = notes)
+                .then(notes => this.notes = notes)
         },
-        getLables(){
+        getLabels(){
             noteService.query(false)
-                .then(notes => this.note = notes)
+                .then(labels => this.labels = labels)
         }
     },
     computed: {

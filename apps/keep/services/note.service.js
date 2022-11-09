@@ -191,6 +191,15 @@ function _createEntitits(key) {
             }
         },
         {
+            id: "n101",
+            type: "note-vid",
+            isPinned: true,
+            info: {
+                txt: "what the fudge!",
+                url: 'https://www.youtube.com/watch?v=5bX_yRzCuM4&ab_channel=PeterChen2.0'
+            }
+        },
+        {
             id: "n103",
             type: "note-todos",
             info: {
@@ -198,6 +207,15 @@ function _createEntitits(key) {
                 todos: [
                     { txt: "Driving liscence", doneAt: null },
                     { txt: "Coding power", doneAt: 187111111 }]
+            }
+        },
+        {
+            id: "n101",
+            type: "note-vid",
+            isPinned: true,
+            info: {
+                txt: "what the fudge!",
+                url: 'https://www.youtube.com/watch?v=5bX_yRzCuM4&ab_channel=PeterChen2.0'
             }
         },
         {
@@ -231,6 +249,15 @@ function _createEntitits(key) {
             }
         },
         {
+            id: "n101",
+            type: "note-vid",
+            isPinned: true,
+            info: {
+                txt: "what the fudge!",
+                url: 'https://www.youtube.com/watch?v=5bX_yRzCuM4&ab_channel=PeterChen2.0'
+            }
+        },
+        {
             id: "n102",
             type: "note-img",
             info: {
@@ -249,6 +276,15 @@ function _createEntitits(key) {
             }
         },
         {
+            id: "n101",
+            type: "note-vid",
+            isPinned: true,
+            info: {
+                txt: "what the fudge!",
+                url: 'https://www.youtube.com/watch?v=5bX_yRzCuM4&ab_channel=PeterChen2.0'
+            }
+        },
+        {
             id: "n104",
             type: "note-url",
             info: {
@@ -257,6 +293,15 @@ function _createEntitits(key) {
             },
             style: {
                 backgroundColor: "#00d"
+            }
+        },
+        {
+            id: "n101",
+            type: "note-vid",
+            isPinned: true,
+            info: {
+                txt: "what the fudge!",
+                url: 'https://www.youtube.com/watch?v=5bX_yRzCuM4&ab_channel=PeterChen2.0'
             }
         },
         {
@@ -279,6 +324,15 @@ function _createEntitits(key) {
             }
         },
         {
+            id: "n101",
+            type: "note-vid",
+            isPinned: true,
+            info: {
+                txt: "what the fudge!",
+                url: 'https://www.youtube.com/watch?v=5bX_yRzCuM4&ab_channel=PeterChen2.0'
+            }
+        },
+        {
             id: "n103",
             type: "note-todos",
             info: {
@@ -286,6 +340,15 @@ function _createEntitits(key) {
                 todos: [
                     { txt: "Driving liscence", doneAt: null },
                     { txt: "Coding power", doneAt: 187111111 }]
+            }
+        },
+        {
+            id: "n101",
+            type: "note-vid",
+            isPinned: true,
+            info: {
+                txt: "what the fudge!",
+                url: 'https://www.youtube.com/watch?v=5bX_yRzCuM4&ab_channel=PeterChen2.0'
             }
         },
         {
@@ -297,6 +360,15 @@ function _createEntitits(key) {
             },
             style: {
                 backgroundColor: "#00d"
+            }
+        },
+        {
+            id: "n101",
+            type: "note-vid",
+            isPinned: true,
+            info: {
+                txt: "what the fudge!",
+                url: 'https://www.youtube.com/watch?v=5bX_yRzCuM4&ab_channel=PeterChen2.0'
             }
         },
         {
@@ -310,5 +382,12 @@ function _createEntitits(key) {
             }
         },
     ])
-    return utilService.saveToStorage(key, ['Work', 'Home', 'Fun', 'Drawings', 'Pics', 'Videos'])
+    return utilService.saveToStorage(key, [
+        { title: 'Work', color: null },
+        { title: 'Home', color: null },
+        { title: 'Fun', color: null },
+        { title: 'Drawings', color: null },
+        { title: 'Pics', color: null },
+        { title: 'Videos', color: null },
+    ])
 }

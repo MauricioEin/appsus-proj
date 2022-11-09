@@ -1,47 +1,41 @@
 import { noteService } from "../services/note.service.js"
 
-import noteText from '../cmps/note-text.cmp.js'
-import noteTodos from '../cmps/note-todos.cmp.js'
-import noteVid from '../cmps/note-vid.cmp.js'
-import noteImg from '../cmps/note-img.cmp.js'
-import noteUrl from '../cmps/note-url.cmp.js'
-import noteFilter from '../cmps/note-filter.cmp.js'
+import noteList from '../cmps/note-list.cmp.js'
+import noteNav from '../cmps/note-nav.cmp.js'
 
 export default {
     template: `
-<note-vid  />
-
-    <note-filter />
-    <!-- <h1>notes</h1>
-     <section v-if="getNotes">
-     </section> -->
+        <section class="note-app flex">
+            <note-nav :labels="labels"/>
+            <note-list :notes="notes"/>
+        </section>
     `,
     data() {
         return {
-            notes: null
+            notes: null,
+            labels: null
         }
     },
     created() {
-        noteService.query()
-            .then(notes => {
-                this.notes = notes
-                console.log(notes)
-            })
+        this.notes = this.getNotes()
+        this.labels = this.getLabels()
     },
     methods: {
-
-    },
-    computed: {
-        getNotes() {
+        getNotes(){
+            noteService.query(true)
+                .then(notes => this.note = notes)
+        },
+        getLables(){
+            noteService.query(false)
+                .then(notes => this.note = notes)
         }
     },
+    computed: {
+
+    },
     components: {
-        noteText,
-        noteTodos,
-        noteUrl,
-        noteImg,
-        noteVid,
-        noteFilter
+        noteList,
+        noteNav
     }
 }
 // export default {

@@ -12,6 +12,7 @@ export const noteService = {
 const NOTE_KEY = "notesDB"
 const LABEL_KEY = "noteLabelsDB"
 _createEntitits(NOTE_KEY)
+_createEntitits(LABEL_KEY)
 
 
 function query(isNotes = true) {
@@ -24,14 +25,14 @@ function get(noteId) {
 }
 
 function getFilteredNotes(filterBy) {
-    const { txt, label, type , isPinned} = filterBy
+    const { txt, label, type, isPinned } = filterBy
     return query()
         .then(notes => {
             if (txt) return notes.filter(note => _searchTxt(note, txt))
             return notes
-        }).then(notes=> {
-            if (label) return notes.filter(note=> {
-                const {labels} = note.info
+        }).then(notes => {
+            if (label) return notes.filter(note => {
+                const { labels } = note.info
                 return (labels && labels.some(noteLabel => label === noteLabel))
             })
             return notes
@@ -309,4 +310,5 @@ function _createEntitits(key) {
             }
         },
     ])
+    return utilService.saveToStorage(key, ['Work', 'Home', 'Fun', 'Drawings', 'Pics', 'Videos'])
 }

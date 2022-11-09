@@ -11,7 +11,6 @@ const options = {
         <section>
             <app-header v-if="!isApp" />
             <router-view @isApp="inApp" />
-            <!-- <app-footer /> -->
             <user-msg />
         </section>
     `,
@@ -20,7 +19,7 @@ const options = {
     },
     methods:{
         inApp(isApp){
-            this.isApp=isApp;
+            this.isApp=isApp
         }
     },
     components: {

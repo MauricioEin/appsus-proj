@@ -17,3 +17,5 @@
 @import 'apps/mail/mail-app.css';
 @import 'apps/note/note-app.css';
 
+/* Keep Components */
+@import 'cpms/note-list.css'

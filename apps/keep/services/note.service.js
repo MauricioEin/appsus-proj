@@ -80,11 +80,211 @@ function _createEntitits(key) {
             }
         },
         {
+            id: "n104",
+            type: "note-url",
+            info: {
+                url: "https://google.com",
+                title: "Bobi and Me"
+            },
+            style: {
+                backgroundColor: "#00d"
+            }
+        },
+        {
             id: "n102",
             type: "note-img",
             info: {
                 url: "https://chocolatecoveredkatie.com/wp-content/uploads/2020/08/Vegan-Chocolate-Bars.jpg.webp",
                 title: "Bobi and Me"
+            }
+        },
+        {
+            id: "n101",
+            type: "note-txt",
+            isPinned: true,
+            info: {
+                txt: "Fullstack Me Baby!"
+            },
+            style: {
+                backgroundColor: "#00d"
+            }
+        },
+        {
+            id: "n103",
+            type: "note-todos",
+            info: {
+                labels: ["Get my stuff together"],
+                todos: [
+                    { txt: "Driving liscence", doneAt: null },
+                    { txt: "Coding power", doneAt: 187111111 }]
+            }
+        },
+        {
+            id: "n104",
+            type: "note-url",
+            info: {
+                url: "https://google.com",
+                title: "Bobi and Me"
+            },
+            style: {
+                backgroundColor: "#00d"
+            }
+        },
+        {
+            id: "n102",
+            type: "note-img",
+            info: {
+                url: "https://chocolatecoveredkatie.com/wp-content/uploads/2020/08/Vegan-Chocolate-Bars.jpg.webp",
+                title: "Bobi and Me"
+            }
+        },
+        {
+            id: "n101",
+            type: "note-txt",
+            isPinned: true,
+            info: {
+                txt: "Fullstack Me Baby!"
+            },
+            style: {
+                backgroundColor: "#00d"
+            }
+        },
+        {
+            id: "n102",
+            type: "note-img",
+            info: {
+                url: "https://chocolatecoveredkatie.com/wp-content/uploads/2020/08/Vegan-Chocolate-Bars.jpg.webp",
+                title: "Bobi and Me"
+            }
+        },
+        {
+            id: "n103",
+            type: "note-todos",
+            info: {
+                labels: ["Get my stuff together"],
+                todos: [
+                    { txt: "Driving liscence", doneAt: null },
+                    { txt: "Coding power", doneAt: 187111111 }]
+            }
+        },
+        {
+            id: "n104",
+            type: "note-url",
+            info: {
+                url: "https://google.com",
+                title: "Bobi and Me"
+            },
+            style: {
+                backgroundColor: "#00d"
+            }
+        },
+        {
+            id: "n101",
+            type: "note-txt",
+            isPinned: true,
+            info: {
+                txt: "Fullstack Me Baby!"
+            },
+            style: {
+                backgroundColor: "#00d"
+            }
+        },
+        {
+            id: "n103",
+            type: "note-todos",
+            info: {
+                labels: ["Get my stuff together"],
+                todos: [
+                    { txt: "Driving liscence", doneAt: null },
+                    { txt: "Coding power", doneAt: 187111111 }]
+            }
+        },
+        {
+            id: "n104",
+            type: "note-url",
+            info: {
+                url: "https://google.com",
+                title: "Bobi and Me"
+            },
+            style: {
+                backgroundColor: "#00d"
+            }
+        },
+        {
+            id: "n102",
+            type: "note-img",
+            info: {
+                url: "https://chocolatecoveredkatie.com/wp-content/uploads/2020/08/Vegan-Chocolate-Bars.jpg.webp",
+                title: "Bobi and Me"
+            }
+        },
+        {
+            id: "n101",
+            type: "note-txt",
+            isPinned: true,
+            info: {
+                txt: "Fullstack Me Baby!"
+            },
+            style: {
+                backgroundColor: "#00d"
+            }
+        },
+        {
+            id: "n102",
+            type: "note-img",
+            info: {
+                url: "https://chocolatecoveredkatie.com/wp-content/uploads/2020/08/Vegan-Chocolate-Bars.jpg.webp",
+                title: "Bobi and Me"
+            }
+        },
+        {
+            id: "n103",
+            type: "note-todos",
+            info: {
+                labels: ["Get my stuff together"],
+                todos: [
+                    { txt: "Driving liscence", doneAt: null },
+                    { txt: "Coding power", doneAt: 187111111 }]
+            }
+        },
+        {
+            id: "n104",
+            type: "note-url",
+            info: {
+                url: "https://google.com",
+                title: "Bobi and Me"
+            },
+            style: {
+                backgroundColor: "#00d"
+            }
+        },
+        {
+            id: "n101",
+            type: "note-txt",
+            isPinned: true,
+            info: {
+                txt: "Fullstack Me Baby!"
+            },
+            style: {
+                backgroundColor: "#00d"
+            }
+        },
+        {
+            id: "n102",
+            type: "note-img",
+            info: {
+                url: "https://chocolatecoveredkatie.com/wp-content/uploads/2020/08/Vegan-Chocolate-Bars.jpg.webp",
+                title: "Bobi and Me"
+            }
+        },
+        {
+            id: "n103",
+            type: "note-todos",
+            info: {
+                labels: ["Get my stuff together"],
+                todos: [
+                    { txt: "Driving liscence", doneAt: null },
+                    { txt: "Coding power", doneAt: 187111111 }]
             }
         },
         {
@@ -107,6 +307,6 @@ function _createEntitits(key) {
                     { txt: "Driving liscence", doneAt: null },
                     { txt: "Coding power", doneAt: 187111111 }]
             }
-        }
+        },
     ])
 }

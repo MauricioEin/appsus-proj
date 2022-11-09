@@ -38,6 +38,12 @@
     list-style-type: none;
 }
 
+/* layout helpers */
+.columns {
+    column-count: auto;
+}
+
+
 /* font awsome */
 
 .fa {

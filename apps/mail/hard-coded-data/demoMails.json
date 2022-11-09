@@ -1,0 +1,182 @@
+[
+    {
+        "id": "e101",
+        "subject": "Your memory is almost full!",
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi quod ipsam recusandae assumenda pariatur, incidunt, tenetur nulla quas odio atque aperiam veniam praesentium alias, cum optio consequuntur? Optio, maxime accusamus!",
+        "isRead": false,
+        "sentAt": 1551133930594,
+        "from": "momo@momo.com",
+        "to": "user@appsus.com"
+    },
+    {
+        "id": "e102",
+        "subject": "Meeting updates!",
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi quod ipsam recusandae assumenda pariatur, incidunt, tenetur nulla quas odio atque aperiam veniam praesentium alias, cum optio consequuntur? Optio, maxime accusamus!",
+        "isRead": false,
+        "sentAt": 1551133930594,
+        "from": "momo@momo.com",
+        "to": "user@appsus.com"
+    },
+    {
+        "id": "e103",
+        "subject": "11.2.2022 Hearing Protocol!",
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi quod ipsam recusandae assumenda pariatur, incidunt, tenetur nulla quas odio atque aperiam veniam praesentium alias, cum optio consequuntur? Optio, maxime accusamus!",
+        "isRead": false,
+        "sentAt": 1551133930594,
+        "from": "lala@lala.com",
+        "to": "user@appsus.com"
+    },
+    {
+        "id": "e104",
+        "subject": "Your LinkedIn account has been viewed by 47 people!",
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi quod ipsam recusandae assumenda pariatur, incidunt, tenetur nulla quas odio atque aperiam veniam praesentium alias, cum optio consequuntur? Optio, maxime accusamus!",
+        "isRead": false,
+        "sentAt": 1551133930594,
+        "from": "momo@momo.com",
+        "to": "user@appsus.com"
+    },
+    {
+        "id": "e105",
+        "subject": "A brief update!",
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi quod ipsam recusandae assumenda pariatur, incidunt, tenetur nulla quas odio atque aperiam veniam praesentium alias, cum optio consequuntur? Optio, maxime accusamus!",
+        "isRead": true,
+        "sentAt": 1551133930594,
+        "from": "lala@lala.com",
+        "to": "user@appsus.com"
+    },
+    {
+        "id": "e106",
+        "subject": "Photos from Chile!!",
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi quod ipsam recusandae assumenda pariatur, incidunt, tenetur nulla quas odio atque aperiam veniam praesentium alias, cum optio consequuntur? Optio, maxime accusamus!",
+        "isRead": true,
+        "sentAt": 1551133930594,
+        "from": "kuki@kuki.com",
+        "to": "user@appsus.com"
+    },
+    {
+        "id": "e107",
+        "subject": "Delivery!",
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi quod ipsam recusandae assumenda pariatur, incidunt, tenetur nulla quas odio atque aperiam veniam praesentium alias, cum optio consequuntur? Optio, maxime accusamus!",
+        "isRead": true,
+        "sentAt": 1551133930594,
+        "from": "lala@lala.com",
+        "to": "user@appsus.com"
+    },
+    {
+        "id": "e108",
+        "subject": "PROMO!",
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi quod ipsam recusandae assumenda pariatur, incidunt, tenetur nulla quas odio atque aperiam veniam praesentium alias, cum optio consequuntur? Optio, maxime accusamus!",
+        "isRead": true,
+        "sentAt": 1551133930594,
+        "from": "lala@lala.com",
+        "to": "user@appsus.com"
+    },
+    {
+        "id": "e109",
+        "subject": "About aur last meeting!",
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi quod ipsam recusandae assumenda pariatur, incidunt, tenetur nulla quas odio atque aperiam veniam praesentium alias, cum optio consequuntur? Optio, maxime accusamus!",
+        "isRead": true,
+        "sentAt": 1551133930594,
+        "from": "lala@lala.com",
+        "to": "user@appsus.com"
+    },
+    {
+        "id": "e110",
+        "subject": "Ps- with files attached!",
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi quod ipsam recusandae assumenda pariatur, incidunt, tenetur nulla quas odio atque aperiam veniam praesentium alias, cum optio consequuntur? Optio, maxime accusamus!",
+        "isRead": false,
+        "sentAt": 1551133930594,
+        "from": "kuki@kuki.com",
+        "to": "user@appsus.com"
+    },
+    {
+        "id": "e111",
+        "subject": "Dinner reservation!",
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi quod ipsam recusandae assumenda pariatur, incidunt, tenetur nulla quas odio atque aperiam veniam praesentium alias, cum optio consequuntur? Optio, maxime accusamus!",
+        "isRead": false,
+        "sentAt": 1551133930594,
+        "from": "momo@momo.com",
+        "to": "user@appsus.com"
+    },
+    {
+        "id": "e112",
+        "subject": "Ilan's Bar Mitzva!",
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi quod ipsam recusandae assumenda pariatur, incidunt, tenetur nulla quas odio atque aperiam veniam praesentium alias, cum optio consequuntur? Optio, maxime accusamus!",
+        "isRead": true,
+        "sentAt": 1551133930594,
+        "from": "lala@lala.com",
+        "to": "user@appsus.com"
+    },
+    {
+        "id": "e113",
+        "subject": "Your order is on it's way!!",
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi quod ipsam recusandae assumenda pariatur, incidunt, tenetur nulla quas odio atque aperiam veniam praesentium alias, cum optio consequuntur? Optio, maxime accusamus!",
+        "isRead": true,
+        "sentAt": 1551133930594,
+        "from": "lala@lala.com",
+        "to": "user@appsus.com"
+    },
+    {
+        "id": "e114",
+        "subject": "Parents meeting!",
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi quod ipsam recusandae assumenda pariatur, incidunt, tenetur nulla quas odio atque aperiam veniam praesentium alias, cum optio consequuntur? Optio, maxime accusamus!",
+        "isRead": true,
+        "sentAt": 1551133930594,
+        "from": "kuki@kuki.com",
+        "to": "user@appsus.com"
+    },
+    {
+        "id": "e115",
+        "subject": "Parent Meeting - Junior High School!",
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi quod ipsam recusandae assumenda pariatur, incidunt, tenetur nulla quas odio atque aperiam veniam praesentium alias, cum optio consequuntur? Optio, maxime accusamus!",
+        "isRead": true,
+        "sentAt": 1551133930594,
+        "from": "momo@momo.com",
+        "to": "user@appsus.com"
+    },
+    {
+        "id": "e116",
+        "subject": "New appointment with dr. Holder!",
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi quod ipsam recusandae assumenda pariatur, incidunt, tenetur nulla quas odio atque aperiam veniam praesentium alias, cum optio consequuntur? Optio, maxime accusamus!",
+        "isRead": false,
+        "sentAt": 1551133930594,
+        "from": "momo@momo.com",
+        "to": "user@appsus.com"
+    },
+    {
+        "id": "e117",
+        "subject": "Reminder: Sumbit date!",
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi quod ipsam recusandae assumenda pariatur, incidunt, tenetur nulla quas odio atque aperiam veniam praesentium alias, cum optio consequuntur? Optio, maxime accusamus!",
+        "isRead": false,
+        "sentAt": 1551133930594,
+        "from": "kuki@kuki.com",
+        "to": "user@appsus.com"
+    },
+    {
+        "id": "e118",
+        "subject": "New projects for you!",
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi quod ipsam recusandae assumenda pariatur, incidunt, tenetur nulla quas odio atque aperiam veniam praesentium alias, cum optio consequuntur? Optio, maxime accusamus!",
+        "isRead": false,
+        "sentAt": 1551133930594,
+        "from": "lala@lala.com",
+        "to": "user@appsus.com"
+    },
+    {
+        "id": "e119",
+        "subject": "New Post reactions!",
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi quod ipsam recusandae assumenda pariatur, incidunt, tenetur nulla quas odio atque aperiam veniam praesentium alias, cum optio consequuntur? Optio, maxime accusamus!",
+        "isRead": true,
+        "sentAt": 1551133930594,
+        "from": "momo@momo.com",
+        "to": "user@appsus.com"
+    },
+    {
+        "id": "e120",
+        "subject": "re: CV Yossi Levy!",
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi quod ipsam recusandae assumenda pariatur, incidunt, tenetur nulla quas odio atque aperiam veniam praesentium alias, cum optio consequuntur? Optio, maxime accusamus!",
+        "isRead": true,
+        "sentAt": 1551133930594,
+        "from": "momo@momo.com",
+        "to": "user@appsus.com"
+    }
+]

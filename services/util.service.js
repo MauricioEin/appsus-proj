@@ -5,7 +5,7 @@ export const utilService = {
     makeLoremEng,
     getRandomInt,
     getEventPositions,
-    getPositionsDelta,
+    getPositionsDelta
 }
 
 function saveToStorage(key, value) {

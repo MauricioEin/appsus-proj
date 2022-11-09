@@ -1,28 +1,70 @@
+/* layout helpers */
+
+.inline-block {
+    display: inline-block;
+}
+
+.block {
+    display: block;
+}
+
+.full {
+    width: 100vw;
+}
+
+.main-layout:not(.full){
+    margin-inline:20px;
+    max-width: 880px;
+}
+
 /* flex helpers */
 
 .flex {
     display: flex;
 }
 
-.flex.flex-column {
+.flex-column {
     flex-direction: column;
 }
 
-.flex.justify-center {
+.justify-center {
     justify-content: center;
 }
 
-.flex.justify-between {
+.justify-between {
     justify-content: space-between;
 }
 
-.flex.align-center {
+.align-center {
     align-items: center;
+}
+
+.wrap {
+    flex-wrap: wrap;
 }
 
 /* position helpers */
 .fixed {
     position: fixed;
+}
+
+.absuolte {
+    position: absolute
+}
+
+.relative{
+    position: relative;
+}
+
+.center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* grid helpers */
+.grid {
+    display: grid;
 }
 
 
@@ -48,7 +90,6 @@
 .columns {
     column-count: auto;
 }
-
 
 /* font awsome */
 

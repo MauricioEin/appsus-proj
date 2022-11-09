@@ -1,10 +1,13 @@
 export default {
 	template: `
-        <header class="app-header">
+        <header class="app-header flex justify-between">
             <h1>AppSus</h1>
             <nav>
                 <router-link to="/">Home</router-link> | 
-                <router-link to="/about">About</router-link>
+                <router-link to="/about">About</router-link> |
+                <router-link to="/mail">Mr.Mail</router-link> |
+                <router-link to="/keep">Ms.Keep</router-link>
+                
             </nav>
         </header>
     `,

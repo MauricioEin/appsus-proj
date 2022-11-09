@@ -7,7 +7,7 @@ import mailAppHeader from '../cmps/mail-app-header.cmp.js'
 
 export default {
     template: `
-    <section class="mail-app">
+    <section class="mail-app full">
     <mail-app-header @filter="setFilter"/>
 
     <div class="main-container flex">
@@ -28,12 +28,8 @@ export default {
         }
     },
     created() {
-        this.$emit('isApp', true)
         mailService.query()
             .then(mails => this.mails = mails)
-    },
-    unmounted() {
-        this.$emit('isApp', false)
     },
     computed: {
         mailsToShow() {

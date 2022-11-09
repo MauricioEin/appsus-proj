@@ -2,9 +2,9 @@ export default {
     props:['note'],
     template: `
         <article class="note-img-cmp" :style="style">
-            <img :src="info.url"/>
+            <a :href="info.url" target="_blank"><img :src="info.url"/></a>
             <h3 v-if="info.title" class="note-title">{{info.title}}</h3>
-            <p v-if="info.txt" class="note-txt">{{note.info.url}}</p>
+            <p v-if="info.txt" class="note-txt">{{note.info.txt}}</p>
 
         </article>
     `,

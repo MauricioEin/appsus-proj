@@ -1,42 +1,23 @@
 import { mailService } from '../services/mail.service.js'
 
 import mailList from '../cmps/mail-list.cmp.js'
-import mailFilter from '../cmps/mail-filter.cmp.js'
 import newMail from '../cmps/new-mail.cmp.js'
+import mailNav from '../cmps/mail-nav.cmp.js'
+import mailAppHeader from '../cmps/mail-app-header.cmp.js'
 
 export default {
     template: `
-    <header class="mail-header flex">
-        <div class="flex">
-            <button title="Main menu">🍔</button>
-            <div title="Mr. Mail">logo</div>
-        </div>
-        <mail-filter @filter="setFilter"/>
-        <div class="flex">
-            <button title="Support">❔</button>
-            <button title="settings">⚙</button>
-            <button title="Appsus apps">🧮</button>
-            <button title="User">👤</button>
-
-        </div>
-
-    </header>
+    <mail-app-header @filter="setFilter"/>
 
     <div class="main-container flex">
-        <aside>
-            <button @click="onCompose">✏ Compose</button>
-            <ul class="mail-menu">
-                <li></li>
-            </ul>
-        </aside>
+        <mail-nav @compose="compose"/>
         <main class="mail-container">
             <mail-list :mails="mailsToShow" />
-            <new-mail v-if="isCompose" />
         </main>
     </div>
 
-    `
-    ,
+    <new-mail v-if="isCompose" />
+    `,
     data() {
         return {
             mails: null,
@@ -48,6 +29,9 @@ export default {
         this.$emit('isApp', true)
         mailService.query()
             .then(mails => this.mails = mails)
+    },
+    unmounted() {
+        this.$emit('isApp', false)
     },
     computed: {
         mailsToShow() {
@@ -67,13 +51,14 @@ export default {
             this.filter = searchStr
             console.log('new filter:', this.filter)
         },
-        onCompose() {
+        compose() {
             this.isCompose = true
         }
     },
     components: {
-        mailFilter,
         mailList,
+        mailNav,
+        mailAppHeader,
         newMail
     }
 }

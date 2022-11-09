@@ -1,15 +1,42 @@
 .mail-app{
-    background-color: rgb(243, 228, 119);
-    padding-top: 10px;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.0) ), url('/assets/img/background.jpg');
+    /* background-image: url('/assets/img/background.jpg'); */
+    background-size:cover;
+    background-repeat: no-repeat;
+
+}
+@media (max-width:750px) {
+    .mail-app{
+        background-size:750px;
+        background-position:top;
+    }
+}
+
+
+.mail-header{
+    padding:10px;
+    height:11vh;
 }
 
 .mail-filter {
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.35);
     border-radius: 8px;
+    flex-grow: 1;
 }
 
 .mail-filter input{
     background-color: transparent;
     border:none;
     outline: none;
+    flex-grow: 1;
+}
+
+.main-container{
+    gap:10px;
+}
+
+.mail-container{
+    width:75%;
+    flex-grow: 1;
+    margin-inline-end: 3vw;
 }

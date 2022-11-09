@@ -9,10 +9,10 @@ export default {
                 <div v-else>
                     <span class="btn" title="Archive">📩</span>
                     <span class="btn" title="Report spam">☢</span>
-                    <span class="btn" title="Delete">🗑</span>
+                    <span class="btn" title="Delete">🗑</span>|
                     <span class="btn" title="Mark as unread">✉</span>
                     <span class="btn" title="Snooze">⏰</span>
-                    <span class="btn" title="Add to tasks">✅</span>
+                    <span class="btn" title="Add to tasks">✅</span>|
                     <span class="btn" title="Move to">➡</span>
                     <span class="btn" title="Labels">🏷</span>
                 </div>

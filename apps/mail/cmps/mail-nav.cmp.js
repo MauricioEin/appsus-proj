@@ -2,7 +2,7 @@
 export default {
     template: `
         <aside class="mail-nav nav-width">
-            <button @click="onCompose">✏ Compose</button>
+            <button @click="onCompose" class="flex justify-between align-center"><span>✏</span> <span>Compose</span></button>
             <ul class="mail-menu clean-list">
                 <li v-for="label in systemLabels">
                     <article :title="label" class="pill-right">{{label}}</article>

@@ -1,3 +1,22 @@
-.demo {
-    color:black;
+.mail-list{
+    background-color: rgba(255, 255, 255, 0.29);
+    border-radius: 16px; 
+       padding-bottom: 16px;
+
+}
+
+.mail-list header{
+    background-color: rgba(255, 255, 255, 0.536);
+    border-top-right-radius: 16px;
+    border-top-left-radius: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 8px;
+
+}
+
+.mail-preview {
+    padding-left: 16px;
+    padding-right: 16px;
+
 }

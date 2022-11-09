@@ -9,19 +9,11 @@ import userMsg from './cmps/user-msg.cmp.js'
 const options = {
     template: `
         <section>
-            <app-header v-if="!isApp" />
+            <app-header />
             <router-view @isApp="inApp" />
             <user-msg />
         </section>
     `,
-    data() {
-        return { isApp: false }
-    },
-    methods:{
-        inApp(isApp){
-            this.isApp=isApp
-        }
-    },
     components: {
         appHeader,
         appFooter,

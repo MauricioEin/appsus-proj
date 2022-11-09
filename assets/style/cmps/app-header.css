@@ -1,7 +1,11 @@
 .app-header {
-  background-color: var(--clr5);
+  background-color: rgb(39, 32, 32);
   color: var(--secondary-clr1);
-  padding: 1em;
+  padding: 8px 10px;
+}
+
+.app-header h1{
+  margin:0;
 }
 
 @media(max-width: 720px) {

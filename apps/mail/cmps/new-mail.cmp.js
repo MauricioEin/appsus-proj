@@ -5,9 +5,9 @@ export default {
             <div>New Message</div>     
  
              <div>
-                <button title="Minimize" @click="minimize">-</button>
-                <button title="Full screen" @click="toFullScreen">↕</button>
-                <button title="Save & close" @click="close">x</button>
+                <span class="btn" title="Minimize" @click="minimize">-</span>
+                <span class="btn" title="Full screen" @click="toFullScreen">↕</span>
+                <span class="btn" title="Save & close" @click="close">x</span>
             </div>
         </header>
         <form class="flex flex-column">
@@ -24,18 +24,18 @@ export default {
         </form>
         <footer class="flex justify-between">
             <div>
-            <button title="Send" >Send</button> <button title="More send options">🔽</button>
-            <button title="Formatting options">A</button>
-            <button title="Attach files">📎</button>
-            <button title="Insert link">🔗</button>
-            <button title="Insert emoji">🙂</button>
-            <button title="Insert files using Drive">DRIVE</button>
-            <button title="Insert photo">🖼</button>
-            <button title="Toggle confidential mode">🔒</button>
-            <button title="Insert signature">🖋</button>
-            <button title="More options">more</button>
+            <span class="btn" title="Send" >Send</span> <span class="btn" title="More send options">🔽</span>
+            <span class="btn" title="Formatting options">A</span>
+            <span class="btn" title="Attach files">📎</span>
+            <span class="btn" title="Insert link">🔗</span>
+            <span class="btn" title="Insert emoji">🙂</span>
+            <span class="btn" title="Insert files using Drive">DRIVE</span>
+            <span class="btn" title="Insert photo">🖼</span>
+            <span class="btn" title="Toggle confidential mode">🔒</span>
+            <span class="btn" title="Insert signature">🖋</span>
+            <span class="btn" title="More options">more</span>
             </div>
-            <button title="Discard draft">🗑</button>
+            <span class="btn" title="Discard draft">🗑</span>
 
         </footer>
     </section>

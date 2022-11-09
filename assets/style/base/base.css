@@ -3,7 +3,7 @@
 }
 
 html {
-  
+  font-family: open-sans, sans-serif;
 }
 
 body {
@@ -45,10 +45,30 @@ nav a,
 button {
   min-width: 48px;
   min-height: 48px;
+  cursor: pointer;
+  border: none;
+}
+
+/* button and .btn style */
+.btn {
+  cursor: pointer;
+  border: none;
+  width: 48px;
+  height: 48px;
+
+  display: inline-flex;
+  border-radius: 999px;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+
+
 }
 
 /* Simple and useful CSS Debugging Technique */
 .debug * {
   outline: 1px solid gold
 }
-

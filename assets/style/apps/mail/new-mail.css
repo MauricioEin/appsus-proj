@@ -2,4 +2,27 @@
 .new-mail{
     bottom: 0;
     right:70px;
+    width: 450px;
+    background-color: var(--clr1);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.new-mail header {
+    background-color: var(--clr2);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    padding: 10px 16px;
+
+}
+
+.new-mail .btn{
+    width:20px;
+    height:20px;
+    border-radius: 4px;
+}
+
+.new-mail footer .btn{
+    width: 30px;
+    height: 30px;
 }

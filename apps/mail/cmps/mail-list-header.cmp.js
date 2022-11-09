@@ -3,25 +3,25 @@ export default {
     props: ['checkedCount'],
     template: `
         <header class="mail-list-header flex justify-between">
-            <div>
+            <div class="flex">
                 <input type="checkbox" @change="selectAll" title="Select">
-                <button v-if="!checkedCount" title="Refresh">🔄</button>
+                <span class="btn" v-if="!checkedCount" title="Refresh">🔄</span>
                 <div v-else>
-                    <button title="Archive">📩</button>
-                    <button title="Report spam">☢</button>
-                    <button title="Delete">🗑</button>
-                    <button title="Mark as unread">✉</button>
-                    <button title="Snooze">⏰</button>
-                    <button title="Add to tasks">✅</button>
-                    <button title="Move to">➡</button>
-                    <button title="Labels">🏷</button>
+                    <span class="btn" title="Archive">📩</span>
+                    <span class="btn" title="Report spam">☢</span>
+                    <span class="btn" title="Delete">🗑</span>
+                    <span class="btn" title="Mark as unread">✉</span>
+                    <span class="btn" title="Snooze">⏰</span>
+                    <span class="btn" title="Add to tasks">✅</span>
+                    <span class="btn" title="Move to">➡</span>
+                    <span class="btn" title="Labels">🏷</span>
                 </div>
-                <button title="More">...</button>
+                <span class="btn" title="More">...</span>
             </div>
             <div class="flex">
                 <p>indexes</p>
-                <button title="Newer">&lt;</button>
-                <button title="Older">></button>
+                <span class="btn" title="Newer">&lt;</span>
+                <span class="btn" title="Older">></span>
 
             </div>
         </header>

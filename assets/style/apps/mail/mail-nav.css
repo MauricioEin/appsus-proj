@@ -1,0 +1,22 @@
+.mail-nav button{
+    margin-inline-start: 8px;
+    border-radius: 16px;
+    margin:8px 8px 16px;
+    padding-inline-end: 24px;
+    padding-inline-start: 16px;
+}
+
+
+.mail-menu article{
+    padding-inline-start: 26px;
+height:32px;
+    text-shadow: 0 1px 2px rgb(0 0 0 / 65%);
+    color: var(--clr1);
+    cursor: pointer;
+}
+
+.mail-menu article:hover{
+    background-color: rgba(255, 255, 255, 0.362);
+
+
+}

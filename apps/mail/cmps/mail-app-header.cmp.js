@@ -2,8 +2,8 @@ import mailFilter from '../cmps/mail-filter.cmp.js'
 
 export default {
     template: `
-    <header class="mail-header flex">
-        <div class="flex">
+    <header class="mail-header flex full justify-between">
+        <div class="flex nav-width">
             <button title="Main menu">🍔</button>
             <div title="Mr. Mail">logo</div>
         </div>

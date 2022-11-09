@@ -11,7 +11,7 @@ export const noteService = {
 
 const NOTE_KEY = "notesDB"
 const LABEL_KEY = "noteLabelsDB"
-
+_createEntitits(NOTE_KEY)
 
 
 function query(isNotes = true) {
@@ -53,7 +53,7 @@ function search(val) {
 }
 
 function _createEntitits(key) {
-    if (key === NOTE_KEY) return [
+    if (key === NOTE_KEY) return utilService.saveToStorage([
         {
             id: "n101",
             type: "note-txt",
@@ -82,6 +82,5 @@ function _createEntitits(key) {
                     { txt: "Coding power", doneAt: 187111111 }]
             }
         }
-    ]
-    return []
+    ])
 }

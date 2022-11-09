@@ -1,20 +1,20 @@
 export const utilService = {
-    save: saveToStorage,
-    load: loadFromStorage,
+    saveToStorage,
+    loadFromStorage,
     makeId,
-    lorem: makeLoremEng,
-    random: getRandomInt,
-    evPos: getEventPositions,
-    evDelta: getPositionsDelta
+    makeLoremEng,
+    getRandomInt,
+    getEventPositions,
+    getPositionsDelta,
 }
 
 function saveToStorage(key, value) {
-    localStorage.setItem(key, JSON.stringify(value) || null)
+    return localStorage.setItem(key, JSON.stringify(value) || null)
 }
 
 function loadFromStorage(key) {
     let data = localStorage.getItem(key)
-    return (data) ? JSON.parse(data) : undefined
+    return (data) ? JSON.parse(data) : null
 }
 
 function makeId(length = 5) {

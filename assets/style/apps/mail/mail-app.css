@@ -1,23 +1,30 @@
-.mail-app{
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.0) ), url('/assets/img/background.jpg');
+.mail-app {
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.0)), url('/assets/img/background.jpg');
     /* background-image: url('/assets/img/background.jpg'); */
-    background-size:cover;
+    background-size: cover;
     background-repeat: no-repeat;
 
 }
+
 @media (max-width:750px) {
-    .mail-app{
-        background-size:750px;
-        background-position:top;
+    .mail-app {
+        background-size: 750px;
+        background-position: top;
     }
 }
 
 .mail-app * {
     font-size: 0.875rem;
 }
-.mail-header{
-    padding:10px;
-    height:11vh;
+
+.mail-header {
+    padding: 10px;
+    height: 11vh;
+    color: var(--clr1);
+}
+
+.mail-header .btn:hover{
+background-color: rgba(255, 255, 255, 0.2);
 }
 
 .mail-filter {
@@ -26,19 +33,19 @@
     flex-grow: 1;
 }
 
-.mail-filter input{
+.mail-filter input {
     background-color: transparent;
-    border:none;
+    border: none;
     outline: none;
     flex-grow: 1;
 }
 
-.main-container{
-    gap:10px;
+.main-container {
+    gap: 10px;
 }
 
-.mail-container{
-    width:75%;
+.mail-container {
+    width: 75%;
     flex-grow: 1;
     margin-inline-end: 3vw;
 }

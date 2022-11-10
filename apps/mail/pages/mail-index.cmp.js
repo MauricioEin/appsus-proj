@@ -8,10 +8,10 @@ import mailAppHeader from '../cmps/mail-app-header.cmp.js'
 export default {
     template: `
     <section class="mail-app full">
-    <mail-app-header @filter="setFilter"/>
+    <mail-app-header @filter="setFilter" @toggleNav="isNavWide=!isNavWide"/>
 
     <div class="main-container flex">
-        <mail-nav @compose="compose"/>
+        <mail-nav :folders="folders" :isWide="isNavWide" @compose="compose" @folder="showFolder"/>
         <main class="mail-container">
             <mail-list :mails="mailsToShow" @unread="toUnread" />
         </main>
@@ -23,13 +23,17 @@ export default {
     data() {
         return {
             mails: null,
+            folders: null,
             filter: null,
             isCompose: false,
+            isNavWide: true,
         }
     },
     created() {
         mailService.query()
             .then(mails => this.mails = mails)
+        mailService.getFolders()
+            .then(folders => this.folders = folders)
     },
     computed: {
         mailsToShow() {
@@ -39,7 +43,7 @@ export default {
             filters.forEach(filter => {
                 console.log('filter', filter)
                 const regex = new RegExp(filter, 'i')
-                mails = mails.filter(mail => regex.test(JSON.stringify(mail)))
+                mails = mails.filter(mail => regex.test(JSON.stringify(Object.values(mail))))
             })
             return mails
         }
@@ -58,6 +62,9 @@ export default {
                 mailService.toUnread(mailToUnread, isToUnread)
                     .then(mail => mailToUnread = mail)
             })
+        },
+        showFolder(folder){
+            console.log(folder)
         }
     },
     components: {

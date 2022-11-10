@@ -79,7 +79,8 @@ function _createEntities(key) {
             isPinned: false,
             info: {
                 title: 'Good Habits',
-                txt: 'Drink luke warm water in the morning'
+                txt: 'Drink luke warm water in the morning',
+                labels:['Work']
             },
             style: {
                 backgroundColor: 'var(--usr-clr-yellow)',
@@ -91,7 +92,8 @@ function _createEntities(key) {
             isPinned: false,
             info: {
                 title: 'Answering literaly',
-                txt: 'What do you do for a living? I breath.'
+                txt: 'What do you do for a living? I breath.',
+                labels:['Home']
             },
             style: {
                 backgroundColor: 'var(--usr-clr-gray)',
@@ -107,7 +109,8 @@ function _createEntities(key) {
                     { txt: 'Bananas', doneAt: null },
                     { txt: 'ToiletPapaer', doneAt: Date.now() },
                     { txt: 'Tooth paste', doneAt: null },
-                ]
+                ],
+                labels:['Fun']
             },
             style: {
                 backgroundColor: 'var(--usr-clr-prpl)'
@@ -121,7 +124,8 @@ function _createEntities(key) {
                 url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2673&q=80',
                 title: 'Begin with the view',
                 txt: 'This is were it all began. Write 500 words on the disembarking procedure.',
-                lastEdited: Date.now()
+                lastEdited: Date.now(),
+                labels:['Drawings']
             }
         },
         {
@@ -131,6 +135,7 @@ function _createEntities(key) {
             info: {
                 title: utilService.makeLoremEng(4),
                 txt: utilService.makeLoremEng(9),
+                labels:['Pics']
             }
         },
         {
@@ -145,7 +150,8 @@ function _createEntities(key) {
                     { txt: utilService.makeLoremEng(3), doneAt: null },
                     { txt: utilService.makeLoremEng(2), doneAt: null },
                     { txt: utilService.makeLoremEng(2), doneAt: null },
-                ]
+                ],
+                labels:['Videos']
             }
         },
         {

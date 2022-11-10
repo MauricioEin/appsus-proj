@@ -4,7 +4,7 @@ import { eventBus } from '../../../services/event-bus.service.js'
 export default {
     template: `
         <section class="filter-notes">
-            <input type="search" list="d" class="search-box" @input="getNotesToShow" placeholder="Search" v-model="filterBy.txt" />
+            <input type="search" list="d" class="search-box" @input="sendFilteredNotes" placeholder="Search" v-model="filterBy.txt" />
             <div v-if="notesToShow" v-for="note in notesToShow">{{note}}</div>
         </section>
     `,
@@ -13,7 +13,7 @@ export default {
             filterBy: {
                 txt: '',
                 type: '',
-                label: 'Get my stuff together',
+                label: '',
                 isPinned: false
             },
             isSearchByType: false,
@@ -30,7 +30,7 @@ export default {
 
         },
         sendFilteredNotes() {
-            eventBus.on('getEntities', this.notesToShow)
+            this.$emit('filter', this.filterBy)
         }
     },
     computed: {

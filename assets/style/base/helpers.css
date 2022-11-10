@@ -13,8 +13,7 @@
 }
 
 .main-layout:not(.full){
-    margin-inline:20px;
-    max-width: 880px;
+    margin-inline:10px;
 }
 
 .columns {
@@ -29,6 +28,11 @@
     display: none;
 }
 
+.general-border{
+    border-radius: 10px;
+    box-shadow: 0 0 3px .5px var(--clr3);
+    border: .5px solid var(--clr2);
+}
 
 
 /* flex helpers */

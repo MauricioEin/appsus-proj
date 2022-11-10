@@ -9,10 +9,16 @@ import noteNav from '../cmps/note-nav.cmp.js'
 export default {
     template: `
         <section class="note-app">
-            <note-header />
+            <div class="full"><note-header/></div>
             <section class=" flex">
                 <note-nav :labels="labels"/>
-                <note-list v-if="notes" :notes="notes" @saveNote="saveNote"/>
+                <note-list 
+                    v-if="notes" 
+                    class="main-layout"
+                    :notes="notes" 
+                    @toggleTodoDone="toggleTodoDone"
+                    @togglePinned="togglePinned"
+                    @saveNote="saveNote"/>
             </section>
         </section>
     `,
@@ -39,6 +45,22 @@ export default {
         saveNote(note) {
             if (note.info.txt || note.info.title) return noteService.saveNote(note)
                                                             .then(this.getNotes)
+        },
+        toggleTodoDone({noteId, idx}){
+            noteService.get(noteId)
+                .then(note => {
+                    const {todos} = note.info
+                    todos[idx].doneAt = todos[idx].doneAt ? null : Date.now()
+                    note.info.todos = todos
+                    return note
+                }).then(this.saveNote)
+        },
+        togglePinned(noteId){
+            noteService.get(noteId)
+               .then(note => {
+                    note.isPinned = !note.isPinned
+                    return note
+                }).then (this.saveNote)
         }
     },
     computed: {

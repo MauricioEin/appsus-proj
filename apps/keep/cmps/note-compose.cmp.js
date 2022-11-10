@@ -1,6 +1,6 @@
 export default {
     template: `
-        <div class="note-compose" :style="style">
+        <div class="note-compose general-border" :style="style">
             <div>
             <input type="txt"
                 v-model="noteInfo.title"
@@ -8,9 +8,9 @@ export default {
                 @input="showComposeSection"
                 placeholder="Title" 
                 class="note-title-input"/>
-                <span class="btn">1</span>
-                <span class="btn">2</span>
-                <span class="btn">3</span>
+                <span class="btn"><iconify-icon inline icon="material-symbols:check-box-outline"></iconify-icon></span>
+                <span class="btn"><iconify-icon inline icon="heroicons:paint-brush"></iconify-icon></span>
+                <span class="btn"><iconify-icon inline icon="bx:image-alt"></iconify-icon></span>
             </div>
             <section v-if="isShown" class="new-note-input">
                 <textarea 
@@ -23,7 +23,7 @@ export default {
                     <span class="btn"></span>
                     <span class="btn btn-color relative">
                         <iconify-icon icon="material-symbols:palette-outline" class="block"></iconify-icon>
-                        <div class="note-color-palette absolute hidden">
+                        <div class="note-color-palette absolute hidden general-border">
                             <span 
                                 class="btn pill" 
                                 v-for="color in colorPalette" 

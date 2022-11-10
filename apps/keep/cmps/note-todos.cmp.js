@@ -3,11 +3,11 @@ export default {
     template: `
         <article class="note-todos-cmp" :style="style">
             <h3 class="note-title">{{info.title}}</h3>
-            <ul class="todo-list">
-                <li v-for="todo in info.todos">
+            <ul class="todo-list clean-list">
+                <li v-for="(todo, idx) in info.todos">
                     <label> 
                         <input type="checkbox" 
-                             @input="toggleChecked(todo)"
+                             @input="toggleTodoDone(idx)"
                              :checked="todo.doneAt"/>
                     <span :class="{'todo-done': todo.doneAt}"> {{todo.txt}} </span> </label>
                 </li>
@@ -24,9 +24,8 @@ export default {
         // this.title = this.getTitle
     },
     methods: {
-        toggleChecked(todo) {
-           if (todo.doneAt) todo.doneAt = null
-           else todo.doneAt = Date.now()
+        toggleTodoDone(idx) {
+           this.$emit('toggleTodoDone', {noteId:this.note.id, idx:idx})
         }
 
 

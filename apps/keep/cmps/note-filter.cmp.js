@@ -11,7 +11,7 @@ export default {
     data() {
         return {
             filterBy: {
-                txt: ' ',
+                txt: '',
                 type: '',
                 label: 'Get my stuff together',
                 isPinned: false

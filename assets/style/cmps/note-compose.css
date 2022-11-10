@@ -20,10 +20,7 @@
 
 .btns-note-compose .btn-color:hover .note-color-palette{
     display: block !important;
-    border-radius: 10px;
     background-color: #fff;
-    border: .5px solid var(--clr2);
-    box-shadow: 0 0 3px .5px var(--clr3);
 }
 
 .note-color-palette{

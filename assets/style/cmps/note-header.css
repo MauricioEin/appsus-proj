@@ -1,0 +1,17 @@
+.filter-notes {
+    text-align: center;
+    margin-block: 7.5px;
+}
+
+.filter-notes .search-box::before{
+    content: 'f002';
+    font-family: FontAwesome;
+}
+
+.filter-notes .search-box{
+    background-color: #f1f3f4;
+    border-radius: 8px;
+    border:none;
+    outline: none;
+    min-width: 300px;
+}

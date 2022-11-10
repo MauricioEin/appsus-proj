@@ -1,3 +1,26 @@
+.note-title-input{
+    min-width: calc(100% - 146px);
+}
+
+.note-title-input,
+.note-text-body-input{
+    border:none;
+    outline: none;
+    background-color: transparent;
+    font-family: open-sans;
+    font-size: 1rem;
+}
+
+.note-text-body-input{
+    min-width: calc(100% - 20px);
+    resize: none;
+    margin:10px;
+    height:max-content;
+    max-height: 90vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 .note-color-palette > .btn{
     width: 28px;
     height: 28px;
@@ -7,7 +30,8 @@
 .note-color-palette > .btn:hover .color-title{
     display: block !important;
     background-color: rgba(0, 0, 0, .6);
-    padding: 3px 5px;
+    border-radius: 8px;;
+    padding: 3px 10px;
     color: white;
     top: 34px;
     width: fit-content;
@@ -27,4 +51,5 @@
     position: absolute !important;
     width: max-content;
     top: 100%;
+    z-index: 10;
 }

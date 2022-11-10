@@ -4,24 +4,24 @@ export default {
         <nav class="note-nav flex flex-column nav-width">
             <ul class="clean-list"> 
             <li class="nav-row flex">
-                <button><iconify-icon inline icon="ic:outline-lightbulb"></iconify-icon></button>
-                <span class="nav-item inline-block grow capitalize">Notes</span>
+                <span class="btn btn-nav"><iconify-icon inline icon="ic:outline-lightbulb"></iconify-icon></span>
+                <span class="nav-item inline-block grow capitalize flex align-center">Notes</span>
             </li>
             <li v-for="label in labels" class="nav-row flex">
-                <button><iconify-icon inline icon="ci:label"></iconify-icon></button>
-                <span class="nav-item inline-block grow">{{label.title}}</span>
+                <span class="btn btn-nav"><iconify-icon inline icon="ci:label"></iconify-icon></span>
+                <span class="nav-item inline-block grow capitalize flex align-center">{{label.title}}</span>
             </li>
             <li class="nav-row flex">
-                <button><iconify-icon inline icon="ic:outline-edit"></iconify-icon></button>
-                <span class="nav-item inline-block grow">Edit labels</span>
+                <span class="btn btn-nav"><iconify-icon inline icon="ic:outline-edit"></iconify-icon></span>
+                <span class="nav-item inline-block grow capitalize flex align-center">Edit labels</span>
             </li>
             <li class="nav-row flex">
-                <button><iconify-icon inline icon="material-symbols:archive-outline"></iconify-icon></button>
-                <span class="nav-item inline-block grow">Archive</span>
+                <span class="btn btn-nav"><iconify-icon inline icon="material-symbols:archive-outline"></iconify-icon></span>
+                <span class="nav-item inline-block grow capitalize flex align-center">Archive</span>
             </li>
             <li class="nav-row flex">
-                <button><iconify-icon inline icon="codicon:trash"></iconify-icon></button>
-                <span class="nav-item inline-block grow">Trash</span>
+                <span class="btn btn-nav"><iconify-icon inline icon="codicon:trash"></iconify-icon></span>
+                <span class="nav-item inline-block grow capitalize flex align-center">Trash</span>
             </li>
         </ul>
         </nav>

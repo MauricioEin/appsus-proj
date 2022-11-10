@@ -9,17 +9,19 @@ import noteNav from '../cmps/note-nav.cmp.js'
 export default {
     template: `
         <section class="note-app">
-            <div class="full"><note-header/></div>
-            <section class=" flex">
-                <note-nav :labels="labels"/>
-                <note-list 
-                    v-if="notes" 
-                    class="main-layout"
-                    :notes="notes" 
-                    @toggleTodoDone="toggleTodoDone"
-                    @togglePinned="togglePinned"
-                    @saveNote="saveNote"/>
-            </section>
+            <div class="full">
+                <note-header class="note-header"/></div>
+                <hr>
+                <section class="main-container flex">
+                    <note-nav :labels="labels"/>
+                    <note-list 
+                        v-if="notes" 
+                        class="main-layout"
+                        :notes="notes" 
+                        @toggleTodoDone="toggleTodoDone"
+                        @togglePinned="togglePinned"
+                        @saveNote="saveNote"/>
+                </section>
         </section>
     `,
     data() {

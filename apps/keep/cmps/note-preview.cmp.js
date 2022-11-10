@@ -13,8 +13,8 @@ export default {
         </span>
         
         <span class="note-pinmark block hidden" @click="togglePinned">
-            <iconify-icon v-if="!pinned" inline icon="bi:pin"></iconify-icon>
             <iconify-icon v-if="pinned" inline icon="bi:pin-fill"></iconify-icon>
+            <iconify-icon v-else inline icon="bi:pin"></iconify-icon>
         </span>
         <component 
             @toggleTodoDone="toggleTodoDone"

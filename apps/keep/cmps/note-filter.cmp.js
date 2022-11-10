@@ -1,4 +1,5 @@
-import {noteService} from '../services/note.service.js'
+import { noteService } from '../services/note.service.js'
+import { eventBus } from '../../../services/event-bus.service.js'
 
 export default {
     template: `
@@ -23,11 +24,15 @@ export default {
     },
     methods: {
         getNotesToShow() {
-            noteService.getFilteredNotes({...this.filterBy})
+            noteService.getFilteredNotes({ ...this.filterBy })
                 .then(notes => this.notesToShow = notes)
+                .then(notes => eventBus.on('getEntities', this.notesToShow))
 
         },
-        computed: {
+        sendFilteredNotes() {
+            eventBus.on('getEntities', this.notesToShow)
         }
+    },
+    computed: {
     }
 }

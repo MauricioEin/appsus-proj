@@ -25,6 +25,10 @@
     width: var(--nav-width);
 }
 
+.hidden{
+    display: none;
+}
+
 
 
 /* flex helpers */
@@ -63,7 +67,7 @@
 }
 
 .absuolte {
-    position: absolute
+    position: absolute;
 }
 
 .relative{

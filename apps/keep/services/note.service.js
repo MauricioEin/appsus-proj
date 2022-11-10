@@ -4,7 +4,7 @@ import { utilService } from '../../../services/util.service.js'
 export const noteService = {
     query,
     get,
-    save,
+    saveNote,
     compose,
     getFilteredNotes,
 }
@@ -45,7 +45,7 @@ function getFilteredNotes(filterBy) {
         })
 }
 
-function save(note) {
+function saveNote(note) {
     if (note.id) return storageService.put(NOTE_KEY, note)
     return storageService.post(NOTE_KEY, note)
 

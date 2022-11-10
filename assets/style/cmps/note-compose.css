@@ -1,0 +1,15 @@
+.note-color-palette .btn{
+    width: 10px;
+    height: 10px;
+}
+
+.btns-note-compose .btn-color:hover .note-color-palette{
+    display: block !important;
+}
+
+.note-color-palette{
+    position: absolute !important;
+    width: max-content;
+    top: 100%;
+
+}

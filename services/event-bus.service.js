@@ -16,6 +16,13 @@ function createEventEmitter(defaultHandler = null){
 }
 export const eventBus = createEventEmitter(() => console.log('No handler associated with this event...'))
 
+export function sendEntities(entities){
+    eventBus.on('getEntities', entities)
+}
+
+export function getEntities(entities){
+    eventBus.emit('getEntities', entities)
+}
 
 export function showUserMsg(msg) {
     eventBus.emit('show-msg', msg)

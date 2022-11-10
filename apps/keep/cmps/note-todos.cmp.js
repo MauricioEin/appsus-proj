@@ -7,7 +7,8 @@ export default {
                 <li v-for="todo in info.todos">
                     <label> 
                         <input type="checkbox" 
-                             @input="toggleChecked(todo)"/>
+                             @input="toggleChecked(todo)"
+                             :checked="todo.doneAt"/>
                     <span :class="{'todo-done': todo.doneAt}"> {{todo.txt}} </span> </label>
                 </li>
             </ul>

@@ -1,6 +1,6 @@
 export default {
     template: `
-        <div class="note-compose">
+        <div class="note-compose" :style="style">
             <div>
             <input type="txt"
                 v-model="noteInfo.title"
@@ -24,7 +24,13 @@ export default {
                     <span class="btn btn-color relative">
                         <iconify-icon icon="material-symbols:palette-outline" class="block"></iconify-icon>
                         <div class="note-color-palette absolute hidden">
-                            <span class="btn pill" v-for="color in colorPalette" :style="color"></span>
+                            <span 
+                                class="btn pill" 
+                                v-for="color in colorPalette" 
+                                :style="color.color"
+                                @click="style=color.color">
+                                <span class="color-title hidden">{{color.title}}</span>
+                            </span>
                         </div>
                     </span>
                     <span class="btn" @click="saveNote">Close</span>
@@ -37,17 +43,18 @@ export default {
         return {
             isShown: false,
             noteInfo: {},
-            colorPalette: ['background-color: var(--usr-clr-red);'
-                ,'background-color: var(--usr-clr-orng);'
-                ,'background-color: var(--usr-clr-yellow);'
-                ,'background-color: var(--usr-clr-grn);'
-                ,'background-color: var(--usr-clr-teal);'
-                ,'background-color: var(--usr-clr-blu);'
-                ,'background-color: var(--usr-clr-nvy);'
-                ,'background-color: var(--usr-clr-prpl);'
-                ,'background-color: var(--usr-clr-pnk);'
-                ,'background-color: var(--usr-clr-brwn);'
-                ,'background-color: var(--usr-clr-gray);']
+            style: {},
+            colorPalette: [{color:'background-color: var(--usr-clr-red);', title:'Red'},
+            {color:'background-color: var(--usr-clr-orng);', title:'Orange'},
+            {color:'background-color: var(--usr-clr-yellow);', title:'Yellow'},
+            {color:'background-color: var(--usr-clr-grn);', title:'Green'},
+            {color:'background-color: var(--usr-clr-teal);', title:'Teal'},
+            {color:'background-color: var(--usr-clr-blu);', title:'Blue'},
+            {color:'background-color: var(--usr-clr-nvy);', title:'Dark blue'},
+            {color:'background-color: var(--usr-clr-prpl);', title:'Purple'},
+            {color:'background-color: var(--usr-clr-pnk);', title:'Pink'},
+            {color:'background-color: var(--usr-clr-brwn);', title:'Brown'},
+            {color:'background-color: var(--usr-clr-gray);', title:'Gray'}]
         }
     },
     created() {
@@ -58,7 +65,7 @@ export default {
             this.isShown = true
         },
         saveNote() {
-            this.$emit('saveNote', { type: 'note-txt', info: this.noteInfo })
+            this.$emit('saveNote', { type: 'note-txt', info: this.noteInfo , style:this.style})
         }
     },
     computed: {

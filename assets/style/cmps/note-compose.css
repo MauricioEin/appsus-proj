@@ -1,15 +1,33 @@
-.note-color-palette .btn{
-    width: 10px;
-    height: 10px;
+.note-color-palette > .btn{
+    width: 28px;
+    height: 28px;
+    margin:6px;
+}
+
+.note-color-palette > .btn:hover .color-title{
+    display: block !important;
+    background-color: rgba(0, 0, 0, .6);
+    padding: 3px 5px;
+    color: white;
+    top: 34px;
+    width: fit-content;
+    position: absolute;
+}
+
+.note-color-palette .btn:hover{
+    border: 1px solid black;
 }
 
 .btns-note-compose .btn-color:hover .note-color-palette{
     display: block !important;
+    border-radius: 10px;
+    background-color: #fff;
+    border: .5px solid var(--clr2);
+    box-shadow: 0 0 3px .5px var(--clr3);
 }
 
 .note-color-palette{
     position: absolute !important;
     width: max-content;
     top: 100%;
-
 }

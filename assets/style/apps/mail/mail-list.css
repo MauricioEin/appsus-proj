@@ -40,5 +40,8 @@
 .mail-preview.unread{
     background-color: rgba(255, 255, 255, 0.4);
     font-weight: 900;
+}
 
+.mail-preview.unread:last-child{
+    border-bottom-left-radius: 16px;
 }

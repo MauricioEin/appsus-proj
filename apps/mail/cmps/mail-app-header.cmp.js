@@ -4,7 +4,7 @@ export default {
     template: `
     <header class="mail-header flex full justify-between">
         <div class="flex nav-width">
-            <span class="btn" title="Main menu">🍔</span>
+            <span class="btn" @click="toggleNav" title="Main menu">☰</span>
             <div title="Mr. Mail">logo</div>
         </div>
         <mail-filter @filter="setFilter"/>
@@ -21,6 +21,9 @@ export default {
     methods: {
         setFilter(searchStr){
             this.$emit('filter', searchStr)
+        },
+        toggleNav(){
+            this.$emit('toggleNav')
         }
 
     },

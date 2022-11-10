@@ -2,8 +2,8 @@
     margin-inline-start: 8px;
     border-radius: 16px;
     margin: 8px 8px 16px;
-    padding:20px 29px 20px 21px;
-    gap:20px;
+    padding: 20px 29px 20px 21px;
+    gap: 20px;
 }
 
 
@@ -14,10 +14,27 @@
     text-shadow: 0 1px 2px rgb(0 0 0 / 65%);
     color: var(--clr1);
     cursor: pointer;
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    gap: 20px;
 }
 
-.mail-menu article:hover {
+.mail-menu .folder-icon {
+    height: 30px;
+    width: 30px;
+    text-align: center;
+}
+
+.mail-menu .folder-icon:hover {
     background-color: rgba(255, 255, 255, 0.362);
 
+}
 
+.nav-width .mail-menu .folder-icon:hover {
+    background-color: transparent;
+}
+
+
+.nav-width .mail-menu article:hover {
+    background-color: rgba(255, 255, 255, 0.362);
 }

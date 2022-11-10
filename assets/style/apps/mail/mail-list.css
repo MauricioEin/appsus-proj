@@ -44,7 +44,3 @@
 .mail-preview.checked {
     background-color: var(--secondary-clr3);
 }
-/* NOT SURE: */
-.mail-preview.unread:last-child {
-    border-bottom-left-radius: 16px;
-}

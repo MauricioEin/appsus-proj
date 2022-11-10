@@ -1,7 +1,7 @@
 export default {
     props: ['mail'],
     template: `
-    <article class="mail-preview flex justify-between" :class="{unread: !mail.isRead}">
+    <article class="mail-preview flex justify-between" :class="{unread: !mail.isRead, checked: isChecked}">
         <div>drag</div>
         <div><input type="checkbox" @change="check" title="Select"></div>
         <div>⭐</div>
@@ -12,6 +12,11 @@ export default {
         <div>{{formattedDate}}</div>
     </article>
     `,
+    data(){
+        return {
+            isChecked: false,
+        }
+    },
     computed: {
         formattedDate() {
             const sentAtYear = new Date(this.mail.sentAt).getFullYear()
@@ -26,6 +31,7 @@ export default {
     },
     methods: {
         check({ target: { checked } }) {
+            this.isChecked = checked
             this.$emit('checked', checked, this.mail.id)
         }
     }

@@ -9,7 +9,7 @@ export default {
              <div>
                 <span class="btn" title="Minimize" @click="minimize">-</span>
                 <span class="btn" title="Full screen" @click="toFullScreen">↕</span>
-                <span class="btn" title="Save & close" @click="close">x</span>
+                <span class="btn" title="Save & close" @click="close(true)">x</span>
             </div>
         </header>
         <form class="flex flex-column">
@@ -26,7 +26,7 @@ export default {
         </form>
         <footer class="flex justify-between">
             <div>
-            <span class="btn" title="Send" @click="send" >Send</span> <span class="btn" title="More send options">🔽</span>
+            <span class="btn" title="Send" @click="close" >Send</span> <span class="btn" title="More send options">🔽</span>
             <span class="btn" title="Formatting options">A</span>
             <span class="btn" title="Attach files">📎</span>
             <span class="btn" title="Insert link">🔗</span>
@@ -37,7 +37,7 @@ export default {
             <span class="btn" title="Insert signature">🖋</span>
             <span class="btn" title="More options">more</span>
             </div>
-            <span class="btn" title="Discard draft">🗑</span>
+            <span class="btn" @click="discard" title="Discard draft">🗑</span>
 
         </footer>
     </section>
@@ -58,11 +58,14 @@ export default {
             console.log('toFull')
 
         },
-        close() {
+        close(isDraft = false) {
+            mailService.save(this.recipients, this.subject, this.body, isDraft)
             this.$emit('close', false)
         },
-        send() {
-            mailService.send(this.recipients, this.subject, this.body)
+        discard() {
+            this.recipients = this.subject = this.body = ''
+            this.$emit('close', false)
+
         }
     }
 }

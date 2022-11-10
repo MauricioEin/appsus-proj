@@ -13,11 +13,11 @@ export default {
     <div class="main-container flex">
         <mail-nav @compose="compose"/>
         <main class="mail-container">
-            <mail-list :mails="mailsToShow" />
+            <mail-list :mails="mailsToShow" @unread="toUnread" />
         </main>
     </div>
     
-    <new-mail v-if="isCompose" />
+    <new-mail v-if="isCompose" @close="compose" />
 </section>
     `,
     data() {
@@ -49,8 +49,15 @@ export default {
             this.filter = searchStr
             console.log('new filter:', this.filter)
         },
-        compose() {
-            this.isCompose = true
+        compose(isCompose = true) {
+            this.isCompose = isCompose
+        },
+        toUnread(ids, isToUnread) {
+            ids.forEach(id => {
+                var mailToUnread = this.mails.find(mail => mail.id === id)
+                mailService.toUnread(mailToUnread, isToUnread)
+                    .then(mail => mailToUnread = mail)
+            })
         }
     },
     components: {

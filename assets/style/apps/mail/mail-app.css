@@ -12,7 +12,9 @@
     }
 }
 
-
+.mail-app * {
+    font-size: 0.875rem;
+}
 .mail-header{
     padding:10px;
     height:11vh;

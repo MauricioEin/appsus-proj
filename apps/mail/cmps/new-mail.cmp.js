@@ -1,3 +1,5 @@
+import { mailService } from "../services/mail.service.js"
+
 export default {
     template: `
     <section class="new-mail fixed" @submit.prevent="" >
@@ -24,7 +26,7 @@ export default {
         </form>
         <footer class="flex justify-between">
             <div>
-            <span class="btn" title="Send" >Send</span> <span class="btn" title="More send options">🔽</span>
+            <span class="btn" title="Send" @click="send" >Send</span> <span class="btn" title="More send options">🔽</span>
             <span class="btn" title="Formatting options">A</span>
             <span class="btn" title="Attach files">📎</span>
             <span class="btn" title="Insert link">🔗</span>
@@ -57,7 +59,10 @@ export default {
 
         },
         close() {
-            console.log('closing')
+            this.$emit('close', false)
+        },
+        send() {
+            mailService.send(this.recipients, this.subject, this.body)
         }
     }
 }

@@ -6,7 +6,7 @@ import demoMails from '../hard-coded-data/demoMails.json' assert {type: 'json'}
 
 export const mailService = {
   query,
-  send,
+  save,
   toUnread,
   // get,
   // save,
@@ -31,11 +31,12 @@ function query() {
     })
 }
 
-function send(to, subject, body) {
+function save(to, subject, body, isDraft = false) {
   const mail = {
     subject,
     body,
     isRead: false,
+    isDraft,
     sentAt: Date.now(),
     from: USER.email,
     to

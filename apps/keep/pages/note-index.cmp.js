@@ -10,10 +10,10 @@ export default {
     template: `
         <section class="note-app">
             <div class="full">
-                <note-header class="note-header"/></div>
+                <note-header class="note-header" @filter="setFilter"/></div>
                 <hr>
                 <section class="note-main-container flex">
-                    <note-nav :labels="labels"/>
+                    <note-nav :labels="labels" @filterLabels="setFilter"/>
                     <note-list 
                         v-if="notes" 
                         class="main-layout"
@@ -27,7 +27,13 @@ export default {
     data() {
         return {
             notes: null,
-            labels: null
+            labels: null,
+            filterBy: {
+                txt: '',
+                type: '',
+                label: '',
+                isPinned: false
+            }
         }
     },
     created() {
@@ -36,8 +42,8 @@ export default {
         this.getLabels()
     },
     methods: {
-        getNotes(notes){
-            noteService.query(true)
+        getNotes(){
+            noteService.getFilteredNotes(this.filterBy)
                 .then(notes => this.notes = notes)
         },
         getLabels(){
@@ -64,6 +70,10 @@ export default {
                     note.isPinned = !note.isPinned
                     return note
                 }).then (this.saveNote)
+        },
+        setFilter(filterBy){
+            this.filterBy = filterBy
+            this.getNotes()
         }
     },
     computed: {

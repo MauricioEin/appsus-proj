@@ -5,11 +5,13 @@ export default {
             <ul class="clean-list"> 
             <li class="nav-row flex">
                 <span class="btn btn-nav"><iconify-icon inline icon="ic:outline-lightbulb"></iconify-icon></span>
-                <span class="nav-item inline-block grow capitalize flex align-center">Notes</span>
+                <span class="nav-item inline-block grow capitalize flex align-center"
+                    @click="setFilter('')">Notes</span>
             </li>
             <li v-for="label in labels" class="nav-row flex">
                 <span class="btn btn-nav"><iconify-icon inline icon="ci:label"></iconify-icon></span>
-                <span class="nav-item inline-block grow capitalize flex align-center">{{label.title}}</span>
+                <span class="nav-item inline-block grow capitalize flex align-center"
+                    @click="setFilter(label.title)">{{label.title}}</span>
             </li>
             <li class="nav-row flex">
                 <span class="btn btn-nav"><iconify-icon inline icon="ic:outline-edit"></iconify-icon></span>
@@ -37,7 +39,15 @@ export default {
 
     },
     methods: {
-
+        setFilter(label){
+            const filter = {
+                txt:'',
+                isPinned: false,
+                type: '',
+                label
+            }
+            this.$emit('filterLabels',filter)
+        }
     },
     computed: {
 

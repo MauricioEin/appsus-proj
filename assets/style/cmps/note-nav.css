@@ -1,0 +1,7 @@
+.note-nav .nav-item{
+    cursor: pointer;
+}
+
+.note-nav .nav-item:hover{
+    background-color: #ddd;
+}

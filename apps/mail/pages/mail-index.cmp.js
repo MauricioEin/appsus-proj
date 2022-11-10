@@ -8,10 +8,10 @@ import mailAppHeader from '../cmps/mail-app-header.cmp.js'
 export default {
     template: `
     <section class="mail-app full">
-    <mail-app-header @filter="setFilter" @toggleNav="isNavWide=!isNavWide"/>
+    <mail-app-header :key="headerKey" @filter="setFilter" @toggleNav="isNavWide=!isNavWide"/>
 
     <div class="main-container flex">
-        <mail-nav :folders="folders" :isWide="isNavWide" @compose="compose" @folder="showFolder"/>
+        <mail-nav :folders="foldersToNav" :isWide="isNavWide" @compose="compose" @folder="showFolder"/>
         <main class="mail-container">
             <mail-list :mails="mailsToShow" @unread="toUnread" />
         </main>
@@ -23,17 +23,20 @@ export default {
     data() {
         return {
             mails: null,
-            folders: null,
+            foldersToNav: null,
             filter: null,
             isCompose: false,
             isNavWide: true,
+            headerKey: 0,
+            folder: 'Inbox',
         }
     },
     created() {
-        mailService.query()
-            .then(mails => this.mails = mails)
+        mailService.query(this.folder)
+            .then(mails =>{
+                this.mails = mails})
         mailService.getFolders()
-            .then(folders => this.folders = folders)
+            .then(folders => this.foldersToNav = folders)
     },
     computed: {
         mailsToShow() {
@@ -63,8 +66,13 @@ export default {
                     .then(mail => mailToUnread = mail)
             })
         },
-        showFolder(folder){
-            console.log(folder)
+        showFolder(folder) {
+            this.filter = ''
+            this.folder = folder
+            this.headerKey++
+            mailService.query(this.folder)
+                .then(mails => {
+                    this.mails = mails})
         }
     },
     components: {

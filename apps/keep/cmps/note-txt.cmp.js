@@ -3,7 +3,7 @@ export default {
     template: `
         <article class="note-text-cmp" :style="style">
             <h3 v-if="info.title" class="note-title">{{info.title}}</h3>
-            <p class="note-text">{{info.txt}}</p>
+            <p v-if="info.txt" class="note-text">{{info.txt}}</p>
         </article>
     `,
     data() {
@@ -13,7 +13,7 @@ export default {
         }
     },
     created() {
-        // console.log(this.note)
+        console.log(this.info.title)
     },
     methods: {
 

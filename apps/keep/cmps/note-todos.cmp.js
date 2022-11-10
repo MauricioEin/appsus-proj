@@ -2,7 +2,7 @@ export default {
     props:['note'],
     template: `
         <article class="note-todos-cmp" :style="style">
-            <h3 class="note-title">{{info.title}}</h3>
+            <h3 v-if="info.title" class="note-title">{{info.title}}</h3>
             <ul class="todo-list clean-list">
                 <li v-for="(todo, idx) in info.todos">
                     <label> 
@@ -25,6 +25,8 @@ export default {
     },
     methods: {
         toggleTodoDone(idx) {
+            if (this.info.todos[idx].doneAt) this.info.todos[idx].doneAt = null
+            else this.info.todos[idx].doneAt = Date.now()
            this.$emit('toggleTodoDone', {noteId:this.note.id, idx:idx})
         }
 

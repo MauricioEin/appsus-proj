@@ -12,7 +12,7 @@ export default {
             <div class="full">
                 <note-header class="note-header"/></div>
                 <hr>
-                <section class="main-container flex">
+                <section class="note-main-container flex">
                     <note-nav :labels="labels"/>
                     <note-list 
                         v-if="notes" 
@@ -45,7 +45,8 @@ export default {
                 .then(labels => this.labels = labels)
         },
         saveNote(note) {
-            if (note.info.txt || note.info.title) return noteService.saveNote(note)
+            if (note.info.todos || note.info.url  ||
+                note.info.txt || note.info.title) return noteService.saveNote(note)
                                                             .then(this.getNotes)
         },
         toggleTodoDone({noteId, idx}){

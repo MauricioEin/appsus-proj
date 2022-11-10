@@ -1,5 +1,5 @@
 export default {
-    props:['note'],
+    props:['info'],
     template: `
     <article class="note-vid-cmp" >
         <h3 v-if="info.title" class="note-title">{{info.title}}</h3>
@@ -14,7 +14,7 @@ export default {
     `,
     data() {
         return {
-            info: this.note.info
+            // info: this.note.info
         }
     },
     created(){

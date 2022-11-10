@@ -1,18 +1,30 @@
+import composeTodo from './compose-cmps/compose-todo.cmp.js'
+
 export default {
+    props: ['colorPalette'],
     template: `
         <div class="note-compose general-border" :style="style">
             <div class="relative">
             <input type="txt"
                 ref="title"
-                v-model="noteInfo.title"
-                @click="showComposeSection" 
-                @input="showComposeSection"
+                v-model="info.title"
+                @click="setType('txt')" 
+                @input="setType('txt')"
                 :placeholder="isShown ? 'Title' : 'Take a note'" 
                 class="note-title-input"/>
                 <div class=" inline-block">
-                    <span v-if="!isShown" class="btn"><iconify-icon inline icon="material-symbols:check-box-outline"></iconify-icon></span>
-                    <span v-if="!isShown" class="btn"><iconify-icon inline icon="heroicons:paint-brush"></iconify-icon></span>
-                    <span v-if="!isShown" class="btn"><iconify-icon inline icon="bx:image-alt"></iconify-icon></span>
+                    <span v-if="!isShown" class="btn compose-list" @click="setType('todos')">
+                        <iconify-icon inline icon="material-symbols:check-box-outline">
+                        </iconify-icon>
+                    </span>
+                    <span v-if="!isShown" class="btn compose-draw">
+                        <iconify-icon inline icon="heroicons:paint-brush">
+                        </iconify-icon>
+                    </span>
+                    <span v-if="!isShown" class="btn compose-media">
+                        <iconify-icon inline icon="bx:image-alt">
+                        </iconify-icon>
+                    </span>
                     <span v-else class="note-pinmark block" @click="togglePinned">
                         <iconify-icon v-if="pinned" inline icon="bi:pin-fill"></iconify-icon>
                         <iconify-icon v-else inline icon="bi:pin"></iconify-icon>
@@ -21,11 +33,22 @@ export default {
             </div>
             <section v-if="isShown" class="new-note-input">
                 <textarea 
-                    autofocus
-                    v-model="noteInfo.txt"
+                    v-if="!isNoteTodos"
+                    v-model="info.txt"
                     placeholder="Take a note"
                     class="note-text-body-input block">
                 </textarea>
+                <form  v-if="isNoteTodos">
+                    <compose-todo 
+                        v-for="(todo, idx) in info.todos.length"
+                        @todoAdded="todoAdded" 
+                        @toggleDone="toggleDone"
+                        :idx="idx"
+                        :key="idx" />
+                </form>
+
+
+
                 <div class="btns-note-compose">
                     <span class="btn"></span>
                     <span class="btn"></span>
@@ -52,19 +75,14 @@ export default {
         return {
             isShown: false,
             isPinned: false,
-            noteInfo: {},
-            style: {},
-            colorPalette: [{ color: 'background-color: var(--usr-clr-red);', title: 'Red' },
-            { color: 'background-color: var(--usr-clr-orng);', title: 'Orange' },
-            { color: 'background-color: var(--usr-clr-yellow);', title: 'Yellow' },
-            { color: 'background-color: var(--usr-clr-grn);', title: 'Green' },
-            { color: 'background-color: var(--usr-clr-teal);', title: 'Teal' },
-            { color: 'background-color: var(--usr-clr-blu);', title: 'Blue' },
-            { color: 'background-color: var(--usr-clr-nvy);', title: 'Dark blue' },
-            { color: 'background-color: var(--usr-clr-prpl);', title: 'Purple' },
-            { color: 'background-color: var(--usr-clr-pnk);', title: 'Pink' },
-            { color: 'background-color: var(--usr-clr-brwn);', title: 'Brown' },
-            { color: 'background-color: var(--usr-clr-gray);', title: 'Gray' }]
+            info: {
+                title: '',
+                txt: '',
+                style: {},
+                todos: [{}],
+                url: '',
+            },
+            type: null,
         }
     },
     created() {
@@ -74,18 +92,56 @@ export default {
         this.$refs.title.focus()
     },
     methods: {
-        showComposeSection() {
+        resetVar() {
+            this.isShown = false,
+                this.isPinned = false,
+                this.info = {
+                    title: '',
+                    txt: '',
+                    style: {},
+                    todos: [{}],
+                    url: '',
+                },
+                this.type = null
+        },
+        showTextArea() {
             this.isShown = true
         },
         saveNote() {
-            this.$emit('saveNote', { type: 'note-txt', info: this.noteInfo, style: this.style })
+            this.resetVar()
+            const info = {}
+            if (!this.info) return
+            let isEmpty = true
+            for (let prop in this.info) {
+                if (this.info[prop]) {
+                    info[prop] = this.info[prop]
+                    isEmpty = false
+                }
+            }
+            if (isEmpty) return
+            // if (info.todos && info.todos.length) info.todos.pop()
+            this.$emit('saveNote', { type: 'note-' + this.type, info, style: this.style })
         },
-        togglePinned(){
+        togglePinned() {
             this.isPinned = !this.isPinned
+        },
+        todoAdded({ txt, doneAt, idx }) {
+            this.info.todos[idx] = { txt, doneAt }
+            if (idx + 1 >= this.info.todos.length) this.info.todos.push({})
+        },
+        setType(type) {
+            if (this.type) return
+            this.type = type
+            this.isShown = true
         }
     },
     computed: {
-
+        isNoteTodos() {
+            return this.type === 'todos'
+        }
+    },
+    components: {
+        composeTodo
     },
     watch: {
 

@@ -7,8 +7,6 @@ export default {
     <section class="mail-list">
         <mail-list-header :isChecked="checkedMails.length" :isToRead="isToRead" @unread="toUnread"/>
         <ul class="clean-list">
-            {{checkedMails}}
-            {{isToRead}}
             <li v-for="mail in mails" :key="mail.id">
                 <mail-preview :mail="mail" @checked="onChecked"/>
             </li>

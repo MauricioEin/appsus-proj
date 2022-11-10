@@ -8,7 +8,7 @@ export default {
         <mail-list-header :isChecked="checkedMails.length" :isToRead="isToRead" @unread="toUnread"/>
         <ul class="clean-list">
             <li v-for="mail in mails" :key="mail.id">
-                <mail-preview :mail="mail" @checked="onChecked"/>
+                <mail-preview :mail="mail" @click="onDetails(mail.id)" @checked="onChecked"/>
             </li>
         </ul>
     </section>
@@ -38,6 +38,9 @@ export default {
         toUnread() {
             console.log('isToRead?', this.isToRead)
             this.$emit('unread', this.checkedMails, !this.isToRead)
+        },
+        onDetails(id) {
+            this.$emit('details', id)
         }
     },
     components: {

@@ -6,7 +6,7 @@ export default {
         <div><input type="checkbox" @change="check" title="Select"></div>
         <div>⭐</div>
         <div>🚩</div>
-        <div class="capitalized">{{formattedFrom}}</div>
+        <div class="capitalized" :class="{red:mail.isDraft}">{{formattedFrom}}</div>
         <div>{{mail.subject}}</div>
         <div>📎</div>
         <div>{{formattedDate}}</div>
@@ -26,6 +26,7 @@ export default {
             return new Date(this.mail.sentAt).toLocaleString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric' })
         },
         formattedFrom() {
+            if (this.mail.isDraft) return 'Draft'
             return this.mail.from.split('@')[0]
         }
     },

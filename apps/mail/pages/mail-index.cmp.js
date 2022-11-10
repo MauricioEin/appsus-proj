@@ -4,6 +4,7 @@ import mailList from '../cmps/mail-list.cmp.js'
 import newMail from '../cmps/new-mail.cmp.js'
 import mailNav from '../cmps/mail-nav.cmp.js'
 import mailAppHeader from '../cmps/mail-app-header.cmp.js'
+import mailDetails from './mail-details.cmp.js'
 
 export default {
     template: `
@@ -13,7 +14,8 @@ export default {
     <div class="main-container flex">
         <mail-nav :folders="foldersToNav" :isWide="isNavWide" @compose="compose" @folder="showFolder"/>
         <main class="mail-container">
-            <mail-list :mails="mailsToShow" @unread="toUnread" />
+            <mail-list v-if="!selectedMail" :mails="mailsToShow" @unread="toUnread" @details="openDetails"/>
+            <mail-details v-else :id="selectedMail" @close="selectedMail=null"/>
         </main>
     </div>
     
@@ -29,12 +31,14 @@ export default {
             isNavWide: true,
             headerKey: 0,
             folder: 'Inbox',
+            selectedMail: null,
         }
     },
     created() {
         mailService.query(this.folder)
-            .then(mails =>{
-                this.mails = mails})
+            .then(mails => {
+                this.mails = mails
+            })
         mailService.getFolders()
             .then(folders => this.foldersToNav = folders)
     },
@@ -72,13 +76,19 @@ export default {
             this.headerKey++
             mailService.query(this.folder)
                 .then(mails => {
-                    this.mails = mails})
+                    this.mails = mails
+                })
+        },
+        openDetails(id) {
+            console.log('opening with', id)
+            this.selectedMail = id
         }
     },
     components: {
         mailList,
         mailNav,
         mailAppHeader,
-        newMail
+        newMail,
+        mailDetails
     }
 }

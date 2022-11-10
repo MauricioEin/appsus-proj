@@ -9,7 +9,7 @@ export const mailService = {
   getFolders,
   save,
   toUnread,
-  // get,
+  get,
   // save,
   // paramMap: getParamaeterMap,
   // getEmptyBook,
@@ -44,6 +44,9 @@ function query(folder) {
       if (folder === 'All mail') return res
       return _filterFolder(res, folder)
     })
+}
+function get(mailId) {
+  return storageService.get(MAIL_KEY, mailId)
 }
 
 function getFolders(delay = 200) {

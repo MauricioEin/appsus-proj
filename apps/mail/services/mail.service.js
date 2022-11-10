@@ -34,12 +34,15 @@ const folders = [
   { title: 'All mail', icon: '📪' },
   { title: 'Trash', icon: '🗑' },
 ]
-function query() {
+function query(folder) {
   return storageService.query(MAIL_KEY)
     .then(res => {
-      if (res && res.length > 0) return res
-      utilService.saveToStorage(MAIL_KEY, demoMails)
-      return demoMails
+      if (!res || !res.length) {
+        utilService.saveToStorage(MAIL_KEY, demoMails)
+        res = demoMails
+      }
+      if (folder === 'All mail') return res
+      return _filterFolder(res, folder)
     })
 }
 
@@ -49,10 +52,11 @@ function getFolders(delay = 200) {
 }
 
 function save(to, subject, body, isDraft = false) {
+  if (!to && !subject && !body) return
   const mail = {
     subject,
     body,
-    isRead: from === USER.email,
+    isRead: to !== USER.email,
     isDraft,
     sentAt: Date.now(),
     from: USER.email,
@@ -66,3 +70,26 @@ function toUnread(mail, isToUnread = true) {
   return storageService.put(MAIL_KEY, mail)
 }
 
+function _filterFolder(mails, folder) {
+  switch (folder) {
+    case 'Inbox':
+      return mails.filter(mail => mail.to === USER.email && !mail.isTrash && !mail.isSpam)
+    case 'Starred':
+      return mails.filter(mail => mail.isStarred)
+    case 'Important':
+      return mails.filter(mail => mail.isImportant)
+    case 'Sent':
+      return mails.filter(mail => mail.from === USER.email && !mail.isDraft)
+    case 'Drafts':
+      return mails.filter(mail => mail.isDraft)
+    case 'Spam':
+      return mails.filter(mail => mail.isSpam)
+    case 'Snoozed':
+      return mails.filter(mail => mail.isSnoozed)
+    case 'Scheduled':
+      return mails.filter(mail => mail.isScheduled)
+    case 'Trash':
+      return mails.filter(mail => mail.isTrash)
+  }
+
+}

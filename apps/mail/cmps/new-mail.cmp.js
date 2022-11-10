@@ -12,6 +12,7 @@ export default {
                 <span class="btn" title="Save & close" @click="close(true)">x</span>
             </div>
         </header>
+        
         <form class="flex flex-column">
             <input 
             v-model="recipients" 
@@ -24,9 +25,10 @@ export default {
             <textarea v-model="body">
             </textarea>
         </form>
+
         <footer class="flex justify-between">
             <div>
-            <span class="btn" title="Send" @click="close" >Send</span> <span class="btn" title="More send options">🔽</span>
+            <span class="btn" title="Send" @click="close(false)" >Send</span> <span class="btn" title="More send options">🔽</span>
             <span class="btn" title="Formatting options">A</span>
             <span class="btn" title="Attach files">📎</span>
             <span class="btn" title="Insert link">🔗</span>
@@ -38,7 +40,6 @@ export default {
             <span class="btn" title="More options">more</span>
             </div>
             <span class="btn" @click="discard" title="Discard draft">🗑</span>
-
         </footer>
     </section>
 `,
@@ -47,6 +48,11 @@ export default {
             recipients: '',
             subject: '',
             body: '',
+        }
+    },
+    computed: {
+        isValid() {
+            return (this.recipients, this.subject) ? true : false
         }
     },
     methods: {
@@ -59,6 +65,7 @@ export default {
 
         },
         close(isDraft = false) {
+            if (!isDraft && !this.isValid) return
             mailService.save(this.recipients, this.subject, this.body, isDraft)
             this.$emit('close', false)
         },

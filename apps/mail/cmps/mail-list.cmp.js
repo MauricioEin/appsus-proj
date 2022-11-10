@@ -5,7 +5,7 @@ export default {
     props: ['mails'],
     template: `
     <section class="mail-list">
-        <mail-list-header :checkedCount="checkedCount"/>
+        <mail-list-header :isChecked="checkedMails.length" :isToRead="isToRead" @unread="toUnread"/>
         <ul class="clean-list">
             <li v-for="mail in mails" :key="mail.id">
                 <mail-preview :mail="mail" @checked="onChecked"/>
@@ -15,13 +15,30 @@ export default {
     `,
     data() {
         return {
-            checkedCount: 0,
+            checkedMails: [],
+        }
+    },
+    computed: {
+        isToRead() {
+            return this.checkedMails.some(checkedId => {
+                const checkedMail = this.mails.find(mail => mail.id === checkedId)
+                console.log('checkedMail', checkedMail)
+                return !checkedMail.isRead
+            })
         }
     },
     methods: {
-        onChecked(isChecked) {
-            isChecked ? this.checkedCount++ : this.checkedCount--
+        onChecked(isChecked, id) {
+            if (isChecked) this.checkedMails.push(id)
+            else {
+                const idx = this.checkedMails.findIndex(mail => mail === id)
+                this.checkedMails.splice(idx, 1)
+            }
         },
+        toUnread() {
+            console.log('isToRead?', this.isToRead)
+            this.$emit('unread', this.checkedMails, !this.isToRead)
+        }
     },
     components: {
         mailPreview,

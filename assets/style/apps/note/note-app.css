@@ -1,16 +1,35 @@
-.note-main-container{
-    margin-top:20px;
+.note-main-container {
+    margin-top: 20px;
 }
 
-.note-details-container{
+.note-details-container {
     position: fixed;
-    top:0;
-    left:0;
-    width:100vw;
-    height:100vh;
-    background-color: rgba(0,0,0,.5);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .5);
 }
 
-.note-details .note-compose{
+.note-details .note-compose {
     max-width: 600px;
+}
+
+.notes-main-header div>* {
+    font-size: 2rem;
+    cursor: pointer;
+    margin-inline: 10px;
+}
+
+.notes-main-header div > iconify-icon {
+    margin-top: 12.58px;
+
+}
+
+.notes-main-header div > span {
+    margin-top: 6.83px;
+    
+}
+.notes-main-header input {
+    margin-top:7.5px;
 }

@@ -1,6 +1,7 @@
 import {utilService} from '../../../../services/util.service.js'
 
 export default{
+    props: ['noteTxt'],
     template:`
         <div 
             contenteditable="true" 
@@ -18,6 +19,12 @@ export default{
             isShown:false
         }
     },
+    created(){
+        if(this.noteTxt) {
+            this.html = this.noteTxt
+            this.isShown = true
+        }
+    },
     methods:{
         searchUrls(...args){
             if (args[0] && args[0].target && args[0].target.textContent) 
@@ -29,9 +36,9 @@ export default{
             this.$emit('textInput',txt)
         },
         deletePlaceHolder(){
-            if (this.isShown && this.html) return
-            if (this.isShown) return this.html = "Take a note, write some urls"
+            if (this.isShown) return
             this.isShown = true
+            this.html = ''
         }
     },
     computed:{

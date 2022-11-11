@@ -11,14 +11,14 @@ export default {
     template: `
         <section class="note-app">
             <div class="full">
-                <note-header class="note-header" @filter="setFilter"/></div>
+                <note-header class="note-header" @filter="setFilter" @toggleNavMenu="toggleNavMenu"/></div>
                 <hr>
-                <section class="note-main-container flex">
-                    <note-nav :labels="labels" @filterLabels="setFilter"/>
+                <section class="note-main-container flex" :key="containerKey">
+                    <note-nav :labels="labels" @filterLabels="setFilter" :toggleNavMenu="isNavMenuShown"/>
                     <note-list 
                         v-if="notes" 
                         class="main-layout"
-                        :notes="notes"
+                        :notes="getNotes"
                         :selectedNote="selectedNote"
                         @toggleTodoDone="toggleTodoDone"
                         @togglePinned="togglePinned"
@@ -37,17 +37,19 @@ export default {
                 type: '',
                 label: '',
                 isPinned: false
-            }
+            },
+            isNavMenuShown:false,
+            containerKey:0
         }
     },
     created() {
         if (this.noteId) noteService.get(this.noteId)
                             .then(note => this.note = note)
-        this.getNotes()
+        this.loadNotes()
         this.getLabels()
     },
     methods: {
-        getNotes(){
+        loadNotes(){
             noteService.getFilteredNotes(this.filterBy)
                 .then(notes => this.notes = notes)
         },
@@ -56,9 +58,10 @@ export default {
                 .then(labels => this.labels = labels)
         },
         saveNote(note) {
+            this.containerKey++
             if (note.info.todos || note.info.url  ||
                 note.info.txt || note.info.title) return noteService.saveNote(note)
-                                                            .then(this.getNotes)
+                                                            .then(this.loadNotes)
             else if (note.id) noteService.remove(note.id)
             this.note = []
         },
@@ -80,12 +83,18 @@ export default {
         },
         setFilter(filterBy){
             this.filterBy = filterBy
-            this.getNotes()
+            this.loadNotes()
+        },
+        toggleNavMenu(){
+            this.isNavMenuShown = !this.isNavMenuShown
         }
     },
     computed: {
         noteId(){
             return this.$route.params.id
+        },
+        getNotes(){
+            return this.notes
         }
     },
     components: {

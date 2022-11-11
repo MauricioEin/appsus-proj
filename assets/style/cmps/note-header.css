@@ -1,6 +1,10 @@
 .filter-notes {
     text-align: center;
     margin-block: 7.5px;
+    min-width: 300px;
+    max-width: 600px;
+    width: 100%;
+    flex-shrink: 10000;
 }
 
 .filter-notes .search-box::before{
@@ -13,5 +17,5 @@
     border-radius: 8px;
     border:none;
     outline: none;
-    min-width: 300px;
+    width:100%;
 }

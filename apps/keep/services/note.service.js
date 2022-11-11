@@ -77,7 +77,7 @@ function compose() {
 
 function _searchTxt(note, txt) {
     if (!txt) return query()
-    const vals = txt.trim().split().map(val => val.trim())
+    const vals = txt.trim().split(' ').map(val => val.trim())
     const regexes = vals.map(val => new RegExp(val, 'i'))
     return regexes.every(regex => regex.test(JSON.stringify(Object.values(note.info))))
 

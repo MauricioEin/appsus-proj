@@ -1,14 +1,21 @@
 .note-compose {
     margin-bottom: 30px;
     background-color: #fff;
+    max-width: 600px;
+    margin-inline:auto;
+}
+
+.note-compose .btn{
+    font-size: 1.3rem;
 }
 
 .new-note-input label.todo-input {
     margin: 5px 0;
+    z-index: 1;
 }
 
 .note-title-input {
-    min-width: calc(100% - 146px);
+    min-width: calc(100% - 200px);
 }
 
 .add-todo {
@@ -16,17 +23,24 @@
     margin: 3.125px;
 }
 
+.remove-todo{
+    cursor: pointer;
+    padding: 10px 18.555px;
+    font-size: 1.3rem;
+    z-index: 20;
+}
+
 .todo-text-input {
     border: none;
     outline: none;
     background-color: transparent;
-    width: calc(100% - 20px);
+    width: calc(100% - 40px);
 
 }
 
 .note-title-input,
 .note-text-body-input,
-.note-img-url-input {
+.note-media-url-input {
     border: none;
     outline: none;
     background-color: transparent;
@@ -35,7 +49,7 @@
 }
 
 .note-text-body-input,
-.note-img-url-input {
+.note-media-url-input {
     min-width: calc(100% - 20px);
 }
 

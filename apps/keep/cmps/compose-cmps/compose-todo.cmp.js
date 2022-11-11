@@ -10,7 +10,7 @@ export default {
                 @input="inputBegun"
                 :class="{'todo-done' : doneAt}"
                 v-model="txt"/>
-                <span class="todo-remove absolute" @click="$emit(removeTodo,idx)">x</span>
+                <span class="remove-todo absolute" @click.prevent="$emit('removeTodo',idx)">x</span>
         </label>
     `,
     data(){

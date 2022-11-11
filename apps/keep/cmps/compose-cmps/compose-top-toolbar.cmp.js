@@ -1,6 +1,6 @@
 export default {
     template: `
-    <div class="inline-block">
+    <div class="inline-block compose-types">
                     <span v-if="!isShown" class="btn compose-list" @click="$emit('setType', 'note-todos')">
                         <iconify-icon inline icon="material-symbols:check-box-outline">
                         </iconify-icon>
@@ -11,6 +11,11 @@ export default {
                     </span>
                     <span v-if="!isShown" class="btn compose-media" @click="$emit('setType', 'note-img')">
                         <iconify-icon inline icon="bx:image-alt">
+                        </iconify-icon>
+                    </span>
+                    <span v-if="!isShown" class="btn compose-media" @click="$emit('setType', 'note-vid')">
+                        <iconify-icon inline icon="arcticons:youtube">
+
                         </iconify-icon>
                     </span>
                     <span v-else class="note-pinmark block" @click="$emit('togglePinned')">

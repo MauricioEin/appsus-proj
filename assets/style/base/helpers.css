@@ -18,6 +18,7 @@
 
 .columns {
     column-count: auto;
+    column-width: 203px;
 }
 
 .nav-width {

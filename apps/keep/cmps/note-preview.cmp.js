@@ -14,16 +14,16 @@ export default {
         </span>
         
         <span class="note-pinmark block hidden absolute" @click="togglePinned">
-            <iconify-icon v-if="pinned" inline icon="bi:pin-fill"></iconify-icon>
+            <iconify-icon v-if="isPinned" inline icon="bi:pin-fill"></iconify-icon>
             <iconify-icon v-else inline icon="bi:pin"></iconify-icon>
         </span>
-            <component 
-                @click="goToDetails"
-                @toggleTodoDone="toggleTodoDone"
-                :is="note.type" 
-                class="note-preview-item" 
-                :class="{selected: selected}"
-                :note="note"> 
+        <component 
+            @click="goToDetails"
+            @toggleTodoDone="toggleTodoDone"
+            :is="note.type" 
+            class="note-preview-item" 
+            :class="{selected: selected}"
+            :note="note"> 
             </component>
         <note-details v-is="isShown" :note="note"/>
     </div>
@@ -32,10 +32,11 @@ export default {
         return {
             isShown: false,
             selected: false,
-            pinned: false,
+            isPinned: false,
         }
     },
     created() {
+        if (this.note.isPinned) this.isPinned = true
     },
     methods: {
         toggleTodoDone(todo) {
@@ -45,7 +46,7 @@ export default {
             this.selected = !this.selected
         },
         togglePinned() {
-            this.pinned = !this.pinned
+            this.isPinned = !this.isPinned
             this.$emit('togglePinned', this.note.id)
         },
         toggleShowDetails() {

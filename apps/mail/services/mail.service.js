@@ -9,7 +9,9 @@ export const mailService = {
   getFolders,
   save,
   toUnread,
-  // get,
+  get,
+  toStar,
+  toImportant,
   // save,
   // paramMap: getParamaeterMap,
   // getEmptyBook,
@@ -45,6 +47,9 @@ function query(folder) {
       return _filterFolder(res, folder)
     })
 }
+function get(mailId) {
+  return storageService.get(MAIL_KEY, mailId)
+}
 
 function getFolders(delay = 200) {
   return new Promise(resolve => setTimeout(() => resolve(folders), delay))
@@ -65,10 +70,31 @@ function save(to, subject, body, isDraft = false) {
   storageService.post(MAIL_KEY, mail, false)
 }
 
-function toUnread(mail, isToUnread = true) {
-  mail.isRead = !isToUnread
-  return storageService.put(MAIL_KEY, mail)
+function toUnread(mailsToChange, isToUnread = true) {
+  if (!Array.isArray(mailsToChange)) mailsToChange = [mailsToChange]
+  return query('All mail').then(mails => {
+    mails.forEach(mail => {
+      if (mailsToChange.some(mailToChange => mailToChange.id === mail.id))
+        mail.isRead = !isToUnread
+    })
+    utilService.saveToStorage(MAIL_KEY, mails)
+  })
 }
+
+function toStar(id, isToStarred) {
+  return get(id).then(mail => {
+    mail.isStarred = isToStarred
+    return storageService.put(MAIL_KEY, mail)
+  })
+}
+
+function toImportant(id, isToImportant) {
+  return get(id).then(mail => {
+    mail.isImportant = isToImportant
+    return storageService.put(MAIL_KEY, mail)
+  })
+}
+
 
 function _filterFolder(mails, folder) {
   switch (folder) {

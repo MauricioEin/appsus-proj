@@ -1,6 +1,6 @@
 
 export default {
-    props: ['folders', 'isWide'],
+    props: ['folders', 'isWide', 'selected'],
     template: `
         <aside class="mail-nav" :class="{'nav-width':isWide}">
             <button @click="onCompose" class="flex justify-between align-center">
@@ -9,7 +9,8 @@ export default {
             </button>
             <ul class="mail-menu clean-list">
                 <li v-for="folder in folders">
-                    <article @click="showFolder(folder.title)" :title="folder.title" :class="{'pill-right':isWide, pill:!isWide}">
+                    <article @click="showFolder(folder.title)" :title="folder.title"
+                        :class="{'pill-right':isWide, pill:!isWide, selected:folder.title===selected}">
                         <span class="folder-icon pill">{{folder.icon}}</span>
                         <span v-if="isWide" class="folder-title">{{folder.title}}</span>
                     </article>
@@ -18,9 +19,6 @@ export default {
         </aside>
 
     `,
-    data() {
-
-    },
     methods: {
         onCompose() {
             this.$emit('compose')

@@ -4,16 +4,22 @@ import mailList from '../cmps/mail-list.cmp.js'
 import newMail from '../cmps/new-mail.cmp.js'
 import mailNav from '../cmps/mail-nav.cmp.js'
 import mailAppHeader from '../cmps/mail-app-header.cmp.js'
+import mailDetails from './mail-details.cmp.js'
 
 export default {
     template: `
     <section class="mail-app full">
-    <mail-app-header :key="headerKey" @filter="setFilter" @toggleNav="isNavWide=!isNavWide"/>
+    <mail-app-header :key="headerKey" @logo="showFolder"
+        @filter="setFilter" @toggleNav="isNavWide=!isNavWide"/>
 
-    <div class="main-container flex">
-        <mail-nav :folders="foldersToNav" :isWide="isNavWide" @compose="compose" @folder="showFolder"/>
+
+    <div class="principal-container flex">
+        <mail-nav :folders="foldersToNav" :selected="folder" :isWide="isNavWide"
+            @compose="compose" @folder="showFolder"/>
         <main class="mail-container">
-            <mail-list :mails="mailsToShow" @unread="toUnread" />
+            <mail-list v-if="!selectedMail" :mails="mailsToShow" :key="listKey"
+                 @unread="toUnread" @details="openDetails" @starred="onStarred" @important="onImportant"/>
+            <mail-details v-else :id="selectedMail" @update="loadMails" @close="selectedMail=null"/>
         </main>
     </div>
     
@@ -28,13 +34,13 @@ export default {
             isCompose: false,
             isNavWide: true,
             headerKey: 0,
+            listKey: 0,
             folder: 'Inbox',
+            selectedMail: null,
         }
     },
     created() {
-        mailService.query(this.folder)
-            .then(mails =>{
-                this.mails = mails})
+        this.loadMails()
         mailService.getFolders()
             .then(folders => this.foldersToNav = folders)
     },
@@ -44,7 +50,6 @@ export default {
             const filters = this.filter.split(' ').map(filter => filter.trim())
             var mails = this.mails
             filters.forEach(filter => {
-                console.log('filter', filter)
                 const regex = new RegExp(filter, 'i')
                 mails = mails.filter(mail => regex.test(JSON.stringify(Object.values(mail))))
             })
@@ -52,33 +57,44 @@ export default {
         }
     },
     methods: {
+        loadMails() {
+            mailService.query(this.folder)
+                .then(mails => {
+                    this.mails = mails
+                    this.filter = ''
+                })
+        },
         setFilter(searchStr) {
             this.filter = searchStr
-            console.log('new filter:', this.filter)
         },
         compose(isCompose = true) {
             this.isCompose = isCompose
         },
         toUnread(ids, isToUnread) {
-            ids.forEach(id => {
-                var mailToUnread = this.mails.find(mail => mail.id === id)
-                mailService.toUnread(mailToUnread, isToUnread)
-                    .then(mail => mailToUnread = mail)
-            })
+            const mailsToUnread = ids.map(id => this.mails.find(mail => mail.id === id))
+            mailService.toUnread(mailsToUnread, isToUnread).then(() => this.loadMails())
         },
         showFolder(folder) {
-            this.filter = ''
             this.folder = folder
-            this.headerKey++
-            mailService.query(this.folder)
-                .then(mails => {
-                    this.mails = mails})
+            this.headerKey++ //for emptying search bar
+            this.listKey++ // for emptying checked mails
+            this.loadMails()
+        },
+        openDetails(id) {
+            this.selectedMail = id
+        },
+        onStarred(id, isToStarred) {
+            mailService.toStar(id, isToStarred).then(() => this.loadMails())
+        },
+        onImportant(id, isToImportant) {
+            mailService.toImportant(id, isToImportant).then(() => this.loadMails())
         }
     },
     components: {
         mailList,
         mailNav,
         mailAppHeader,
-        newMail
+        newMail,
+        mailDetails
     }
 }

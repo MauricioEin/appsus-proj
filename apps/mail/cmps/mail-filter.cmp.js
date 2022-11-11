@@ -1,10 +1,10 @@
 export default {
     template: `
-    <form class="mail-filter flex justify-between" @submit.prevent="filter" >
-        <span class="btn" title="Search">🔍</span>
+    <form class="mail-filter flex justify-between" >
+        <span class="btn" @click="filter" title="Search">🔍</span>
         <input 
             v-model="searchStr" 
-            type="text" 
+            type="search" @search="filter"
             placeholder="Search mail">
         <span class="btn" title="Show search options">🎚</span>
 

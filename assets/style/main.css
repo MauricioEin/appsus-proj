@@ -15,7 +15,7 @@
 
 /* MailComponents */
 @import 'apps/mail/mail-app.css';
-@import 'apps/note/note-app.css';
+@import 'apps/mail/mail-header.css';
 @import 'apps/mail/new-mail.css';
 @import 'apps/mail/mail-nav.css';
 @import 'apps/mail/mail-list.css';
@@ -23,6 +23,7 @@
 
 
 /* Keep Components */
+@import 'apps/note/note-app.css';
 @import 'cmps/note-header.css';
 @import 'cmps/note-list.css';
 @import 'cmps/note-compose.css';

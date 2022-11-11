@@ -18,30 +18,8 @@
     font-size: 0.875rem;
 }
 
-.mail-header {
-    padding: 10px;
-    height: 11vh;
-    color: var(--clr1);
-}
 
-.mail-header .btn:hover{
-background-color: rgba(255, 255, 255, 0.2);
-}
-
-.mail-filter {
-    background-color: rgba(255, 255, 255, 0.35);
-    border-radius: 8px;
-    flex-grow: 1;
-}
-
-.mail-filter input {
-    background-color: transparent;
-    border: none;
-    outline: none;
-    flex-grow: 1;
-}
-
-.mail-app .main-container {
+.mail-app .principal-container {
     gap: 10px;
     
 }

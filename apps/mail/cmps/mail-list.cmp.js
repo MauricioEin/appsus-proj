@@ -1,11 +1,12 @@
 import mailPreview from "./mail-preview.cmp.js"
-import mailListHeader from "./mail-list-header.cmp.js"
+import mailContentHeader from "./mail-content-header.cmp.js"
 
 export default {
     props: ['mails'],
     template: `
     <section class="mail-list">
-        <mail-list-header :isChecked="checkedMails.length" :isToRead="isToRead" @unread="toUnread"/>
+        <mail-content-header :isChecked="checkedMails.length"
+            :isToRead="isToRead" :isDetails="false" @unread="toUnread"/>
         <ul class="clean-list">
             <li v-for="mail in mails" :key="mail.id">
                 <mail-preview :mail="mail" @click="onDetails(mail.id)" @checked="onChecked"/>
@@ -16,15 +17,7 @@ export default {
     data() {
         return {
             checkedMails: [],
-        }
-    },
-    computed: {
-        isToRead() {
-            return this.checkedMails.some(checkedId => {
-                const checkedMail = this.mails.find(mail => mail.id === checkedId)
-                console.log('checkedMail', checkedMail)
-                return !checkedMail.isRead
-            })
+            isToRead: false,
         }
     },
     methods: {
@@ -34,9 +27,15 @@ export default {
                 const idx = this.checkedMails.findIndex(mail => mail === id)
                 this.checkedMails.splice(idx, 1)
             }
+            this.updateToRead()
+        },
+        updateToRead() {
+            this.isToRead = this.checkedMails.some(checkedId => {
+                const checkedMail = this.mails.find(mail => mail.id === checkedId)
+                return !checkedMail.isRead
+            })
         },
         toUnread() {
-            console.log('isToRead?', this.isToRead)
             this.$emit('unread', this.checkedMails, !this.isToRead)
         },
         onDetails(id) {
@@ -45,6 +44,6 @@ export default {
     },
     components: {
         mailPreview,
-        mailListHeader
+        mailContentHeader
     }
 }

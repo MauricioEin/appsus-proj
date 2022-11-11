@@ -3,7 +3,7 @@ export default {
     template: `
     <article class="mail-preview flex justify-between" :class="{unread: !mail.isRead, checked: isChecked}">
         <div>drag</div>
-        <div><input type="checkbox" @change="check" title="Select"></div>
+        <div><input type="checkbox" @click.stop="" @change="check" title="Select"></div>
         <div>⭐</div>
         <div>🚩</div>
         <div class="capitalized" :class="{red:mail.isDraft}">{{formattedFrom}}</div>

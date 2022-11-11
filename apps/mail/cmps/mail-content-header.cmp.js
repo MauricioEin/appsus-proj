@@ -1,10 +1,11 @@
 
 export default {
-    props: ['isChecked', 'isToRead'],
+    props: ['isChecked', 'isToRead', 'isDetails'],
     template: `
-        <header class="mail-list-header flex justify-between">
+        <header class="mail-content-header flex justify-between">
             <div class="flex">
-                <input type="checkbox" @change="selectAll" title="Select">
+                <input type="checkbox" v-if="!isDetails" @change="selectAll" title="Select">
+                <span v-else class="btn" @click="back">🔙</span>
                 <span class="btn" v-if="!isChecked" title="Refresh">🔄</span>
                 <div v-else>
                     <span class="btn" title="Archive">📩</span>
@@ -26,14 +27,15 @@ export default {
             </div>
         </header>
     `,
-    data() {
-    },
     methods: {
         selectAll() {
             console.log('selecting all')
         },
         toUnread(){
             this.$emit('unread')
+        },
+        back(){
+            this.$emit('back')
         }
     },
     components: {

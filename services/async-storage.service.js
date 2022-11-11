@@ -6,7 +6,7 @@ export const storageService = {
     remove,
 }
 
-function query(entityType, delay = 500) {
+function query(entityType, delay = 200) {
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
     return new Promise(resolve => setTimeout(() => resolve(entities), delay))
 }
@@ -33,6 +33,7 @@ function put(entityType, updatedEntity) {
         const idx = entities.findIndex(entity => entity.id === updatedEntity.id)
         entities.splice(idx, 1, updatedEntity)
         _save(entityType, entities)
+        console.log(entities)
         return updatedEntity
     })
 }

@@ -68,10 +68,17 @@ function save(to, subject, body, isDraft = false) {
   storageService.post(MAIL_KEY, mail, false)
 }
 
-function toUnread(mail, isToUnread = true) {
-  mail.isRead = !isToUnread
-  return storageService.put(MAIL_KEY, mail)
+function toUnread(mailsToChange, isToUnread = true) {
+  if (!Array.isArray(mailsToChange)) mailsToChange = [mailsToChange]
+  return query('All mail').then(mails => {
+    mails.forEach(mail => {
+      if (mailsToChange.some(mailToChange => mailToChange.id === mail.id))
+        mail.isRead = !isToUnread
+    })
+    utilService.saveToStorage(MAIL_KEY, mails)
+  })
 }
+
 
 function _filterFolder(mails, folder) {
   switch (folder) {

@@ -20,10 +20,29 @@
     height: 68vh;
     border-bottom-right-radius: 16px;
     border-bottom-left-radius: 16px;
+    padding: 20px 40px;
 
 }
 
-.mail-details main.empty{
+.mail-details main.empty {
     background-color: rgba(255, 255, 255, 0.7);
+}
+
+.mail-details h1 {
+    font-size: 22px;
+}
+
+.mail-info>* {
+    gap: 10px;
+}
+
+.mail-details main button {
+    background-color: transparent;
+    border: solid 1px var(--clr3);
+    padding: 8px 20px;
+    margin-inline-end: 10px;
+    min-height: 10px;
 
 }
+
+

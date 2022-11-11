@@ -10,6 +10,8 @@ export const mailService = {
   save,
   toUnread,
   get,
+  toStar,
+  toImportant,
   // save,
   // paramMap: getParamaeterMap,
   // getEmptyBook,
@@ -76,6 +78,20 @@ function toUnread(mailsToChange, isToUnread = true) {
         mail.isRead = !isToUnread
     })
     utilService.saveToStorage(MAIL_KEY, mails)
+  })
+}
+
+function toStar(id, isToStarred) {
+  return get(id).then(mail => {
+    mail.isStarred = isToStarred
+    return storageService.put(MAIL_KEY, mail)
+  })
+}
+
+function toImportant(id, isToImportant) {
+  return get(id).then(mail => {
+    mail.isImportant = isToImportant
+    return storageService.put(MAIL_KEY, mail)
   })
 }
 

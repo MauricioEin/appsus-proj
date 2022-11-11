@@ -21,7 +21,7 @@
 
 .mail-app .principal-container {
     gap: 10px;
-    
+
 }
 
 .mail-container {
@@ -31,4 +31,39 @@
     border-radius: 16px;
     height: 78vh;
 
+}
+
+.star {
+    visibility: hidden;
+    font-size: 30px;
+    cursor: pointer;
+    position: relative;
+    bottom: 12px;
+    right: 4px;
+    font-size: 24px;
+
+
+}
+
+.star:before {
+    content: "\2606";
+    position: absolute;
+    visibility: visible;
+    color: gray;
+}
+
+.star:checked:before {
+    content: "\2605";
+    position: absolute;
+    color: gold;
+}
+
+.importance-label {
+    height: 22px;
+    position: relative;
+    left: 1.5px;
+}
+
+.label-important {
+    filter: invert(87%) sepia(38%) saturate(4568%) hue-rotate(0deg) brightness(107%) contrast(109%);
 }

@@ -12,12 +12,13 @@ export default {
     <mail-app-header :key="headerKey" @logo="showFolder"
         @filter="setFilter" @toggleNav="isNavWide=!isNavWide"/>
 
+
     <div class="principal-container flex">
         <mail-nav :folders="foldersToNav" :selected="folder" :isWide="isNavWide"
             @compose="compose" @folder="showFolder"/>
         <main class="mail-container">
             <mail-list v-if="!selectedMail" :mails="mailsToShow" :key="listKey"
-                 @unread="toUnread" @details="openDetails"/>
+                 @unread="toUnread" @details="openDetails" @starred="onStarred" @important="onImportant"/>
             <mail-details v-else :id="selectedMail" @update="loadMails" @close="selectedMail=null"/>
         </main>
     </div>
@@ -33,7 +34,7 @@ export default {
             isCompose: false,
             isNavWide: true,
             headerKey: 0,
-            listKey:0,
+            listKey: 0,
             folder: 'Inbox',
             selectedMail: null,
         }
@@ -81,6 +82,12 @@ export default {
         },
         openDetails(id) {
             this.selectedMail = id
+        },
+        onStarred(id, isToStarred) {
+            mailService.toStar(id, isToStarred).then(() => this.loadMails())
+        },
+        onImportant(id, isToImportant) {
+            mailService.toImportant(id, isToImportant).then(() => this.loadMails())
         }
     },
     components: {

@@ -8,18 +8,26 @@ export default {
         <mail-content-header  :isChecked="true" :isToRead="false"
             :isDetails="true" @unread="toUnread" @back="close" />
         <main v-if="mail">
-            <h1>{{mail.subject}}<span class="btn">Label</span></h1>
-            <div class="mail-info flex">
-            <h2>{{formattedFrom}}</h2><p>&lt;{{mail.from}}></p><p>{{formattedDate}}</p>
-            <span class="btn">STAR</span><span class="btn">Reply</span><span class="btn">More</span>
-             </div>
+            <h1>{{mail.subject}}<span class="btn" @click="onImportant"><img class="importance-label" src="../../../assets/img/label-important.svg" :class="{'label-important':mail.isImportant}" :title="importantTitle"/></span>
+</h1>
+            <div class="mail-info flex justify-between">
+                <div class="flex">
+                    <h2 class="capitalized">{{formattedFrom}}</h2>
+                    <p>&lt;{{mail.from}}></p>
+                </div>
+                <div class="flex">
+                    <p>{{formattedDate}}</p>
+                    <span class="btn"><input class="star" type="checkbox" @change="onStar" :title="starTitle" :checked="mail.isStarred"></span>
 
+                    <span class="btn">Reply</span>
+                    <span class="btn">More</span>
+                </div>
+            </div>
             <p>{{mail.body}}</p>
-            <button>reply</button>
-            <button>forward</button>
+            <button class="pill">↩ Reply</button>
+            <button class="pill">↪ Forward</button>
         </main>
         <main v-else class="empty"></main>
-        MESSAGE DETAILS {{id}}
     </section>
     `,
     data() {
@@ -28,6 +36,9 @@ export default {
         }
     },
     computed: {
+        starTitle() {
+            return this.mail.isStarred ? 'Starred' : 'Not starred'
+        },
         formattedFrom() {
             return this.mail.from.split('@')[0]
         },
@@ -41,7 +52,10 @@ export default {
                 else date += ` ${days} days ago)`
             }
             return date
-        }
+        },
+        importantTitle() {
+            return this.mail.isImportant ? 'Marked as important' : 'Mark this as important'
+        },
     },
     methods: {
         close() {
@@ -52,6 +66,17 @@ export default {
                 .then(() => {
                     this.$emit('update')
                     this.close()
+                })
+        },
+        onStar({ target: { checked } }) {
+            mailService.toStar(this.mail.id, checked)
+                .then(() => this.$emit('update'))
+        },
+        onImportant() {
+            this.mail.isImportant = !this.mail.isImportant
+            mailService.toImportant(this.mail.id, this.mail.isImportant)
+                .then(() => {
+                    this.$emit('update')
                 })
         }
     },

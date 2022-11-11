@@ -4,12 +4,12 @@ import mailContentHeader from "./mail-content-header.cmp.js"
 export default {
     props: ['mails'],
     template: `
-    <section class="mail-list">
+    <section class="mail-list">    
         <mail-content-header :isChecked="checkedMails.length"
             :isToRead="isToRead" :isDetails="false" @unread="toUnread"/>
         <ul class="clean-list">
             <li v-for="mail in mails" :key="mail.id">
-                <mail-preview :mail="mail" @click="onDetails(mail.id)" @checked="onChecked"/>
+                <mail-preview :mail="mail" @click="onDetails(mail.id)" @checked="onChecked" @starred="onStarred" @important="onImportant"/>
             </li>
         </ul>
     </section>
@@ -40,7 +40,14 @@ export default {
         },
         onDetails(id) {
             this.$emit('details', id)
+        },
+        onStarred(isToStarred, mailId) {
+            this.$emit('starred', mailId, isToStarred)
+        },
+        onImportant(isToImportant, mailId) {
+            this.$emit('important', mailId, isToImportant)
         }
+
     },
     components: {
         mailPreview,

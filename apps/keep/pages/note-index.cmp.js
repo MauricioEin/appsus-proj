@@ -5,6 +5,7 @@ import { eventBus } from '../../../services/event-bus.service.js'
 import noteHeader from '../cmps/note-header.cmp.js'
 import noteList from '../cmps/note-list.cmp.js'
 import noteNav from '../cmps/note-nav.cmp.js'
+import noteDetails from './note-details.cmp.js'
 
 export default {
     template: `
@@ -17,17 +18,20 @@ export default {
                     <note-list 
                         v-if="notes" 
                         class="main-layout"
-                        :notes="notes" 
+                        :notes="notes"
+                        :selectedNote="selectedNote"
                         @toggleTodoDone="toggleTodoDone"
                         @togglePinned="togglePinned"
                         @saveNote="saveNote"/>
                 </section>
+                <note-details v-if="noteId" @saveNote="saveNote"/>
         </section>
     `,
     data() {
         return {
-            notes: null,
-            labels: null,
+            note: null,
+            notes: [],
+            labels: [],
             filterBy: {
                 txt: '',
                 type: '',
@@ -37,7 +41,8 @@ export default {
         }
     },
     created() {
-        // eventBus.emit('getEntities', this.getNotes)
+        if (this.noteId) noteService.get(this.noteId)
+                            .then(note => this.note = note)
         this.getNotes()
         this.getLabels()
     },
@@ -54,6 +59,8 @@ export default {
             if (note.info.todos || note.info.url  ||
                 note.info.txt || note.info.title) return noteService.saveNote(note)
                                                             .then(this.getNotes)
+            else if (note.id) noteService.remove(note.id)
+            this.note = []
         },
         toggleTodoDone({noteId, idx}){
             noteService.get(noteId)
@@ -77,12 +84,15 @@ export default {
         }
     },
     computed: {
-
+        noteId(){
+            return this.$route.params.id
+        }
     },
     components: {
         noteList,
         noteNav,
-        noteHeader
+        noteHeader,
+        noteDetails,
 
     }
 }

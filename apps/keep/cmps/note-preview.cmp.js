@@ -1,49 +1,60 @@
-import noteTxt from './note-txt.cmp.js'
-import noteTodos from '../cmps/note-todos.cmp.js'
-import noteVid from '../cmps/note-vid.cmp.js'
-import noteImg from '../cmps/note-img.cmp.js'
-import noteUrl from '../cmps/note-url.cmp.js'
+import noteTxt from './preview-cmps/note-txt.cmp.js'
+import noteTodos from './preview-cmps/note-todos.cmp.js'
+import noteVid from './preview-cmps/note-vid.cmp.js'
+import noteImg from './preview-cmps/note-img.cmp.js'
+import noteUrl from './preview-cmps/note-url.cmp.js'
+import noteDetails from '../pages/note-details.cmp.js'
 
 export default {
-    props:['note'],
-    template:`
+    props: ['note'],
+    template: `
     <div class="relative note-item-container" >
-        <span class="note-checkmark block" @click="toggleSelected" :class="{hidden: !selected}">
+        <span class="note-checkmark block absolute" @click="toggleSelected" :class="{hidden: !selected}">
             <iconify-icon inline icon="material-symbols:check-circle"></iconify-icon>
         </span>
         
-        <span class="note-pinmark block hidden" @click="togglePinned">
+        <span class="note-pinmark block hidden absolute" @click="togglePinned">
             <iconify-icon v-if="pinned" inline icon="bi:pin-fill"></iconify-icon>
             <iconify-icon v-else inline icon="bi:pin"></iconify-icon>
         </span>
-        <component 
-            @toggleTodoDone="toggleTodoDone"
-            :is="note.type" 
-            class="note-preview-item" 
-            :class="{selected: selected}"
-            :note="note"> 
-        </component>
+            <component 
+                @click="goToDetails"
+                @toggleTodoDone="toggleTodoDone"
+                :is="note.type" 
+                class="note-preview-item" 
+                :class="{selected: selected}"
+                :note="note"> 
+            </component>
+        <note-details v-is="isShown" :note="note"/>
     </div>
     `,
-    data(){
+    data() {
         return {
+            isShown: false,
             selected: false,
             pinned: false,
         }
     },
-    created(){
+    created() {
     },
-    methods:{
-        toggleTodoDone(todo){
+    methods: {
+        toggleTodoDone(todo) {
             this.$emit('toggleTodoDone', todo)
         },
-        toggleSelected(){
-            this.selected =!this.selected
+        toggleSelected() {
+            this.selected = !this.selected
         },
-        togglePinned(){
-            this.pinned =!this.pinned
+        togglePinned() {
+            this.pinned = !this.pinned
             this.$emit('togglePinned', this.note.id)
         },
+        toggleShowDetails() {
+            this.isShown = !this.isShown
+        },
+        goToDetails(...args){
+            if (args[0].target.tagName === 'INPUT') return 
+            this.$router.push('/keep/' + this.note.id)
+        }
     },
     components: {
         noteTxt,
@@ -51,5 +62,6 @@ export default {
         noteUrl,
         noteImg,
         noteVid,
+        noteDetails,
     }
 }

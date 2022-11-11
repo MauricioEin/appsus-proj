@@ -1,3 +1,6 @@
+const regexToUrl = new RegExp('(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?','g')
+const regexToStr = new RegExp('\<.*\>', 'g')
+
 export const utilService = {
     saveToStorage,
     loadFromStorage,
@@ -5,8 +8,12 @@ export const utilService = {
     makeLoremEng,
     getRandomInt,
     getEventPositions,
-    getPositionsDelta
+    getPositionsDelta,
+    strWithLinks: stringToLink,
+    htmlToStr,
 }
+
+export const strWithLinks = { stringToLink }
 
 function saveToStorage(key, value) {
     return localStorage.setItem(key, JSON.stringify(value) || null)
@@ -66,4 +73,13 @@ function getPositionsDelta(ev, lastGrabPos) {
         x: ev.movementX,
         y: ev.movementY
     }
+}
+
+function stringToLink(str) {
+    if (typeof str !== 'string') return ''
+    return str.replaceAll(regexToUrl, str => `<a class="usr-url" target="_blank" contenteditable="false" href="${str}">${str}</a>`)
+}
+
+function htmlToStr(html){
+    return html.replaceAll(regexToStr, '')
 }

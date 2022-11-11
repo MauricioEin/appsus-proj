@@ -70,12 +70,12 @@
     position: fixed;
 }
 
-.absuolte {
-    position: absolute;
+.absolute {
+    position: absolute !important;
 }
 
 .relative{
-    position: relative;
+    position: relative !important;
 }
 
 .center {

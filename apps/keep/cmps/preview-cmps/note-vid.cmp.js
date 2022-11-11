@@ -14,7 +14,7 @@ export default {
     `,
     data() {
         return {
-            // info: this.note.info
+            info: this.note.info
         }
     },
     created(){

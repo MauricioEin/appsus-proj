@@ -1,149 +1,134 @@
+
+import topToolbar from './compose-cmps/compose-top-toolbar.cmp.js'
+import bottomToolbar from './compose-cmps/compose-bottom-toolbar.cmp.js'
 import composeTodo from './compose-cmps/compose-todo.cmp.js'
+import composeImg from './compose-cmps/compose-img.cmp.js'
+import composeTxt from './compose-cmps/compose-txt.cmp.js'
+import composeTitle from './compose-cmps/compose-title.cmp.js'
 
 export default {
-    props: ['colorPalette'],
+    props: ['selectedNote'],
     template: `
-        <div class="note-compose general-border" :style="style">
+        <div class="note-compose general-border" :style="this.note.style">
+            <img 
+            v-if="isShown && isValid"
+
+                @error="srcInvalid"
+                class="usr-img border-radius-top" 
+                :src="note.info.url" />
+                <!-- alt="Link appears to be broken. Perhaps an upload would be best." -->
             <div class="relative">
-            <input type="txt"
-                ref="title"
-                v-model="info.title"
-                @click="setType('txt')" 
-                @input="setType('txt')"
-                :placeholder="isShown ? 'Title' : 'Take a note'" 
-                class="note-title-input"/>
-                <div class=" inline-block">
-                    <span v-if="!isShown" class="btn compose-list" @click="setType('todos')">
-                        <iconify-icon inline icon="material-symbols:check-box-outline">
-                        </iconify-icon>
-                    </span>
-                    <span v-if="!isShown" class="btn compose-draw">
-                        <iconify-icon inline icon="heroicons:paint-brush">
-                        </iconify-icon>
-                    </span>
-                    <span v-if="!isShown" class="btn compose-media">
-                        <iconify-icon inline icon="bx:image-alt">
-                        </iconify-icon>
-                    </span>
-                    <span v-else class="note-pinmark block" @click="togglePinned">
-                        <iconify-icon v-if="pinned" inline icon="bi:pin-fill"></iconify-icon>
-                        <iconify-icon v-else inline icon="bi:pin"></iconify-icon>
-                    </span>
-                </div>
+                <compose-title @titleInput="updateTitle"/>
+                <top-toolbar @toglePinned="togglePinned" @setType="setType"/>
+                <input 
+                    @blur="srcValid"
+                    class="note-img-url-input" 
+                    v-if="note.type === 'note-img'" 
+                    type=url v-model="note.info.url" 
+                    placeholder="Image url"/>
             </div>
             <section v-if="isShown" class="new-note-input">
-                <textarea 
-                    v-if="!isNoteTodos"
-                    v-model="info.txt"
-                    placeholder="Take a note"
-                    class="note-text-body-input block">
-                </textarea>
-                <form  v-if="isNoteTodos">
+                <compose-txt v-if="!isNoteTodos" @textInput="updateText"/>
+            
+                <form v-else>
                     <compose-todo 
-                        v-for="(todo, idx) in info.todos.length"
+                        v-for="(todo, idx) in note.info.todos.length+1"
                         @todoAdded="todoAdded" 
                         @toggleDone="toggleDone"
+                        @removeTodo="removeTodo"
                         :idx="idx"
+                        :todo="note.info.todos[idx]"
                         :key="idx" />
                 </form>
 
-
-
-                <div class="btns-note-compose">
-                    <span class="btn"></span>
-                    <span class="btn"></span>
-                    <span class="btn"></span>
-                    <span class="btn btn-color relative">
-                        <iconify-icon icon="material-symbols:palette-outline" class="block"></iconify-icon>
-                        <div class="note-color-palette absolute hidden general-border">
-                            <span 
-                                class="btn pill" 
-                                v-for="color in colorPalette" 
-                                :style="color.color"
-                                @click="style=color.color">
-                                <span class="color-title hidden">{{color.title}}</span>
-                            </span>
-                        </div>
-                    </span>
-                    <span class="btn" @click="saveNote">Close</span>
-                </div>
+                <bottom-toolbar @setColor="setColor" @saveNote="saveNote"/>
             </section>
         </div>
-    `
-    ,
+    `,
     data() {
         return {
-            isShown: false,
-            isPinned: false,
-            info: {
-                title: '',
-                txt: '',
+            note: {
+                id: null,
                 style: {},
-                todos: [{}],
-                url: '',
+                info: { title: '', txt: '', todos: [], url: '' },
+                type: '',
+                isPinned: false,
+                url: ''
             },
-            type: null,
+            isShown: false,
+            isValid: false,
         }
     },
     created() {
-
-    },
-    mounted() {
-        this.$refs.title.focus()
+        if (this.selectedNote) {
+            this.note = this.selectedNote
+            this.isShown = true
+        }
     },
     methods: {
+        setType(type) {
+            this.isShown = true
+            if (this.note.type && type==='note-txt') return
+            this.note.type = type
+        },
+        updateTitle(title){
+            this.setType('note-txt')
+            this.title = title
+        },
+        updateText(txt){
+            console.log(txt)
+            this.note.info.txt = txt
+        },
+        todoAdded({ txt, doneAt, idx }) {
+            this.note.info.todos[idx] = { txt, doneAt }
+        },
+        removeTodo(idx) {
+            this.note.info.todos.splice(idx, 1)
+            this.saveNote()
+        },
+        togglePinned() {
+            this.note.isPinned = !this.note.isPinned
+        },
+        setColor(color) {
+            this.note.style = 'background-color:' + color
+        },
+        saveNote() {
+            this.$emit('saveNote', this.note)
+            this.resetVar()
+        },
         resetVar() {
             this.isShown = false,
-                this.isPinned = false,
-                this.info = {
+            this.note = {
+                id:null,
+                info: {
                     title: '',
                     txt: '',
-                    style: {},
                     todos: [{}],
                     url: '',
                 },
-                this.type = null
-        },
-        showTextArea() {
-            this.isShown = true
-        },
-        saveNote() {
-            this.resetVar()
-            const info = {}
-            if (!this.info) return
-            let isEmpty = true
-            for (let prop in this.info) {
-                if (this.info[prop]) {
-                    info[prop] = this.info[prop]
-                    isEmpty = false
-                }
+                isPinned: false,
+                type:'',
+                style:{},
             }
-            if (isEmpty) return
-            // if (info.todos && info.todos.length) info.todos.pop()
-            this.$emit('saveNote', { type: 'note-' + this.type, info, style: this.style })
         },
-        togglePinned() {
-            this.isPinned = !this.isPinned
+        srcInvalid(){
+            this.isValid=false
         },
-        todoAdded({ txt, doneAt, idx }) {
-            this.info.todos[idx] = { txt, doneAt }
-            if (idx + 1 >= this.info.todos.length) this.info.todos.push({})
-        },
-        setType(type) {
-            if (this.type) return
-            this.type = type
-            this.isShown = true
+        srcValid(){
+            this.isValid=true
         }
     },
     computed: {
         isNoteTodos() {
-            return this.type === 'todos'
+            return this.note.type === 'note-todos'
         }
     },
     components: {
-        composeTodo
-    },
-    watch: {
-
+        composeTodo,
+        composeImg,
+        composeTxt,
+        composeTitle,
+        topToolbar,
+        bottomToolbar,
     }
 }

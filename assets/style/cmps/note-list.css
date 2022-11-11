@@ -1,7 +1,6 @@
 .notes-preview-container {
     column-width: 200px;
     max-width: 100%;
-    margin-block: 30px;
 }
 
 .note-preview-item {
@@ -20,7 +19,7 @@
     box-shadow: 0 0 3px .5px var(--clr3);
 }
 
-.note-preview-item img {
+img.border-radius-top{
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }

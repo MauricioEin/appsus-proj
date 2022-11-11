@@ -7,6 +7,7 @@ export const noteService = {
     saveNote,
     compose,
     getFilteredNotes,
+    remove,
 }
 
 const NOTE_KEY = "notesDB"
@@ -55,11 +56,22 @@ function saveNote(note) {
 
 }
 
+function remove(noteId) {
+    storageService.remove(NOTE_KEY, noteId)
+}
+
 function compose() {
     return {
-        type: '',
-        info: {},
+        id: null,
+        info: {
+            title: '',
+            txt: '',
+            todos: [{}],
+            url: '',
+        },
         isPinned: false,
+        type: '',
+        style: {}
     }
 }
 
@@ -80,7 +92,7 @@ function _createEntities(key) {
             info: {
                 title: 'Good Habits',
                 txt: 'Drink luke warm water in the morning',
-                labels:['Work']
+                labels: ['Work']
             },
             style: {
                 backgroundColor: 'var(--usr-clr-yellow)',
@@ -93,7 +105,7 @@ function _createEntities(key) {
             info: {
                 title: 'Answering literaly',
                 txt: 'What do you do for a living? I breath.',
-                labels:['Home']
+                labels: ['Home']
             },
             style: {
                 backgroundColor: 'var(--usr-clr-gray)',
@@ -110,7 +122,7 @@ function _createEntities(key) {
                     { txt: 'ToiletPapaer', doneAt: Date.now() },
                     { txt: 'Tooth paste', doneAt: null },
                 ],
-                labels:['Fun']
+                labels: ['Fun']
             },
             style: {
                 backgroundColor: 'var(--usr-clr-prpl)'
@@ -125,7 +137,7 @@ function _createEntities(key) {
                 title: 'Begin with the view',
                 txt: 'This is were it all began. Write 500 words on the disembarking procedure.',
                 lastEdited: Date.now(),
-                labels:['Drawings']
+                labels: ['Drawings']
             }
         },
         {
@@ -135,7 +147,7 @@ function _createEntities(key) {
             info: {
                 title: utilService.makeLoremEng(4),
                 txt: utilService.makeLoremEng(9),
-                labels:['Pics']
+                labels: ['Pics']
             }
         },
         {
@@ -151,7 +163,7 @@ function _createEntities(key) {
                     { txt: utilService.makeLoremEng(2), doneAt: null },
                     { txt: utilService.makeLoremEng(2), doneAt: null },
                 ],
-                labels:['Videos']
+                labels: ['Videos']
             }
         },
         {

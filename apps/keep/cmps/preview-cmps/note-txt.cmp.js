@@ -13,7 +13,6 @@ export default {
         }
     },
     created() {
-        console.log(this.info.title)
     },
     methods: {
 

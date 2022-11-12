@@ -49,7 +49,6 @@ function query(folder = 'Inbox', sortBy) {
         utilService.saveToStorage(MAIL_KEY, demoMails)
         res = demoMails
       }
-
       if (sortBy) res = _sortMails(res, sortBy)
       if (folder === 'All mail') return res
       return _filterFolder(res, folder)

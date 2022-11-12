@@ -7,7 +7,8 @@ export default {
     <section class="mail-list">    
         <mail-content-header :isChecked="checkedMails.length" :folder="folder"
             :isToRead="isToRead" :isDetails="false" @refresh="$emit('refresh')" @unread="toUnread"
-            @trash="$emit('trash',checkedMails)" @spam="$emit('spam',checkedMails)"/>
+            @trash="$emit('trash',checkedMails)" @spam="$emit('spam',checkedMails)" 
+            @eliminate="$emit('eliminate', checkedMails)"/>
         <ul class="clean-list" v-if="mails.length">
             <li v-for="mail in mails" :key="mail.id">
                 <mail-preview :mail="mail" @click="onDetails(mail.id)" @checked="onChecked" @starred="onStarred" @important="onImportant"/>

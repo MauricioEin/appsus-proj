@@ -16,6 +16,7 @@ export const mailService = {
   toTrash,
   getNeighbourIds,
   countMail,
+  eliminate,
   // save,
   // paramMap: getParamaeterMap,
   // getEmptyBook,
@@ -99,9 +100,9 @@ function toImportant(id, isToImportant) {
   })
 }
 
-function toSpam(mailsToChange) {
+function toSpam(mailsToChange, folder) {
   if (!Array.isArray(mailsToChange)) mailsToChange = [mailsToChange]
-  return query('All mail').then(mails => {
+  return query(folder).then(mails => {
     mails.forEach(mail => {
       if (mailsToChange.some(mailToChange => mailToChange.id === mail.id))
         mail.isSpam = !mail.isSpam
@@ -110,12 +111,25 @@ function toSpam(mailsToChange) {
   })
 }
 
-function toTrash(mailsToChange) {
+function toTrash(mailsToChange, folder) {
   if (!Array.isArray(mailsToChange)) mailsToChange = [mailsToChange]
-  return query('All mail').then(mails => {
+  return query(folder).then(mails => {
     mails.forEach(mail => {
       if (mailsToChange.some(mailToChange => mailToChange.id === mail.id))
         mail.isTrash = !mail.isTrash
+    })
+    utilService.saveToStorage(MAIL_KEY, mails)
+  })
+}
+
+function eliminate(idsToEliminate, folder) {
+  if (!Array.isArray(idsToEliminate)) idsToEliminate = [idsToEliminate]
+
+  return storageService.query(MAIL_KEY).then(mails => {
+    idsToEliminate.forEach(idToEliminate => {
+      const idx = mails.findIndex(mail => mail.id === idToEliminate)
+      if (idx < 0) throw new Error(`Unknown Entity ${idToEliminate}`)
+      mails.splice(idx, 1)
     })
     utilService.saveToStorage(MAIL_KEY, mails)
   })

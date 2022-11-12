@@ -9,8 +9,8 @@ export default {
                 <span class="btn" v-if="!isChecked" title="Refresh" @click="$emit('refresh')">⟳</span>
                 <div v-else>
                     <span class="btn" title="Archive">📩</span>
-                    <span class="btn" :title="spamTitle" @click="$emit('spam')">⚠</span>
-                    <span class="btn" :title="trashTitle" @click="$emit('trash')">🗑</span>|
+                    <span class="btn" :title="spamTitle" @click="onSpam">⚠</span>
+                    <span class="btn" :title="trashTitle" @click="onTrash">🗑</span>|
                     <span class="btn" v-if="!isToRead" @click="$emit('unread')" title="Mark as unread">✉</span>
                     <span class="btn" v-else @click="toUnread" title="Mark as read">📰</span>
                     <span class="btn" title="Snooze">⏰</span>
@@ -29,18 +29,28 @@ export default {
     `,
     computed: {
         spamTitle() {
-            return this.folder === 'Spam' ? 'Not spam' : 'Report spam'
+            return this.folder === 'Spam' ? 'Not spam' :
+                this.folder === 'Trash' ?
+                    'Not trash' : 'Report spam'
         },
         trashTitle() {
-            return this.folder === 'Trash' ? 'Not trash' : 'Delete'
+            return this.folder === 'Spam' || this.folder === 'Trash' ? 'Delete forever' : 'Delete'
         },
-        formattedIndex(){
+        formattedIndex() {
             return `${this.idx} of ${this.length}`
         }
     },
     methods: {
         selectAll() {
             console.log('selecting all')
+        },
+        onTrash() {
+            this.folder === 'Spam' || this.folder === 'Trash' ?
+                this.$emit('eliminate') : this.$emit('trash')
+        },
+        onSpam() {
+            this.folder === 'Trash' ?
+                this.$emit('trash') : this.$emit('spam')
         },
     },
 }

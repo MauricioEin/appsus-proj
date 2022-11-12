@@ -8,8 +8,8 @@ export default {
             <router-link :to="'/'">Keep</router-link>
         </div>  
         <note-filter @filter="emitFilter" />
-        <div>
-            <span class="usr-icon pill">M</span>
+        <div class="usr-icon">
+            <span class="pill">M</span>
         </div>
     </header>
     `,

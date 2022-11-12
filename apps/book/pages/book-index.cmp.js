@@ -11,8 +11,8 @@ import userMsg from '../cmps/user-msg.cmp.js'
 export default {
     template: `
     <section class="book">
-        <app-header  v-if="!isHomePage"/>
-        <main  v-if="books" class="book main-layout main-content relative">
+        <book-header  v-if="!isHomePage"/>
+        <main v-if="books" class="book main-layout main-content relative">
             <book-list 
             v-if="!selectedBook"
             :books="books"
@@ -23,7 +23,7 @@ export default {
             :book="selectedBook" 
             @closed="selectedBook = null"/>
         </main>
-        <app-footer class="book" v-if="!isHomePage"/>
+        <book-footer class="book" v-if="!isHomePage"/>
 </section>
     `,
     data() {

@@ -12,13 +12,13 @@
     width: 100vw;
 }
 
-.main-layout:not(.full, .book *) {
+.main-layout:not(.full, .book.main-layout, .book .main-layout) {
     margin-inline:10px;
 }
 
 .book .main-layout:not(.full){
     margin-inline:20px;
-    max-width: 880px;
+    max-width: 1020px;
 }
 
 .columns {

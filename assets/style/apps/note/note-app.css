@@ -4,6 +4,7 @@
 
 .note-main-container {
     margin-top: 20px;
+    flex-shrink: 10;
 }
 
 .note-details-container {

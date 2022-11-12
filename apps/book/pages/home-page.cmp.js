@@ -1,11 +1,11 @@
 import appNav from '../cmps/app-nav.cmp.js'
+import bookHeader from '../cmps/app-header.cmp.js'
 
 export default {
     template:`
-        <section class="book home-page-container book full">
+    <book-header />
+        <section class="book home-page-container book full absolute">
             <div class="main-layout full flex justify-between absolute">
-                <app-nav/>
-                <router-link to="/" class="logo main-layout">missRead</router-link>
             </div>
             <section class="welcome-header absolute main-layout">
                 <h1 class="bold">
@@ -33,6 +33,7 @@ export default {
 
     },
     components:{
-        appNav
+        appNav,
+        bookHeader,
     }
 }

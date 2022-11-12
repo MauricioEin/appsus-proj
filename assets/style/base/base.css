@@ -42,7 +42,7 @@ object {
 
 /* tap targets: */
 nav a,
-button {
+button:not(.book button){
   min-width: 48px;
   min-height: 48px;
   cursor: pointer;

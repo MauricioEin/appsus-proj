@@ -9,7 +9,7 @@ export default {
             :isDetails="true" :isNext="nextMailId" :isPrev="prevMailId" @unread="toUnread" @back="close"
             @trash="toTrash" @spam="toSpam" @prev="onPrev" @next="onNext" />
         <main v-if="mail">
-            <h1>{{mail.subject}}<span class="btn" @click="onImportant"><img class="importance-label" src="../../../assets/img/label-important.svg" :class="{'label-important':mail.isImportant}" :title="importantTitle"/></span>
+            <h1>{{mail.subject}}<span class="btn" @click="onImportant"><img class="importance-label" src="assets/img/label-important.svg" :class="{'label-important':mail.isImportant}" :title="importantTitle"/></span>
 </h1>
             <div class="mail-info flex justify-between">
                 <div class="flex">

@@ -4,45 +4,121 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 100vh;
-    z-index:100;
+    height: 92vh;
+    z-index: 100;
 }
 
-/* .home-page-brand{
-    top:50%;
+.about-page-brand {
+    top: 55%;
     transform: translateY(-50%);
-    left:10%;
+    left: 5%;
     font-size: 30px;
     color: white;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.257);
 }
 
-.appsus{
+.about-page .appsus {
     font-family: 'Marck Script', cursive;
     font-size: 70px;
+    margin-bottom: 100px;
+    /* position:relative;
+    top:100px; */
 }
 
-.apps-logos{
-    font-size: 7.5vw;
+.about-page-brand .slogan span {
+    color: rgb(104, 68, 75);
+    margin-top: 20px;
+    text-shadow: 1px 1px rgb(238, 238, 238);
+    display: block;
+}
+
+
+
+
+.about-page .apps-logos {
+    font-size: 10vh;
     color: white;
-    right: 25%;
-    top: 140px;
-    cursor: pointer;
+    cursor: default;
+    overflow: hidden;
+    flex-direction: column;
+    position: absolute;
+    right: 12vw;
+    top: 100px;
 }
 
-.apps-logos h1:hover{
+.apps-logos p {
+    font-size: 16px;
+    width: 250px;
+    text-align: end;
+
+}
+.apps-logos p span {
+display:block;
+}
+
+.apps-logos .app-info>:first-child {
+    display: flex;
+    justify-content: end;
+    padding-inline-end: 15px;
+}
+
+/* .about-page .apps-logos>:nth-child(odd) {
+    display: flex;
+    justify-content: end;
+    padding-inline-end: 20px;
+    margin-bottom: 5px;
+} */
+
+/* .apps-logos h1:hover {
     color: #eee;
 }
 
-.apps-logos .gmail{
-    left: -145%
-}
-.apps-logos .books{
-    left: 145%
+
+
+.about-page .apps-logos .books {
+    margin-bottom: 0;
 }
 
-@media (min-width:570px) {
-    .apps-logos{
-        font-size: 50px;
-        right: 27.5%;
-    }
+.about-page .apps-logos p {
+    font-size: 16px;
+    width: 150px;
+    text-align: end;
 } */
+
+@media (max-width:570px) {
+    .about-page-brand {
+        top: 28%;
+        left: 5%;
+        font-size: 18px;
+    }
+
+    .about-page .appsus {
+        font-size: 70px;
+        margin-bottom: 10px;
+    }
+
+    .about-page-brand .slogan span {
+        display: inline;
+    }
+
+    .about-page .apps-logos {
+        flex-direction: row-reverse;
+        top:auto;
+        bottom: 20px;
+        gap:3vw;
+        flex-wrap: wrap-reverse;
+
+    }
+
+    .apps-logos p {
+        font-size: 16px;
+        width: 40vw;
+        text-align: end;
+        text-shadow: -1px 1px rgba(37, 37, 37, 0.514);
+
+    }
+    .apps-logos p span {
+        display:inline;
+        }
+        
+}

@@ -3,11 +3,11 @@
     overflow-y: auto;
 } */
 
-main.note-list{
+main.note-list {
     flex-shrink: 100;
 }
 
-.all-notes{
+.all-notes {
     height: calc(100vh - 250px);
     overflow-y: auto;
 }
@@ -18,16 +18,16 @@ main.note-list{
     max-width: 100%;
 }
 
-.notes-preview-container .note-title{
+.notes-preview-container .note-title {
     margin: 0;
 }
 
-.notes-preview-container .note-txt{
+.notes-preview-container .note-txt {
     max-height: 300px;
     overflow-y: scroll;
 }
 
-.note-list hr{
+.note-list hr {
     margin-block: 30px;
 }
 
@@ -39,7 +39,7 @@ main.note-list{
     break-inside: avoid;
 }
 
-.selected.note-preview-item{
+.selected.note-preview-item {
     outline: black 1px solid;
 }
 
@@ -48,7 +48,7 @@ main.note-list{
     box-shadow: 0 0 3px .5px var(--clr3);
 }
 
-img.border-radius-top{
+img.border-radius-top {
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
 }
@@ -76,12 +76,12 @@ img.border-radius-top{
     color: black;
 }
 
-.note-pinmark{
+.note-pinmark {
     right: 10px;
     top: 10px;
-    color: rgba(0,0,0,.5);
+    color: rgba(0, 0, 0, .5);
     border-radius: 50%;
-    padding:5px 8.75px;
+    padding: 5px 8.75px;
 }
 
 .note-pinmark,
@@ -91,14 +91,14 @@ img.border-radius-top{
     cursor: pointer;
 }
 
-.note-item-container:hover .note-checkmark ,
+.note-item-container:hover .note-checkmark,
 .note-item-container:hover .note-pinmark {
     display: block !important;
 }
 
-.note-pinmark:hover{
+.note-pinmark:hover {
     color: black;
-    background-color: rgba(150,150,150,.3);
+    background-color: rgba(150, 150, 150, .3);
 }
 
 .note-vid-cmp {
@@ -110,12 +110,25 @@ img.border-radius-top{
     text-decoration: line-through;
 }
 
-.close-btn{
+.close-btn {
     cursor: pointer;
     padding: 10px;
 }
 
-.note-url{
+.note-url {
     padding-block: 10px;
-    margin:20px;
+    margin: 20px;
+}
+
+@media (max-width:360px) {
+    .note-main-container main.main-layout.note-list {
+        margin-left: 0px !important;
+    }
+}
+
+@media (max-width:600px) {
+
+    .note-main-container main.main-layout.note-list {
+        margin-left: 100px;
+    }
 }

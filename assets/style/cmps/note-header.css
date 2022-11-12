@@ -7,19 +7,32 @@
     flex-shrink: 10000;
 }
 
-.filter-notes .search-box::before{
+.filter-notes .search-box::before {
     content: 'f002';
     font-family: FontAwesome;
 }
 
-.filter-notes .search-box{
+.filter-notes .search-box {
     background-color: #f1f3f4;
     border-radius: 8px;
-    border:none;
+    border: none;
     outline: none;
-    width:100%;
+    width: 100%;
 }
 
-header .appsus{
+header .appsus {
     font-size: 45px;
+}
+
+.notes-main-header .usr-icon{
+    height: 43px;
+    padding-top: 11.5px;
+}
+
+@media (max-width:485px) {
+    .notes-main-header .filter-notes {
+        min-width: unset;
+        max-width: unset;
+        width: unset;
+    }
 }

@@ -11,7 +11,7 @@ export default {
                     <li><router-link :to="'/read'" @click="toggleMenu"><iconify-icon inline icon="ph:books-light"></iconify-icon></router-link></li>
                     </ul>
                 </div>
-                <router-link to="/about">About</router-link>
+                <span class="app-about"><router-link to="/about">About</router-link></span>
             </nav>
         </header>
     `,

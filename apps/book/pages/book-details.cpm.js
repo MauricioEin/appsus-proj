@@ -5,9 +5,12 @@ import bookAuthors from '../cmps/book-authors.cmp.js'
 import bookCategories from '../cmps/book-categories.cmp.js'
 import bookDescription from '../cmps/book-description.cmp.js'
 import bookReview from '../cmps/book-review.cmp.js'
+import bookHeader from '../cmps/app-header.cmp.js'
+import bookFooter from '../cmps/app-footer.cmp.js'
 
 export default {
     template: `
+    <book-header />
             <section v-if="book" class="book book-details main-layout">
                 <router-link 
                     :to="'/book'" 
@@ -49,6 +52,7 @@ export default {
                     <book-review :book="book" @reviewsSaved="saveReviews"/>
                 </div>
 </section>
+<book-footer />
     `,
     data() {
         return {
@@ -103,6 +107,8 @@ export default {
         bookCategories,
         bookDescription,
         bookReview,
+        bookHeader,
+        bookFooter,
     },
     watch: {
         bookId(){

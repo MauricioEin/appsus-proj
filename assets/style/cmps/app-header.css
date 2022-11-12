@@ -51,5 +51,11 @@ ul.dropdown-app-menu a{
   padding:10px;
 }
 
+@media (max-width:340px) {
+  .app-about{
+    display: none;;
+  }
+}
+
 @media(max-width: 720px) {
 }

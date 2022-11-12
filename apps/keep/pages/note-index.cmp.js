@@ -13,11 +13,10 @@ export default {
             <div class="full">
                 <note-header class="note-header" @filter="setFilter" @toggleNavMenu="toggleNavMenu"/></div>
                 <hr>
-                <section class="note-main-container flex" :key="containerKey">
+                <section class="note-main-container flex relative" :key="containerKey">
                     <note-nav :labels="labels" @filterLabels="setFilter" :toggleNavMenu="isNavMenuShown"/>
                     <note-list 
                         v-if="notes" 
-                        class="main-layout"
                         :notes="getNotes"
                         :selectedNote="selectedNote"
                         @toggleTodoDone="toggleTodoDone"

@@ -57,9 +57,9 @@
     resize: none;
     margin: 10px;
     height: max-content;
-    max-height: 90vh;
+    max-height: 300px;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 
 .note-color-palette>.btn {
@@ -99,4 +99,8 @@
 .usr-url {
     text-decoration: underline;
     color: blue;
+}
+
+.ytp-cued-thumbnail-overlay-image{
+    border-radius: 16px !important;
 }

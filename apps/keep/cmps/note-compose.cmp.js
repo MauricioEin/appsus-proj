@@ -1,8 +1,9 @@
+import { utilService } from '../../../services/util.service.js'
 
 import topToolbar from './compose-cmps/compose-top-toolbar.cmp.js'
 import bottomToolbar from './compose-cmps/compose-bottom-toolbar.cmp.js'
 import composeTodo from './compose-cmps/compose-todo.cmp.js'
-import composeImg from './compose-cmps/compose-media.cmp.js'
+import composeMedia from './compose-cmps/compose-media.cmp.js'
 import composeTxt from './compose-cmps/compose-txt.cmp.js'
 import composeTitle from './compose-cmps/compose-title.cmp.js'
 
@@ -10,11 +11,14 @@ export default {
     props: ['selectedNote'],
     template: `
         <div class="note-compose general-border" :style="this.note.style">
-            <img 
-                v-if="isShown && isValid"
-                @error="srcInvalid"
-                class="usr-img border-radius-top" 
-                :src="note.info.url" />
+            <compose-media 
+                v-if="note.info.type==='note-vid' || note.info.type==='note-img' && isValid"
+                :type="note.info.type"
+                :src="note.info.url"
+                :youtubeConverter="youtubeConverter"
+                @srcValid="srcValid"
+                @srcInvalid="srcInvalid"
+                @embeddedLink="saveSrc"/>
 
             <div class="relative">
                 <compose-title @titleInput="updateTitle" :noteTitle="note.info.title"/>
@@ -22,8 +26,9 @@ export default {
                 <input 
                     @blur="srcValid"
                     class="note-media-url-input" 
-                    v-if="note.type === 'note-img' || note.type === 'note-img'" 
-                    type=url v-model="note.info.url" 
+                    v-if="note.info.type === 'note-img' || note.info.type === 'note-vid'" 
+                    type="url" 
+                    v-model="note.info.url" 
                     placeholder="Media url"/>
             </div>
 
@@ -39,7 +44,7 @@ export default {
                         :todo="note.info.todos[idx]"
                         :key="todoKey" />
                 </form>
-                <bottom-toolbar @setColor="setColor" @saveNote="saveNote"/>
+                <bottom-toolbar @setColor="setColor" @saveNote="saveNote" @duplicate="duplicateNote()"/>
             </section>
         </div>
     `,
@@ -67,11 +72,12 @@ export default {
     methods: {
         setType(type) {
             this.isShown = true
-            if (this.note.type && type==='note-txt') return
-            this.note.type = type
+            if (this.note.info.type && type==='note-txt') return
+            if (type === 'noote-vid') this.isValid = false
+            this.note.info.type = type
         },
         updateTitle(title){
-            if (!this.note.type) this.setType('note-txt')
+            if (!this.note.info.type) this.setType('note-txt')
             this.note.info.title = title
         },
         updateText(txt){
@@ -105,9 +111,9 @@ export default {
                     txt: '',
                     todos: [{}],
                     url: '',
+                    type:'',
                 },
                 isPinned: false,
-                type:'',
                 style:{},
             }
         },
@@ -116,16 +122,27 @@ export default {
         },
         srcValid(){
             this.isValid=true
+        },
+        saveSrc(src){
+            this.note.info.url = src
+        },
+        duplicateNote(){
+            const note = utilService.getDeepCopy(this.note)
+            note.id = null
+            this.$emit('saveNote', note)
         }
     },
     computed: {
         isNoteTodos() {
-            return this.note.type === 'note-todos'
+            return this.note.info.type === 'note-todos'
+        },
+        youtubeConverter(){
+            return utilService.youtubeToEmbed
         }
     },
     components: {
         composeTodo,
-        composeImg,
+        composeMedia,
         composeTxt,
         composeTitle,
         topToolbar,

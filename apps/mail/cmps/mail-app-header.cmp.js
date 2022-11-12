@@ -7,7 +7,7 @@ export default {
             <span class="btn" @click="toggleNav" title="Main menu">☰</span>
             <div  class="mail-logo flex align-center"
             title="Mr.mail" @click="toInbox">
-                <img src="../../../assets/img/mail-logo.png"/>
+                <img src="assets/img/mail-logo.png"/>
                 <span>Mr.mail</span>
             </div>
         </div>

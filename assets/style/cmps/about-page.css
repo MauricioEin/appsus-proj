@@ -1,0 +1,48 @@
+.about-page {
+    background-color: black;
+    background-image: url(../../img/about-background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    z-index:100;
+}
+
+/* .home-page-brand{
+    top:50%;
+    transform: translateY(-50%);
+    left:10%;
+    font-size: 30px;
+    color: white;
+}
+
+.appsus{
+    font-family: 'Marck Script', cursive;
+    font-size: 70px;
+}
+
+.apps-logos{
+    font-size: 7.5vw;
+    color: white;
+    right: 25%;
+    top: 140px;
+    cursor: pointer;
+}
+
+.apps-logos h1:hover{
+    color: #eee;
+}
+
+.apps-logos .gmail{
+    left: -145%
+}
+.apps-logos .books{
+    left: 145%
+}
+
+@media (min-width:570px) {
+    .apps-logos{
+        font-size: 50px;
+        right: 27.5%;
+    }
+} */

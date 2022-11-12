@@ -7,9 +7,9 @@ export default {
     <section class="mail-list">    
         <mail-content-header :isChecked="checkedMails.length" :folder="folder"
             :isToRead="isToRead" :isDetails="false" @refresh="$emit('refresh')" @unread="toUnread"
-            @trash="$emit('trash',checkedMails)" @spam="$emit('spam',checkedMails)" 
+            @trash="$emit('trash',checkedMails);this.checkedMails = [];" @spam="$emit('spam',checkedMails);this.checkedMails = [];" 
             @eliminate="$emit('eliminate', checkedMails)"/>
-        <ul class="clean-list" v-if="mails.length">
+        <ul class="clean-list" v-if="mails && mails.length">
             <li class="mail-sort">
                 <article class="mail-preview flex justify-between">
                     <span></span>   <span></span>   <span></span>
@@ -52,7 +52,9 @@ export default {
             this.updateToRead()
         },
         updateToRead() {
+            console.log('checkedmails', this.checkedMails)
             this.isToRead = this.checkedMails.some(checkedId => {
+                console.log('mails', this.mails)
                 const checkedMail = this.mails.find(mail => mail.id === checkedId)
                 return !checkedMail.isRead
             })
@@ -65,9 +67,12 @@ export default {
         },
         onStarred(isToStarred, mailId) {
             this.$emit('starred', mailId, isToStarred)
+            if (this.folder === 'Starred') this.checkedMails = []
         },
         onImportant(isToImportant, mailId) {
             this.$emit('important', mailId, isToImportant)
+            if (this.folder === 'Important') this.checkedMails = []
+
         },
 
     },

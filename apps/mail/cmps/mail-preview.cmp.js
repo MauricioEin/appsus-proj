@@ -4,7 +4,7 @@ export default {
     <article class="mail-preview flex justify-between" :class="{unread: !mail.isRead, checked: isChecked}">
         <span class="btn"><input class="checkbox" type="checkbox" @click.stop="" @change="check" title="Select"></span>
         <span class="btn"><input class="star" type="checkbox" @click.stop="" @change="onStar" :title="starTitle" :checked="mail.isStarred"></span>
-        <span class="btn"><img class="importance-label" src="../../../assets/img/label-important.svg" @click.stop="onImportant" :class="{'label-important':mail.isImportant}" :title="importantTitle"/></span>
+        <span class="btn"><img class="importance-label" src="assets/img/label-important.svg" @click.stop="onImportant" :class="{'label-important':mail.isImportant}" :title="importantTitle"/></span>
         <div class="capitalized" :class="{red:mail.isDraft}">{{formattedFrom}}</div>
         <div>{{mail.subject}}</div>
         <div>📎</div>

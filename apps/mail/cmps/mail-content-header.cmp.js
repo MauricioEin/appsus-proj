@@ -13,7 +13,6 @@ export default {
                     <span class="btn" :title="trashTitle" @click="onTrash">🗑</span>|
                     <span class="btn" v-if="!isToRead" @click="$emit('unread')" title="Mark as unread">✉</span>
                     <span class="btn" v-else @click="$emit('unread')" title="Mark as read">📰</span>
-                    isToRead: {{isToRead}}
                     <span class="btn" title="Snooze">⏰</span>
                     <span class="btn" title="Add to tasks">✅</span>|
                     <span class="btn" title="Move to">➡</span>

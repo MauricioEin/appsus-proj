@@ -2,28 +2,35 @@
   background-color: rgb(58, 58, 58);
   padding: 8px 10px;
   color: white;
-  height:73px;
+  height: 8vh;
 }
 
-header nav *{
+header .appsus {
+  font-size: 5.5vh;
+  position:relative;
+  bottom:1vh;
+}
+
+header nav * {
   font-size: 1.4rem;
   margin-inline: 10px;
   cursor: pointer;
 }
-header nav a:hover{
+
+header nav a:hover {
   color: #ddd;
 }
 
 
-header nav a{
+header nav a {
   margin-top: 1rem;
 }
 
-.app-header h1{
-  margin:0;
+.app-header h1 {
+  margin: 0;
 }
 
-ul.dropdown-app-menu{
+ul.dropdown-app-menu {
   background-color: rgb(58, 58, 58);
   top: 51px;
   right: -13px;
@@ -32,23 +39,23 @@ ul.dropdown-app-menu{
   z-index: -10;
 }
 
-ul.dropdown-app-menu.shown{
+ul.dropdown-app-menu.shown {
   height: auto;
-  padding-block:5px;
+  padding-block: 5px;
   z-index: 10;
 }
 
 ul.dropdown-app-menu li,
-ul.dropdown-app-menu a{
-  margin:0;
+ul.dropdown-app-menu a {
+  margin: 0;
 }
 
-ul.dropdown-app-menu li{
+ul.dropdown-app-menu li {
   margin-bottom: 10px;
 }
 
-ul.dropdown-app-menu a{
-  padding:10px;
+ul.dropdown-app-menu a {
+  padding: 10px;
 }
 
 @media (max-width:340px) {
@@ -57,5 +64,3 @@ ul.dropdown-app-menu a{
   }
 }
 
-@media(max-width: 720px) {
-}

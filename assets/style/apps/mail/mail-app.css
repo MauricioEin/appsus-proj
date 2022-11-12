@@ -1,5 +1,5 @@
 .mail-app {
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.0)), url('/assets/img/background.jpg');
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.0)), url(../../../img/background.jpg);
     /* background-image: url('/assets/img/background.jpg'); */
     background-size: cover;
     background-repeat: no-repeat;

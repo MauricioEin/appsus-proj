@@ -9,7 +9,7 @@ export default {
             :isToRead="isToRead" :isDetails="false" @refresh="$emit('refresh')" @unread="toUnread"
             @trash="$emit('trash',checkedMails)" @spam="$emit('spam',checkedMails)" 
             @eliminate="$emit('eliminate', checkedMails)"/>
-        <ul class="clean-list" v-if="mails.length">
+        <ul class="clean-list" v-if="mails && mails.length">
             <li class="mail-sort">
                 <article class="mail-preview flex justify-between">
                     <span></span>   <span></span>   <span></span>

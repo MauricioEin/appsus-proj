@@ -2,24 +2,35 @@ import mailPreview from "./mail-preview.cmp.js"
 import mailContentHeader from "./mail-content-header.cmp.js"
 
 export default {
-    props: ['mails'],
+    props: ['mails', 'folder'],
     template: `
     <section class="mail-list">    
-        <mail-content-header :isChecked="checkedMails.length"
-            :isToRead="isToRead" :isDetails="false" @unread="toUnread"/>
-        <ul class="clean-list">
+        <mail-content-header :isChecked="checkedMails.length" :folder="folder"
+            :isToRead="isToRead" :isDetails="false" @refresh="$emit('refresh')" @unread="toUnread"
+            @trash="$emit('trash',checkedMails)" @spam="$emit('spam',checkedMails)"/>
+        <ul class="clean-list" v-if="mails.length">
             <li v-for="mail in mails" :key="mail.id">
                 <mail-preview :mail="mail" @click="onDetails(mail.id)" @checked="onChecked" @starred="onStarred" @important="onImportant"/>
             </li>
         </ul>
+        <div class="no-mails" v-else>
+            No messages to show
+        </div>
     </section>
     `,
     data() {
         return {
             checkedMails: [],
             isToRead: false,
+            // groupIdx: 0,
+
         }
     },
+    // computed: {
+    //     mailsToShow() {
+    //         return this.mails.slice(groupIdx, groupIdx + 25)
+    //     }
+    // },
     methods: {
         onChecked(isChecked, id) {
             if (isChecked) this.checkedMails.push(id)
@@ -46,7 +57,7 @@ export default {
         },
         onImportant(isToImportant, mailId) {
             this.$emit('important', mailId, isToImportant)
-        }
+        },
 
     },
     components: {

@@ -1,17 +1,17 @@
 
 export default {
-    props: ['isChecked', 'isToRead', 'isDetails'],
+    props: ['isChecked', 'isToRead', 'isDetails', 'folder', 'idx', 'length'],
     template: `
         <header class="mail-content-header flex justify-between">
             <div class="flex">
                 <input type="checkbox" v-if="!isDetails" @change="selectAll" title="Select">
-                <span v-else class="btn" @click="back">🔙</span>
-                <span class="btn" v-if="!isChecked" title="Refresh">🔄</span>
+                <span v-else class="btn" @click="$emit('back')">🡨</span>
+                <span class="btn" v-if="!isChecked" title="Refresh" @click="$emit('refresh')">⟳</span>
                 <div v-else>
                     <span class="btn" title="Archive">📩</span>
-                    <span class="btn" title="Report spam">☢</span>
-                    <span class="btn" title="Delete">🗑</span>|
-                    <span class="btn" v-if="!isToRead" @click="toUnread" title="Mark as unread">✉</span>
+                    <span class="btn" :title="spamTitle" @click="$emit('spam')">⚠</span>
+                    <span class="btn" :title="trashTitle" @click="$emit('trash')">🗑</span>|
+                    <span class="btn" v-if="!isToRead" @click="$emit('unread')" title="Mark as unread">✉</span>
                     <span class="btn" v-else @click="toUnread" title="Mark as read">📰</span>
                     <span class="btn" title="Snooze">⏰</span>
                     <span class="btn" title="Add to tasks">✅</span>|
@@ -20,24 +20,27 @@ export default {
                 </div>
                 <span class="btn" title="More">...</span>
             </div>
-            <div class="flex">
-                <p>indexes</p>
-                <span class="btn" title="Newer">&lt;</span>
-                <span class="btn" title="Older">></span>
+            <div v-if="isDetails" class="flex">
+                <p>{{formattedIndex}}</p>
+                <span class="btn" title="Newer" @click="$emit('prev')" :class="{disabled:idx===1}">&lt;</span>
+                <span class="btn" title="Older" @click="$emit('next')" :class="{disabled:idx===length}">></span>
             </div>
         </header>
     `,
+    computed: {
+        spamTitle() {
+            return this.folder === 'Spam' ? 'Not spam' : 'Report spam'
+        },
+        trashTitle() {
+            return this.folder === 'Trash' ? 'Not trash' : 'Delete'
+        },
+        formattedIndex(){
+            return `${this.idx} of ${this.length}`
+        }
+    },
     methods: {
         selectAll() {
             console.log('selecting all')
         },
-        toUnread(){
-            this.$emit('unread')
-        },
-        back(){
-            this.$emit('back')
-        }
     },
-    components: {
-    }
 }

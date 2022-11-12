@@ -2,11 +2,12 @@ import { mailService } from "../services/mail.service.js"
 import mailContentHeader from "../cmps/mail-content-header.cmp.js"
 
 export default {
-    props: ['id'],
+    props: ['id', 'folder'],
     template: `
     <section class="mail-details">
-        <mail-content-header  :isChecked="true" :isToRead="false"
-            :isDetails="true" @unread="toUnread" @back="close" />
+        <mail-content-header  :isChecked="true" :isToRead="false" :folder="folder" :idx="currIdx+1" :length="mailCount"
+            :isDetails="true" :isNext="nextMailId" :isPrev="prevMailId" @unread="toUnread" @back="close"
+            @trash="toTrash" @spam="toSpam" @prev="onPrev" @next="onNext" />
         <main v-if="mail">
             <h1>{{mail.subject}}<span class="btn" @click="onImportant"><img class="importance-label" src="../../../assets/img/label-important.svg" :class="{'label-important':mail.isImportant}" :title="importantTitle"/></span>
 </h1>
@@ -32,7 +33,12 @@ export default {
     `,
     data() {
         return {
+            currId: this.id,
             mail: null,
+            prevMailId: null,
+            nextMailId: null,
+            currIdx: null,
+            mailCount: null,
         }
     },
     computed: {
@@ -58,6 +64,23 @@ export default {
         },
     },
     methods: {
+        loadDetails() {
+            mailService.get(this.currId)
+                .then(mail => {
+                    this.mail = mail
+                    mailService.toUnread(this.mail, false)
+                        .then(() => {
+                            this.$emit('update')
+                        })
+                    mailService.getNeighbourIds(this.mail.id, this.folder)
+                        .then(negsData => {
+                            this.prevMailId = negsData.prev
+                            this.nextMailId = negsData.next
+                            this.currIdx = negsData.currIdx
+                            this.mailCount = negsData.mailCount
+                        })
+                })
+        },
         close() {
             this.$emit('close')
         },
@@ -78,22 +101,32 @@ export default {
                 .then(() => {
                     this.$emit('update')
                 })
+        },
+        toSpam() {
+            mailService.toSpam(this.mail).then(() => {
+                this.$emit('update')
+                this.close()
+            })
+        },
+        toTrash() {
+            mailService.toTrash(this.mail).then(() => {
+                this.$emit('update')
+                this.close()
+            })
+        },
+        onNext() {
+            if (!this.nextMailId) return
+            this.currId = this.nextMailId
+            this.loadDetails()
+        },
+        onPrev() {
+            if (!this.prevMailId) return
+            this.currId = this.prevMailId
+            this.loadDetails()
         }
     },
     created() {
-        mailService.get(this.id)
-            .then(mail => {
-                this.mail = mail
-                mailService.toUnread(this.mail, false)
-                    .then(() => {
-                        this.$emit('update')
-                    })
-                // mailService.getPrevNextIds(mail.id)
-                // .then(ids => {
-                // console.log('nbrIds:', ids)
-                // this.prevMailId = ids.prev
-                // this.nextMailId = ids.next
-            })
+        this.loadDetails()
     },
     components: {
         mailContentHeader

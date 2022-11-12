@@ -12,14 +12,15 @@ export default {
     <mail-app-header :key="headerKey" @logo="showFolder"
         @filter="setFilter" @toggleNav="isNavWide=!isNavWide"/>
 
-
     <div class="principal-container flex">
         <mail-nav :folders="foldersToNav" :selected="folder" :isWide="isNavWide"
-            @compose="compose" @folder="showFolder"/>
+            :count="count" @compose="compose" @folder="showFolder"/>
         <main class="mail-container">
-            <mail-list v-if="!selectedMail" :mails="mailsToShow" :key="listKey"
-                 @unread="toUnread" @details="openDetails" @starred="onStarred" @important="onImportant"/>
-            <mail-details v-else :id="selectedMail" @update="loadMails" @close="selectedMail=null"/>
+            <mail-list v-if="!selectedMail" :mails="mailsToShow" :key="listKey" :folder="folder"
+                 @unread="toUnread" @details="openDetails" @starred="onStarred" @important="onImportant"
+                 @trash="trash" @spam="spam" @refresh="listKey++"/>
+            <mail-details v-else :id="selectedMail" :folder="folder"
+             @update="loadMails" @close="selectedMail=null"/>
         </main>
     </div>
     
@@ -37,12 +38,16 @@ export default {
             listKey: 0,
             folder: 'Inbox',
             selectedMail: null,
+            count: {
+                spam: null,
+                draft: null,
+                unread: null,
+            }
         }
     },
     created() {
         this.loadMails()
-        mailService.getFolders()
-            .then(folders => this.foldersToNav = folders)
+        this.loadFolders()
     },
     computed: {
         mailsToShow() {
@@ -54,15 +59,24 @@ export default {
                 mails = mails.filter(mail => regex.test(JSON.stringify(Object.values(mail))))
             })
             return mails
-        }
+        },
     },
     methods: {
         loadMails() {
-            mailService.query(this.folder)
+            return mailService.query(this.folder)
                 .then(mails => {
                     this.mails = mails
                     this.filter = ''
                 })
+        },
+        loadFolders() {
+            mailService.getFolders()
+                .then(folders => this.foldersToNav = folders)
+            mailService.countMail('isSpam').then(count => this.count.spam = count)
+            mailService.countMail('isDraft').then(count => this.count.draft = count)
+            mailService.countMail('isRead', true).then(count => this.count.unread = count)
+
+
         },
         setFilter(searchStr) {
             this.filter = searchStr
@@ -78,7 +92,7 @@ export default {
             this.folder = folder
             this.headerKey++ //for emptying search bar
             this.listKey++ // for emptying checked mails
-            this.loadMails()
+            this.loadMails().then(() => this.selectedMail = null)
         },
         openDetails(id) {
             this.selectedMail = id
@@ -88,6 +102,14 @@ export default {
         },
         onImportant(id, isToImportant) {
             mailService.toImportant(id, isToImportant).then(() => this.loadMails())
+        },
+        trash(ids) {
+            const mailsToTrash = ids.map(id => this.mails.find(mail => mail.id === id))
+            mailService.toTrash(mailsToTrash).then(() => this.loadMails())
+        },
+        spam(ids) {
+            const mailsToSpam = ids.map(id => this.mails.find(mail => mail.id === id))
+            mailService.toSpam(mailsToSpam).then(() => this.loadMails())
         }
     },
     components: {

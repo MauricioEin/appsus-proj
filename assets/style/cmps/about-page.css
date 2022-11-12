@@ -11,7 +11,7 @@
 .about-page-brand {
     top: 55%;
     transform: translateY(-50%);
-    left: 5%;
+    left: 10%;
     font-size: 30px;
     color: white;
     text-shadow: 1px 1px rgba(0, 0, 0, 0.257);
@@ -21,8 +21,6 @@
     font-family: 'Marck Script', cursive;
     font-size: 70px;
     margin-bottom: 100px;
-    /* position:relative;
-    top:100px; */
 }
 
 .about-page-brand .slogan span {
@@ -31,8 +29,6 @@
     text-shadow: 1px 1px rgb(238, 238, 238);
     display: block;
 }
-
-
 
 
 .about-page .apps-logos {
@@ -52,8 +48,9 @@
     text-align: end;
 
 }
+
 .apps-logos p span {
-display:block;
+    display: block;
 }
 
 .apps-logos .app-info>:first-child {
@@ -62,28 +59,14 @@ display:block;
     padding-inline-end: 15px;
 }
 
-/* .about-page .apps-logos>:nth-child(odd) {
-    display: flex;
-    justify-content: end;
-    padding-inline-end: 20px;
-    margin-bottom: 5px;
-} */
-
-/* .apps-logos h1:hover {
-    color: #eee;
+@media (max-width:780px) {
+    .about-page-brand {
+        left: 7%;
+    }
+    .about-page .apps-logos {
+right:7%;
+    }
 }
-
-
-
-.about-page .apps-logos .books {
-    margin-bottom: 0;
-}
-
-.about-page .apps-logos p {
-    font-size: 16px;
-    width: 150px;
-    text-align: end;
-} */
 
 @media (max-width:570px) {
     .about-page-brand {
@@ -103,11 +86,11 @@ display:block;
 
     .about-page .apps-logos {
         flex-direction: row-reverse;
-        top:auto;
+        top: auto;
         bottom: 20px;
-        gap:3vw;
+        right: 8vw;
+        gap: 5vw;
         flex-wrap: wrap-reverse;
-
     }
 
     .apps-logos p {
@@ -117,8 +100,8 @@ display:block;
         text-shadow: -1px 1px rgba(37, 37, 37, 0.514);
 
     }
+
     .apps-logos p span {
-        display:inline;
-        }
-        
+        display: inline;
+    }
 }

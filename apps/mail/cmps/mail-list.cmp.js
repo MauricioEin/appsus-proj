@@ -10,6 +10,15 @@ export default {
             @trash="$emit('trash',checkedMails)" @spam="$emit('spam',checkedMails)" 
             @eliminate="$emit('eliminate', checkedMails)"/>
         <ul class="clean-list" v-if="mails.length">
+            <li class="mail-sort">
+                <article class="mail-preview flex justify-between">
+                    <span></span>   <span></span>   <span></span>
+                    <div @click="$emit('sort','from')" class="capitalized" >Sort by name</div>
+                    <div @click="$emit('sort','subject')">Sort by Subject</div>
+                    <div></div>
+                    <div @click="$emit('sort','sentAt')">Sort by date</div>
+                </article>
+            </li>
             <li v-for="mail in mails" :key="mail.id">
                 <mail-preview :mail="mail" @click="onDetails(mail.id)" @checked="onChecked" @starred="onStarred" @important="onImportant"/>
             </li>

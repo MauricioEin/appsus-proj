@@ -17,8 +17,8 @@ export default {
             :count="count" @compose="compose" @folder="showFolder"/>
         <main class="mail-container">
             <mail-list v-if="!selectedMail" :mails="mailsToShow" :key="listKey" :folder="folder"
-            :defIsToRead="isToRead"
-                 @unread="toUnread" @details="openDetails" @starred="onStarred" @important="onImportant"
+            :defIsToRead="isToRead" @sort="doSort" @unread="toUnread"
+             @details="openDetails" @starred="onStarred" @important="onImportant"
                  @trash="trash" @spam="spam" @eliminate="eliminate" @refresh="listKey++"/>
             <mail-details v-else :id="selectedMail" :folder="folder"
              @update="loadMails(); loadFolders();" @close="selectedMail=null"/>
@@ -33,6 +33,10 @@ export default {
             mails: null,
             foldersToNav: null,
             filter: null,
+            sortBy: {
+                attr: 'sentAt',
+                asc: false,
+            },
             isCompose: false,
             isNavWide: true,
             headerKey: 0,
@@ -65,7 +69,7 @@ export default {
     },
     methods: {
         loadMails() {
-            return mailService.query(this.folder)
+            return mailService.query(this.folder, this.sortBy)
                 .then(mails => {
                     this.mails = mails
                     this.filter = ''
@@ -127,6 +131,13 @@ export default {
                 if (this.folder === 'Spam')
                     mailService.countMail('isSpam').then(count => this.count.spam = count)
             })
+        },
+        doSort(attr) {
+            console.log('sorting by', attr)
+            if (this.sortBy.attr === attr) this.sortBy.asc = !this.sortBy.asc
+            else this.sortBy = { attr: attr, asc: attr !== 'sentAt' }
+            this.loadMails()
+
         }
     },
     components: {

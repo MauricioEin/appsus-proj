@@ -41,13 +41,14 @@ const folders = [
   { title: 'All mail', icon: '📪' },
   { title: 'Trash', icon: '🗑' },
 ]
-function query(folder = 'Inbox') {
+function query(folder = 'Inbox', sortBy) {
   return storageService.query(MAIL_KEY)
     .then(res => {
       if (!res || !res.length) {
         utilService.saveToStorage(MAIL_KEY, demoMails)
         res = demoMails
       }
+      res = _sortMails(res, sortBy)
       if (folder === 'All mail') return res
       return _filterFolder(res, folder)
     })
@@ -177,5 +178,12 @@ function _filterFolder(mails, folder) {
     case 'Trash':
       return mails.filter(mail => mail.isTrash)
   }
+}
 
+function _sortMails(mails, sortBy) {
+  console.log(sortBy)
+  const factor = sortBy.asc ? 1 : -1
+  if (sortBy.attr === 'sentAt')
+    return mails.sort((mail1, mail2) => factor * (mail1.sentAt - mail2.sentAt))
+  return mails.sort((mail1, mail2) => factor * (mail1[sortBy.attr].localeCompare(mail2[sortBy.attr])))
 }

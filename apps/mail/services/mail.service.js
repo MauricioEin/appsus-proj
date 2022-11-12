@@ -42,13 +42,15 @@ const folders = [
   { title: 'Trash', icon: '🗑' },
 ]
 function query(folder = 'Inbox', sortBy) {
+  console.log(arguments)
   return storageService.query(MAIL_KEY)
     .then(res => {
       if (!res || !res.length) {
         utilService.saveToStorage(MAIL_KEY, demoMails)
         res = demoMails
       }
-      res = _sortMails(res, sortBy)
+
+      if (sortBy) res = _sortMails(res, sortBy)
       if (folder === 'All mail') return res
       return _filterFolder(res, folder)
     })

@@ -7,7 +7,7 @@ export default {
     <section class="mail-details">
         <mail-content-header  :isChecked="true" :isToRead="false" :folder="folder" :idx="currIdx+1" :length="mailCount"
             :isDetails="true" :isNext="nextMailId" :isPrev="prevMailId" @unread="toUnread" @back="close"
-            @trash="toTrash" @spam="toSpam" @prev="onPrev" @next="onNext" />
+            @trash="toTrash" @spam="toSpam" @prev="onPrev" @next="onNext" @eliminate="eliminate" />
         <main v-if="mail">
             <h1>{{mail.subject}}<span class="btn" @click="onImportant"><img class="importance-label" src="assets/img/label-important.svg" :class="{'label-important':mail.isImportant}" :title="importantTitle"/></span>
 </h1>
@@ -113,6 +113,13 @@ export default {
                 this.$emit('update')
                 this.close()
             })
+        },
+        eliminate() {
+            mailService.eliminate(this.mail.id).then(() => {
+                this.$emit('update')
+                this.close()
+            })
+
         },
         onNext() {
             if (!this.nextMailId) return

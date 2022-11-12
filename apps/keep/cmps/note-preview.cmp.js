@@ -2,6 +2,7 @@ import noteTxt from './preview-cmps/note-txt.cmp.js'
 import noteTodos from './preview-cmps/note-todos.cmp.js'
 import noteVid from './preview-cmps/note-vid.cmp.js'
 import noteImg from './preview-cmps/note-img.cmp.js'
+import noteMedia from './preview-cmps/note-media.cmp.js'
 import noteUrl from './preview-cmps/note-url.cmp.js'
 import noteDetails from '../pages/note-details.cmp.js'
 
@@ -20,7 +21,7 @@ export default {
         <component 
             @click="goToDetails"
             @toggleTodoDone="toggleTodoDone"
-            :is="note.type" 
+            :is="getType" 
             class="note-preview-item" 
             :class="{selected: selected}"
             :note="note"> 
@@ -57,11 +58,19 @@ export default {
             this.$router.push('/keep/' + this.note.id)
         }
     },
+    computed: {
+        getType(){
+            const type = this.note.info.type
+            if (type === 'note-img' || type === 'note-vid') return 'note-media'
+            return type
+        }
+    },
     components: {
         noteTxt,
         noteTodos,
         noteUrl,
         noteImg,
+        noteMedia,
         noteVid,
         noteDetails,
     }

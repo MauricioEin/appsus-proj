@@ -1,16 +1,19 @@
-const regexToUrl = new RegExp('(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?','g')
+const regexToUrl = new RegExp('(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?', 'g')
 const regexToStr = new RegExp('\<.*\>', 'g')
+const youtubeIdRegex = /(\?v\=).*(\&ab)/ig
 
 export const utilService = {
     saveToStorage,
     loadFromStorage,
     makeId,
     makeLoremEng,
+    getDeepCopy,
     getRandomInt,
     getEventPositions,
     getPositionsDelta,
     strWithLinks: stringToLink,
     htmlToStr,
+    youtubeToEmbed,
 }
 
 export const strWithLinks = { stringToLink }
@@ -41,6 +44,10 @@ function makeLoremEng(wordCount = 100) {
         txt += words[Math.floor(Math.random() * words.length)] + ' '
     }
     return txt
+}
+
+function getDeepCopy(entity){
+    return JSON.parse(JSON.stringify(entity))
 }
 
 function getRandomInt(min, max) {
@@ -80,6 +87,12 @@ function stringToLink(str) {
     return str.replaceAll(regexToUrl, str => `<a class="usr-url" target="_blank" contenteditable="false" href="${str}">${str}</a>`)
 }
 
-function htmlToStr(html){
+function htmlToStr(html) {
     return html.replaceAll(regexToStr, '')
+}
+
+function youtubeToEmbed(url) {
+    if (!/(\?v\=).*(\&ab)/.test(url)) return url
+    console.log('https://www.youtube.com/embed/' + url.match(/(\?v\=).*(\&ab)/)[0].slice(3,-3))
+    return 'https://www.youtube.com/embed/' + url.match(/(\?v\=).*(\&ab)/)[0].slice(3,-3)
 }

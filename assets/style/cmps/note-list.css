@@ -9,13 +9,22 @@ main.note-list{
     max-width: 100%;
 }
 
+.notes-preview-container .note-title{
+    margin: 0;
+}
+
+.notes-preview-container .note-txt{
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
 .note-list hr{
     margin-block: 30px;
 }
 
 .note-preview-item {
     margin-bottom: 10px;
-    border-radius: 10px;
+    border-radius: 16px;
     border: .5px solid var(--clr3);
     break-inside: avoid;
 }
@@ -25,20 +34,20 @@ main.note-list{
 }
 
 .note-item-container:hover .note-preview-item {
-    border-radius: 10px;
+    border-radius: 16px;
     box-shadow: 0 0 3px .5px var(--clr3);
 }
 
 img.border-radius-top{
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
 }
 
 .note-preview-item img.all {
-    border-radius: 10px !important;
+    border-radius: 16px !important;
 }
 
-.note-preview-item>*:not(a) {
+.note-preview-item>*:not(a, iframe) {
     padding: 16px;
 }
 
@@ -56,6 +65,7 @@ img.border-radius-top{
     top: -10px;
     color: black;
 }
+
 .note-pinmark{
     right: 10px;
     top: 10px;
@@ -88,4 +98,9 @@ img.border-radius-top{
 
 .todo-done {
     text-decoration: line-through;
+}
+
+.close-btn{
+    cursor: pointer;
+    padding: 10px;
 }

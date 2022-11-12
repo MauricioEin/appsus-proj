@@ -3,7 +3,12 @@ export default {
         <div class="btns-note-compose">
             <span class="btn"></span>
             <span class="btn"></span>
-            <span class="btn"></span>
+            <span 
+                class="btn" 
+                title="Duplicate note"
+                @click="$emit('duplicate')">
+                <iconify-icon inline icon="pajamas:duplicate"></iconify-icon>
+            </span>
             <span class="btn btn-color relative">
                 <iconify-icon icon="material-symbols:palette-outline" class="block"></iconify-icon>
                 <div class="note-color-palette absolute hidden general-border">
@@ -16,7 +21,7 @@ export default {
                     </span>
                 </div>
             </span>
-            <span class="btn" @click="$emit('saveNote')">Close</span> 
+            <span class="close-btn" @click="$emit('saveNote')">Close</span> 
         </div>
         `,
     data() {

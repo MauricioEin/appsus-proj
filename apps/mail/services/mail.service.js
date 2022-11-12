@@ -41,7 +41,7 @@ const folders = [
   { title: 'All mail', icon: '📪' },
   { title: 'Trash', icon: '🗑' },
 ]
-function query(folder) {
+function query(folder = 'Inbox') {
   return storageService.query(MAIL_KEY)
     .then(res => {
       if (!res || !res.length) {
@@ -100,9 +100,9 @@ function toImportant(id, isToImportant) {
   })
 }
 
-function toSpam(mailsToChange, folder) {
+function toSpam(mailsToChange) {
   if (!Array.isArray(mailsToChange)) mailsToChange = [mailsToChange]
-  return query(folder).then(mails => {
+  return query('All mail').then(mails => {
     mails.forEach(mail => {
       if (mailsToChange.some(mailToChange => mailToChange.id === mail.id))
         mail.isSpam = !mail.isSpam
@@ -111,9 +111,9 @@ function toSpam(mailsToChange, folder) {
   })
 }
 
-function toTrash(mailsToChange, folder) {
+function toTrash(mailsToChange) {
   if (!Array.isArray(mailsToChange)) mailsToChange = [mailsToChange]
-  return query(folder).then(mails => {
+  return query('All mail').then(mails => {
     mails.forEach(mail => {
       if (mailsToChange.some(mailToChange => mailToChange.id === mail.id))
         mail.isTrash = !mail.isTrash
@@ -122,7 +122,7 @@ function toTrash(mailsToChange, folder) {
   })
 }
 
-function eliminate(idsToEliminate, folder) {
+function eliminate(idsToEliminate) {
   if (!Array.isArray(idsToEliminate)) idsToEliminate = [idsToEliminate]
 
   return storageService.query(MAIL_KEY).then(mails => {
@@ -150,7 +150,10 @@ function getNeighbourIds(id, folder) {
 
 function countMail(attribute, negative = false) {
   return storageService.query(MAIL_KEY)
-    .then(mails => mails.filter(mail => negative ? !mail[attribute] : mail[attribute]).length)
+    .then(mails => {
+      if (attribute !== 'isRead') return mails.filter(mail => mail[attribute]).length
+      return _filterFolder(mails, 'Inbox').filter(mail => !mail.isRead).length
+    })
 }
 
 function _filterFolder(mails, folder) {

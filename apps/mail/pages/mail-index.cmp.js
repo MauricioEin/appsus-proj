@@ -17,6 +17,7 @@ export default {
             :count="count" @compose="compose" @folder="showFolder"/>
         <main class="mail-container">
             <mail-list v-if="!selectedMail" :mails="mailsToShow" :key="listKey" :folder="folder"
+            :defIsToRead="isToRead"
                  @unread="toUnread" @details="openDetails" @starred="onStarred" @important="onImportant"
                  @trash="trash" @spam="spam" @eliminate="eliminate" @refresh="listKey++"/>
             <mail-details v-else :id="selectedMail" :folder="folder"
@@ -42,7 +43,8 @@ export default {
                 spam: null,
                 draft: null,
                 unread: null,
-            }
+            },
+            isToRead: null,
         }
     },
     created() {
@@ -75,8 +77,6 @@ export default {
             mailService.countMail('isSpam').then(count => this.count.spam = count)
             mailService.countMail('isDraft').then(count => this.count.draft = count)
             mailService.countMail('isRead', true).then(count => this.count.unread = count)
-
-
         },
         setFilter(searchStr) {
             this.filter = searchStr
@@ -87,6 +87,7 @@ export default {
         toUnread(ids, isToUnread) {
             const mailsToUnread = ids.map(id => this.mails.find(mail => mail.id === id))
             mailService.toUnread(mailsToUnread, isToUnread).then(() => {
+                this.isToRead = isToUnread
                 this.loadMails()
                 mailService.countMail('isRead', true).then(count => this.count.unread = count)
             })
@@ -108,14 +109,20 @@ export default {
         },
         trash(ids) {
             const mailsToTrash = ids.map(id => this.mails.find(mail => mail.id === id))
-            mailService.toTrash(mailsToTrash, this.folder).then(() => this.loadMails())
+            mailService.toTrash(mailsToTrash).then(() => {
+                this.loadMails()
+                this.loadFolders()
+            })
         },
         spam(ids) {
             const mailsToSpam = ids.map(id => this.mails.find(mail => mail.id === id))
-            mailService.toSpam(mailsToSpam, this.folder).then(() => this.loadMails())
+            mailService.toSpam(mailsToSpam).then(() => {
+                this.loadMails()
+                this.loadFolders()
+            })
         },
         eliminate(ids) {
-            mailService.eliminate(ids, this.folder).then(() => {
+            mailService.eliminate(ids).then(() => {
                 this.loadMails()
                 if (this.folder === 'Spam')
                     mailService.countMail('isSpam').then(count => this.count.spam = count)

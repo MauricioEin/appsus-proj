@@ -2,7 +2,7 @@ import mailPreview from "./mail-preview.cmp.js"
 import mailContentHeader from "./mail-content-header.cmp.js"
 
 export default {
-    props: ['mails', 'folder'],
+    props: ['mails', 'folder', 'defIsToRead'],
     template: `
     <section class="mail-list">    
         <mail-content-header :isChecked="checkedMails.length" :folder="folder"
@@ -22,7 +22,8 @@ export default {
     data() {
         return {
             checkedMails: [],
-            isToRead: false,
+            isToRead: this.defIsToRead,
+
             // groupIdx: 0,
 
         }
@@ -60,6 +61,11 @@ export default {
             this.$emit('important', mailId, isToImportant)
         },
 
+    },
+    watch: {
+        defIsToRead() {
+            this.isToRead = this.defIsToRead
+        }
     },
     components: {
         mailPreview,

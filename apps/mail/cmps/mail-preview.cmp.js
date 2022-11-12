@@ -2,7 +2,6 @@ export default {
     props: ['mail'],
     template: `
     <article class="mail-preview flex justify-between" :class="{unread: !mail.isRead, checked: isChecked}">
-        <div>drag</div>
         <span class="btn"><input class="checkbox" type="checkbox" @click.stop="" @change="check" title="Select"></span>
         <span class="btn"><input class="star" type="checkbox" @click.stop="" @change="onStar" :title="starTitle" :checked="mail.isStarred"></span>
         <span class="btn"><img class="importance-label" src="../../../assets/img/label-important.svg" @click.stop="onImportant" :class="{'label-important':mail.isImportant}" :title="importantTitle"/></span>
@@ -34,7 +33,8 @@ export default {
         formattedFrom() {
             if (this.mail.isDraft) return 'Draft'
             return this.mail.from.split('@')[0]
-        }
+        },
+   
     },
     methods: {
         check({ target: { checked } }) {

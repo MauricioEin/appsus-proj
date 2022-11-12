@@ -12,6 +12,10 @@ export const mailService = {
   get,
   toStar,
   toImportant,
+  toSpam,
+  toTrash,
+  getNeighbourIds,
+  countMail,
   // save,
   // paramMap: getParamaeterMap,
   // getEmptyBook,
@@ -95,6 +99,45 @@ function toImportant(id, isToImportant) {
   })
 }
 
+function toSpam(mailsToChange) {
+  if (!Array.isArray(mailsToChange)) mailsToChange = [mailsToChange]
+  return query('All mail').then(mails => {
+    mails.forEach(mail => {
+      if (mailsToChange.some(mailToChange => mailToChange.id === mail.id))
+        mail.isSpam = !mail.isSpam
+    })
+    utilService.saveToStorage(MAIL_KEY, mails)
+  })
+}
+
+function toTrash(mailsToChange) {
+  if (!Array.isArray(mailsToChange)) mailsToChange = [mailsToChange]
+  return query('All mail').then(mails => {
+    mails.forEach(mail => {
+      if (mailsToChange.some(mailToChange => mailToChange.id === mail.id))
+        mail.isTrash = !mail.isTrash
+    })
+    utilService.saveToStorage(MAIL_KEY, mails)
+  })
+}
+
+function getNeighbourIds(id, folder) {
+  return query(folder).then(mails => {
+    const idx = mails.findIndex(mail => mail.id === id)
+    const prevIdx = idx - 1
+    const nextIdx = idx + 1
+    return {
+      prev: mails[prevIdx] ? mails[prevIdx].id : null,
+      next: mails[nextIdx] ? mails[nextIdx].id : null,
+      currIdx: idx, mailCount: mails.length
+    }
+  })
+}
+
+function countMail(attribute, negative = false) {
+  return storageService.query(MAIL_KEY)
+    .then(mails => mails.filter(mail => negative ? !mail[attribute] : mail[attribute]).length)
+}
 
 function _filterFolder(mails, folder) {
   switch (folder) {

@@ -120,7 +120,12 @@
     border-end-end-radius: 9999px;
 
 }
+/* disabled */
 
+.disabled{
+    color:var(--clr3);
+    pointer-events: none;
+}
 
 /* font awsome */
 

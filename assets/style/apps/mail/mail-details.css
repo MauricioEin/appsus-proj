@@ -15,6 +15,11 @@
     height: 10vh;
 }
 
+.mail-details header p {
+    font-size: 12px;
+
+}
+
 .mail-details main {
     background-color: white;
     height: 68vh;
@@ -23,6 +28,7 @@
     padding: 20px 40px;
 
 }
+
 
 .mail-details main.empty {
     background-color: rgba(255, 255, 255, 0.7);
@@ -34,7 +40,13 @@
 
 .mail-info>* {
     gap: 10px;
+    align-items:center;
 }
+
+.mail-info :not(h2) {
+    font-size: 12px;
+}
+
 
 .mail-details main button {
     background-color: transparent;
@@ -42,7 +54,4 @@
     padding: 8px 20px;
     margin-inline-end: 10px;
     min-height: 10px;
-
 }
-
-

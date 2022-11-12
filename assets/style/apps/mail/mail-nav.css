@@ -6,10 +6,13 @@
     gap: 20px;
 }
 
-
+.mail-menu li {
+    padding-inline-end: 10px;
+}
 .mail-menu article {
     padding-inline-start: 26px;
     padding-top: 7px;
+    padding-inline-end: 16px;
     height: 32px;
     text-shadow: 0 1px 2px rgb(0 0 0 / 65%);
     color: var(--clr1);
@@ -17,6 +20,10 @@
     display: grid;
     grid-template-columns: 20px 1fr;
     gap: 20px;
+}
+
+.mail-menu article.selected{
+font-weight: bold;
 }
 
 .mail-menu .folder-icon {

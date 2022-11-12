@@ -1,6 +1,6 @@
 
 export default {
-    props: ['folders', 'isWide', 'selected'],
+    props: ['folders', 'isWide', 'selected', 'count'],
     template: `
         <aside class="mail-nav" :class="{'nav-width':isWide}">
             <button @click="onCompose" class="flex justify-between align-center">
@@ -12,7 +12,13 @@ export default {
                     <article @click="showFolder(folder.title)" :title="folder.title"
                         :class="{'pill-right':isWide, pill:!isWide, selected:folder.title===selected}">
                         <span class="folder-icon pill">{{folder.icon}}</span>
-                        <span v-if="isWide" class="folder-title">{{folder.title}}</span>
+                        <span v-if="isWide" class="folder-title flex justify-between">
+                            <span>{{folder.title}}</span>
+                            <span v-if="folder.title==='Spam'">{{count.spam}}</span>
+                            <span v-if="folder.title==='Drafts'">{{count.draft}}</span>
+                            <span v-if="folder.title==='Inbox'">{{count.unread}}</span>
+
+                        </span>
                     </article>
                 </li>
             </ul>

@@ -8,17 +8,13 @@ export default {
                 <span v-else class="btn" @click="$emit('back')">🡨</span>
                 <span class="btn" v-if="!isChecked" title="Refresh" @click="$emit('refresh')">⟳</span>
                 <div v-else>
-                    <span class="btn" title="Archive">📩</span>
                     <span class="btn" :title="spamTitle" @click="onSpam">⚠</span>
-                    <span class="btn" :title="trashTitle" @click="onTrash">🗑</span>|
+                    <span class="btn" :title="trashTitle" @click="onTrash">🗑</span>
                     <span class="btn" v-if="!isToRead" @click="$emit('unread')" title="Mark as unread">✉</span>
                     <span class="btn" v-else @click="$emit('unread')" title="Mark as read">📰</span>
                     <span class="btn" title="Snooze">⏰</span>
-                    <span class="btn" title="Add to tasks">✅</span>|
-                    <span class="btn" title="Move to">➡</span>
-                    <span class="btn" title="Labels">🏷</span>
+                    <span class="btn" title="Add to tasks">✅</span>
                 </div>
-                <span class="btn" title="More">...</span>
             </div>
             <div v-if="isDetails" class="flex">
                 <p>{{formattedIndex}}</p>

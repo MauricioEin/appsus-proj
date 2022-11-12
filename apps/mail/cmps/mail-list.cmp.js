@@ -2,23 +2,21 @@ import mailPreview from "./mail-preview.cmp.js"
 import mailContentHeader from "./mail-content-header.cmp.js"
 
 export default {
-    props: ['mails', 'folder', 'defIsToRead'],
+    props: ['mails', 'folder', 'defIsToRead', 'sortBy'],
     template: `
     <section class="mail-list">    
         <mail-content-header :isChecked="checkedMails.length" :folder="folder"
             :isToRead="isToRead" :isDetails="false" @refresh="$emit('refresh')" @unread="toUnread"
             @trash="$emit('trash',checkedMails);this.checkedMails = [];" @spam="$emit('spam',checkedMails);this.checkedMails = [];" 
             @eliminate="$emit('eliminate', checkedMails)"/>
+            <article class="mail-preview mail-sort flex justify-between unread" :class="{descending:!sortBy.asc}">
+                <span></span>   <span></span>   <span></span>
+                <div @click="$emit('sort','from')" class="sort-title capitalized"><span :class="{sorting:sortBy.attr==='from'}">From</span></div>
+                <div class="sort-title" @click="$emit('sort','subject')"><span :class="{sorting:sortBy.attr==='subject'}">Subject</span></div>
+                <div></div>
+                <div class="sort-title" @click="$emit('sort','sentAt')"><span :class="{sorting:sortBy.attr==='sentAt'}">Sent</span></div>
+            </article>
         <ul class="clean-list" v-if="mails && mails.length">
-            <li class="mail-sort">
-                <article class="mail-preview flex justify-between">
-                    <span></span>   <span></span>   <span></span>
-                    <div @click="$emit('sort','from')" class="capitalized" >Sort by name</div>
-                    <div @click="$emit('sort','subject')">Sort by Subject</div>
-                    <div></div>
-                    <div @click="$emit('sort','sentAt')">Sort by date</div>
-                </article>
-            </li>
             <li v-for="mail in mails" :key="mail.id">
                 <mail-preview :mail="mail" @click="onDetails(mail.id)" @checked="onChecked" @starred="onStarred" @important="onImportant"/>
             </li>

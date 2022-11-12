@@ -20,8 +20,8 @@ export default {
                     <p>{{formattedDate}}</p>
                     <span class="btn"><input class="star" type="checkbox" @change="onStar" :title="starTitle" :checked="mail.isStarred"></span>
 
-                    <span class="btn">Reply</span>
-                    <span class="btn">More</span>
+                    <!-- <span class="btn">Reply</span>
+                    <span class="btn">More</span> -->
                 </div>
             </div>
             <p>{{mail.body}}</p>

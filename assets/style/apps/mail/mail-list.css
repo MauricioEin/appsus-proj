@@ -12,13 +12,40 @@
     padding-left: 16px;
     padding-right: 16px;
     padding-top: 8px;
-    box-shadow: inset 0 -1px 0 0 rgb(100 121 143 / 12%), 0 3px 2px -2px rgb(0 0 0 / 10%);
     height: 10vh;
 }
 
 .mail-list ul {
-    height: 68vh;
+    height: 62vh;
     overflow: auto;
+}
+
+.mail-sort {
+    cursor: default !important;
+    box-shadow: inset 0 -1px 0 0 rgb(100 121 143 / 12%), 0 3px 2px -2px rgb(0 0 0 / 20%) !important;
+
+}
+
+.sort-title {
+    font-weight: bold;
+}
+
+.sort-title span {
+    cursor: pointer;
+}
+
+.sort-title span:hover {
+    text-decoration: underline;
+}
+
+.mail-sort.descending .sort-title span.sorting::after {
+    content: ' 🡫';
+
+}
+
+.mail-sort:not(.descending) .sort-title span.sorting::after {
+    content: ' 🡩';
+
 }
 
 .mail-preview {
@@ -27,10 +54,10 @@
     box-shadow: inset 0 -1px 0 0 rgb(100 121 143 / 12%);
     display: grid;
     grid-template-columns: 25px 25px 25px 1fr 3fr 20px 1fr;
-    gap:5px;
+    gap: 5px;
 }
 
-.mail-preview .capitalized{
+.mail-preview .capitalized {
     padding-inline-start: 10px;
 }
 
@@ -47,7 +74,7 @@
     background-color: var(--secondary-clr3);
 }
 
-.mail-preview div{
+.mail-preview div {
     display: flex;
     align-items: center;
 }
@@ -65,7 +92,7 @@
     height: 30px;
 }
 
-.no-mails{
+.no-mails {
     text-align: center;
-    padding-top:30px;
+    padding-top: 30px;
 }

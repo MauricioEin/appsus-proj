@@ -3,6 +3,7 @@ export default {
     props: ['folders', 'isWide', 'selected', 'count'],
     template: `
         <aside class="mail-nav" :class="{'nav-width':isWide}">
+            <div class="back-screen"></div>
             <button @click="onCompose" class="flex justify-between align-center">
                 <span>✏</span>
                 <span v-if="isWide">Compose</span>

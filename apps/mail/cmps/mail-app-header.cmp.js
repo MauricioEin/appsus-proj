@@ -16,8 +16,6 @@ export default {
         <div class="flex">
             <span class="btn" title="Support">❔</span>
             <span class="btn" title="settings">⚙</span>
-            <span class="btn" title="Appsus apps">🧮</span>
-            <span class="btn" title="User">👤</span>
         </div>
     </header>
     `,

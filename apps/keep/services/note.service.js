@@ -139,6 +139,9 @@ function _createEntities(key) {
                 txt: 'This is were it all began. Write 500 words on the disembarking procedure.',
                 lastEdited: Date.now(),
                 labels: ['Drawings']
+            },
+            style: {
+                backgroundColor: 'var(--usr-clr-teal)'
             }
         },
         {
@@ -165,6 +168,9 @@ function _createEntities(key) {
                     { txt: utilService.makeLoremEng(2), doneAt: null },
                 ],
                 labels: ['Videos']
+            },
+            style: {
+                backgroundColor: 'var(--usr-clr-red)'
             }
         },
         {
@@ -175,6 +181,9 @@ function _createEntities(key) {
                 title: 'Sapo',
                 url: 'https://www.sapo.pt',
                 txt: utilService.makeLoremEng(4)
+            },
+            style: {
+                backgroundColor: 'var(--usr-clr-pnk)'
             }
         },
         {
@@ -182,9 +191,12 @@ function _createEntities(key) {
             isPinned: false,
             info: {
                 type: 'note-url',
-                title: 'Sapo',
+                title: 'Paso',
                 url: 'https://www.sapo.pt',
-                txt: utilService.makeLoremEng(4)
+                txt: utilService.makeLoremEng(14)
+            },
+            style: {
+                backgroundColor: 'var(--usr-clr-orng)'
             }
         },
 
@@ -193,10 +205,10 @@ function _createEntities(key) {
 
         {
             id: utilService.makeId(),
-            isPinned: true,
+            isPinned: false,
             info: {
                 type: 'note-vid',
-                title: 'Bohemian Rhapsodt',
+                title: 'Bohemian Rhapsody',
                 url: 'https://www.youtube.com/embed/tgbNymZ7vqY',
                 txt: `Is this the real life?
                 Is this just fantasy?
@@ -265,6 +277,246 @@ function _createEntities(key) {
         },
         {
             id: utilService.makeId(),
+            isPinned: false,
+            info: {
+                type: 'note-txt',
+                title: 'Jennifer lopez literaly',
+                txt: `I seriously feel like the best days are ahead, and I like the idea of getting to do everything I did before but with more knowledge, experience, and street smarts. There's a certain love, appreciation, and gratitude that you have at 40 that you don't have when you're younger, and it makes every accomplishment feel so much better.`,
+                labels: ['Home']
+            },
+            style: {
+                backgroundColor: 'var(--usr-clr-blu)',
+            }
+        },
+        {
+            id: utilService.makeId(),
+            isPinned: false,
+            info: {
+                type: 'note-todos',
+                todos: [
+                    { txt: 'Make HTML', doneAt: Date.now() },
+                    { txt: 'Make JS', doneAt: null },
+                    { txt: 'Make css', doneAt: null },
+                    { txt: 'Cry becuse nothing is working', doneAt: Date.now() },
+                    { txt: 'Try again', doneAt: null },
+                    { txt: 'Order pizza', doneAt: Date.now() },
+                    { txt: 'Consult with Mauricio', doneAt: Date.now() },
+                    { txt: 'Present project', doneAt: Date.now() },
+                ],
+                labels: ['Work']
+            },
+            style: {
+                backgroundColor: 'var(--usr-clr-grn)'
+            }
+        },
+        {
+            id: utilService.makeId(),
+            isPinned: false,
+            info: {
+                type: 'note-img',
+                url: 'https://plus.unsplash.com/premium_photo-1666432045848-3fdbb2c74531?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3264&q=80',
+                lastEdited: Date.now(),
+                labels: ['Drawings']
+            },
+            style: {
+                backgroundColor: 'var(--usr-clr-nvy)'
+            }
+        },
+        {
+            id: utilService.makeId(),
+            isPinned: false,
+            info: {
+                type: 'note-txt',
+                title: utilService.makeLoremEng(4),
+                txt: utilService.makeLoremEng(9),
+                labels: ['Pics']
+            },
+            style: {
+                backgroundColor: 'var(--usr-clr-prpl)'
+            }
+        },
+        {
+            id: utilService.makeId(),
+            isPinned: false,
+            info: {
+                type: 'note-todos',
+                todos: [
+                    { txt: utilService.makeLoremEng(4), doneAt: null },
+                    { txt: utilService.makeLoremEng(2), doneAt: null },
+                    { txt: utilService.makeLoremEng(3), doneAt: null },
+                    { txt: utilService.makeLoremEng(3), doneAt: null },
+                    { txt: utilService.makeLoremEng(2), doneAt: null },
+                    { txt: utilService.makeLoremEng(2), doneAt: null },
+                ],
+                labels: ['Videos']
+            },
+            style: {
+                backgroundColor: 'var(--usr-clr-grn)'
+            }
+        },
+        {
+            id: utilService.makeId(),
+            isPinned: false,
+            info: {
+                type: 'note-img',
+                title: 'John Bryce',
+                url: 'https://upload.wikimedia.org/wikipedia/commons/8/89/John_bryce_logo.jpg',
+                txt: `https://www.johnbryce.co.il/ 
+                ` + utilService.makeLoremEng(4)
+            },
+            style: {
+                backgroundColor: 'var(--usr-clr-blu)'
+            }
+        },
+        {
+            id: utilService.makeId(),
+            isPinned: false,
+            info: {
+                type: 'note-img',
+                url: 'https://i.pinimg.com/originals/3c/fd/42/3cfd42bc8c228433bc85d13537d6b860.png',
+            },
+            style: {
+                backgroundColor: 'var(--usr-clr-brwn)'
+            }
+        },
+
+
+
+
+
+        {
+            id: utilService.makeId(),
+            isPinned: false,
+            info: {
+                type: 'note-txt',
+                title: 'Good Habits',
+                txt: 'Drink luke warm water in the morning',
+                labels: ['Work']
+            },
+            style: {
+                backgroundColor: 'var(--usr-clr-yellow)',
+            }
+        },
+        {
+            id: utilService.makeId(),
+            isPinned: false,
+            info: {
+                type: 'note-txt',
+                title: 'Answering literaly',
+                txt: 'What do you do for a living? I breath.',
+                labels: ['Home']
+            },
+            style: {
+                backgroundColor: 'var(--usr-clr-gray)',
+            }
+        },
+        {
+            id: utilService.makeId(),
+            isPinned: false,
+            info: {
+                type: 'note-todos',
+                todos: [
+                    { txt: 'Apples', doneAt: null },
+                    { txt: 'Bananas', doneAt: null },
+                    { txt: 'ToiletPapaer', doneAt: Date.now() },
+                    { txt: 'Tooth paste', doneAt: null },
+                ],
+                labels: ['Fun']
+            },
+            style: {
+                backgroundColor: 'var(--usr-clr-prpl)'
+            }
+        },
+        {
+            id: utilService.makeId(),
+            isPinned: false,
+            info: {
+                type: 'note-img',
+                url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2673&q=80',
+                title: 'Begin with the view',
+                txt: 'This is were it all began. Write 500 words on the disembarking procedure.',
+                lastEdited: Date.now(),
+                labels: ['Drawings']
+            },
+            style: {
+                backgroundColor: 'var(--usr-clr-teal)'
+            }
+        },
+        {
+            id: utilService.makeId(),
+            isPinned: false,
+            info: {
+                type: 'note-txt',
+                title: utilService.makeLoremEng(4),
+                txt: utilService.makeLoremEng(9),
+                labels: ['Pics']
+            }
+        },
+        {
+            id: utilService.makeId(),
+            isPinned: false,
+            info: {
+                type: 'note-todos',
+                todos: [
+                    { txt: utilService.makeLoremEng(4), doneAt: null },
+                    { txt: utilService.makeLoremEng(2), doneAt: null },
+                    { txt: utilService.makeLoremEng(3), doneAt: null },
+                    { txt: utilService.makeLoremEng(3), doneAt: null },
+                    { txt: utilService.makeLoremEng(2), doneAt: null },
+                    { txt: utilService.makeLoremEng(2), doneAt: null },
+                ],
+                labels: ['Videos']
+            },
+            style: {
+                backgroundColor: 'var(--usr-clr-red)'
+            }
+        },
+        {
+            id: utilService.makeId(),
+            isPinned: false,
+            info: {
+                type: 'note-url',
+                title: 'Sapo',
+                url: 'https://www.sapo.pt',
+                txt: utilService.makeLoremEng(4)
+            },
+            style: {
+                backgroundColor: 'var(--usr-clr-pnk)'
+            }
+        },
+        {
+            id: utilService.makeId(),
+            isPinned: false,
+            info: {
+                type: 'note-url',
+                title: 'Paso',
+                url: 'https://www.sapo.pt',
+                txt: utilService.makeLoremEng(14)
+            },
+            style: {
+                backgroundColor: 'var(--usr-clr-orng)'
+            }
+        },
+
+
+
+
+        {
+            id: utilService.makeId(),
+            isPinned: true,
+            info: {
+                type: 'note-vid',
+                title: '',
+                url: 'https://www.youtube.com/embed/g5knro5q_B0',
+                txt: utilService.makeLoremEng(10),
+                labels: ['Fun']
+            },
+            style: {
+                backgroundColor: 'var(--usr-clr-yellow)',
+            }
+        },
+        {
+            id: utilService.makeId(),
             isPinned: true,
             info: {
                 type: 'note-txt',
@@ -282,19 +534,19 @@ function _createEntities(key) {
             info: {
                 type: 'note-todos',
                 todos: [
-                    { txt: 'Make HTML', doneAt: Date.now() },
-                    { txt: 'Make JS', doneAt: null },
-                    { txt: 'Make css', doneAt: null },
-                    { txt: 'Cry becuse nothing is working', doneAt: Date.now() },
-                    { txt: 'Try again', doneAt: null },
-                    { txt: 'Order pizza', doneAt: Date.now() },
-                    { txt: 'Consult with Mauricio', doneAt: Date.now() },
-                    { txt: 'Present project', doneAt: Date.now() },
+                    { txt: 'dont', doneAt: Date.now() },
+                    { txt: 'feed', doneAt: null },
+                    { txt: 'the', doneAt: null },
+                    { txt: 'monkeys', doneAt: Date.now() },
+                    { txt: 'cause', doneAt: null },
+                    { txt: 'they', doneAt: Date.now() },
+                    { txt: 'will', doneAt: Date.now() },
+                    { txt: 'bite', doneAt: Date.now() },
                 ],
                 labels: ['Work']
             },
             style: {
-                backgroundColor: 'var(--usr-clr-prpl)'
+                backgroundColor: 'var(--usr-clr-grn)'
             }
         },
         {
@@ -305,6 +557,9 @@ function _createEntities(key) {
                 url: 'https://plus.unsplash.com/premium_photo-1666432045848-3fdbb2c74531?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3264&q=80',
                 lastEdited: Date.now(),
                 labels: ['Drawings']
+            },
+            style: {
+                backgroundColor: 'var(--usr-clr-nvy)'
             }
         },
         {
@@ -315,6 +570,9 @@ function _createEntities(key) {
                 title: utilService.makeLoremEng(4),
                 txt: utilService.makeLoremEng(9),
                 labels: ['Pics']
+            },
+            style: {
+                backgroundColor: 'var(--usr-clr-prpl)'
             }
         },
         {
@@ -331,6 +589,9 @@ function _createEntities(key) {
                     { txt: utilService.makeLoremEng(2), doneAt: null },
                 ],
                 labels: ['Videos']
+            },
+            style: {
+                backgroundColor: 'var(--usr-clr-grn)'
             }
         },
         {
@@ -342,6 +603,9 @@ function _createEntities(key) {
                 url: 'https://upload.wikimedia.org/wikipedia/commons/8/89/John_bryce_logo.jpg',
                 txt: `https://www.johnbryce.co.il/ 
                 ` + utilService.makeLoremEng(4)
+            },
+            style: {
+                backgroundColor: 'var(--usr-clr-blu)'
             }
         },
         {
@@ -350,6 +614,9 @@ function _createEntities(key) {
             info: {
                 type: 'note-img',
                 url: 'https://i.pinimg.com/originals/3c/fd/42/3cfd42bc8c228433bc85d13537d6b860.png',
+            },
+            style: {
+                backgroundColor: 'var(--usr-clr-brwn)'
             }
         },
     ])

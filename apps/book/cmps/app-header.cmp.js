@@ -9,7 +9,7 @@ export default {
         <div class="full nav-container">
             <div class="main-layout flex justify-between">
                 <app-nav/>
-                <router-link to="/" class="logo bright main-layout">missRead</router-link>
+                <router-link to="/" class="logo bright main-layout">Ms. Books</router-link>
             </div>
         </div>
     </section>

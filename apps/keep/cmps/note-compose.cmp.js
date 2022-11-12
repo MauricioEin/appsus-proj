@@ -2,7 +2,7 @@
 import topToolbar from './compose-cmps/compose-top-toolbar.cmp.js'
 import bottomToolbar from './compose-cmps/compose-bottom-toolbar.cmp.js'
 import composeTodo from './compose-cmps/compose-todo.cmp.js'
-import composeImg from './compose-cmps/compose-img.cmp.js'
+import composeImg from './compose-cmps/compose-media.cmp.js'
 import composeTxt from './compose-cmps/compose-txt.cmp.js'
 import composeTitle from './compose-cmps/compose-title.cmp.js'
 
@@ -11,25 +11,24 @@ export default {
     template: `
         <div class="note-compose general-border" :style="this.note.style">
             <img 
-            v-if="isShown && isValid"
-
+                v-if="isShown && isValid"
                 @error="srcInvalid"
                 class="usr-img border-radius-top" 
                 :src="note.info.url" />
-                <!-- alt="Link appears to be broken. Perhaps an upload would be best." -->
+
             <div class="relative">
-                <compose-title @titleInput="updateTitle"/>
+                <compose-title @titleInput="updateTitle" :noteTitle="note.info.title"/>
                 <top-toolbar @toglePinned="togglePinned" @setType="setType"/>
                 <input 
                     @blur="srcValid"
-                    class="note-img-url-input" 
-                    v-if="note.type === 'note-img'" 
+                    class="note-media-url-input" 
+                    v-if="note.type === 'note-img' || note.type === 'note-img'" 
                     type=url v-model="note.info.url" 
-                    placeholder="Image url"/>
+                    placeholder="Media url"/>
             </div>
+
             <section v-if="isShown" class="new-note-input">
-                <compose-txt v-if="!isNoteTodos" @textInput="updateText"/>
-            
+                <compose-txt v-if="!isNoteTodos" @textInput="updateText" :noteTxt="note.info.txt"/>
                 <form v-else>
                     <compose-todo 
                         v-for="(todo, idx) in note.info.todos.length+1"
@@ -38,9 +37,8 @@ export default {
                         @removeTodo="removeTodo"
                         :idx="idx"
                         :todo="note.info.todos[idx]"
-                        :key="idx" />
+                        :key="todoKey" />
                 </form>
-
                 <bottom-toolbar @setColor="setColor" @saveNote="saveNote"/>
             </section>
         </div>
@@ -56,7 +54,8 @@ export default {
                 url: ''
             },
             isShown: false,
-            isValid: false,
+            isValid: true,
+            todoKey:0
         }
     },
     created() {
@@ -72,8 +71,8 @@ export default {
             this.note.type = type
         },
         updateTitle(title){
-            this.setType('note-txt')
-            this.title = title
+            if (!this.note.type) this.setType('note-txt')
+            this.note.info.title = title
         },
         updateText(txt){
             console.log(txt)
@@ -84,7 +83,8 @@ export default {
         },
         removeTodo(idx) {
             this.note.info.todos.splice(idx, 1)
-            this.saveNote()
+            this.todoKey++
+
         },
         togglePinned() {
             this.note.isPinned = !this.note.isPinned

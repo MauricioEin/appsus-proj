@@ -1,13 +1,23 @@
+main.note-list{
+    flex-shrink: 100;
+}
+
+
 .notes-preview-container {
-    column-width: 200px;
+    /* column-width: 200px; */
+    column-count: unset !important;
     max-width: 100%;
+}
+
+.note-list hr{
+    margin-block: 30px;
 }
 
 .note-preview-item {
     margin-bottom: 10px;
     border-radius: 10px;
     border: .5px solid var(--clr3);
-    break-inside: avoid-column;
+    break-inside: avoid;
 }
 
 .selected.note-preview-item{

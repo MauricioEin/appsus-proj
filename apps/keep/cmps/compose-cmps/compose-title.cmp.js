@@ -1,4 +1,5 @@
 export default{
+    props:['noteTitle'],
     template:`
         <input
                 ref="title"
@@ -13,6 +14,9 @@ export default{
             title:'',
             isShown:false
         }
+    },
+    created(){
+        if(this.noteTitle) this.title = this.noteTitle
     },
     methods: {
         updateTitle(){

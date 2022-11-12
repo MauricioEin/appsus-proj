@@ -2,6 +2,33 @@
     cursor: pointer;
 }
 
-.note-nav .nav-item:hover{
+.note-nav li:hover{
     background-color: #ddd;
+}
+
+nav.note-nav{
+    flex-grow: 5;
+    max-width: 80px;
+    transition: max-width 250ms;
+}
+
+nav.note-nav.shown{
+    max-width: 240px;
+    width: 100%;
+}
+
+span.btn-nav{
+    font-size: 1.5rem;
+    padding:7.75px 12px;
+}
+
+.nav-item{
+    overflow-x: hidden;
+    max-width: 0;
+    transition: max-width 250ms;
+}
+
+.shown .nav-item{
+    max-width: 100%;
+    width:100px;
 }

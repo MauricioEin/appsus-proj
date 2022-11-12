@@ -4,21 +4,28 @@ import noteCompose from './note-compose.cmp.js'
 export default {
     props: ['notes', 'selectedNote'],
     template: `
-        <main class="note-list main-layout">
+        <main class="note-list main-layout ">
             <note-compose @saveNote="saveNote" :selectedNote="selectedNote"/>
-            <section class="notes-preview-container pinned-notes columns">
-                <!-- <note-preview 
-                    v-for="note in notes"
-                    v-if="note.isPinned"
-                    @toggleTodoDone="toggleTodoDone"
-                    @togglePinned="togglePinned"
-                    :note="note" /> -->
-                <section class="notes-preview-container unpinned-notes columns">
-                    <note-preview 
-                    v-for="note in notes"
-                    @toggleTodoDone="toggleTodoDone"
-                    @togglePinned="togglePinned"
-                    :note="note"/>
+            <section class="notes-preview-container">
+                <div class="columns div-3">
+                    <div v-for="note in notes">
+                        <note-preview  v-if="note.isPinned"
+                        @toggleTodoDone="toggleTodoDone"
+                        @togglePinned="togglePinned"
+                        :note="note"/>
+                    </div>
+                </div>
+            </section>
+            <hr/>
+            <section class="notes-preview-container">
+                <div class="columns div-3">
+                    <div v-for="note in notes">
+                        <note-preview  v-if="!note.isPinned"
+                        @toggleTodoDone="toggleTodoDone"
+                        @togglePinned="togglePinned"
+                        :note="note"/>
+                    </div>
+                </div>
             </section>
         </main>
     `,

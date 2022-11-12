@@ -5,7 +5,7 @@ import noteCompose from '../cmps/note-compose.cmp.js'
 export default {
     // props: ['id'],
     template: `
-        <section v-if="note" class="note-details-container absolute" @click="returnToList">
+        <section v-if="note" class="note-details-container fixed" @click="returnToList">
             <div class="note-deatils" @click.stop>
                 <note-compose :selectedNote="note" @saveNote="saveNote"
                     class="absolute center"/>

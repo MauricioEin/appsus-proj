@@ -2,7 +2,6 @@ export default{
     props:['noteTitle'],
     template:`
         <input
-                ref="title"
                 v-model="title"
                 @click="updateTitle" 
                 @input="updateTitle"

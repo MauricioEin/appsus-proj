@@ -3,15 +3,15 @@ export default {
     template: `
         <nav class="note-nav flex flex-column nav-width" :class="{shown:toggleNavMenu}">
             <ul class="clean-list"> 
-            <li class="nav-row pill-right flex">
+            <li class="nav-row pill-right flex" @click="setFilter('')">
                 <span class="btn-nav"><iconify-icon inline icon="ic:outline-lightbulb"></iconify-icon></span>
                 <span class="nav-item inline-block grow capitalize flex align-center"
-                    @click="setFilter('')">Notes</span>
+                    >Notes</span>
             </li>
-            <li v-for="label in labels" class="nav-row pill-right flex">
+            <li v-for="label in labels" class="nav-row pill-right flex" @click="setFilter(label.title)">
                 <span class="btn-nav"><iconify-icon inline icon="ci:label"></iconify-icon></span>
                 <span class="nav-item inline-block grow capitalize flex align-center"
-                    @click="setFilter(label.title)">{{label.title}}</span>
+                    >{{label.title}}</span>
             </li>
             <li class="nav-row pill-right flex">
                 <span class="btn-nav"><iconify-icon inline icon="ic:outline-edit"></iconify-icon></span>

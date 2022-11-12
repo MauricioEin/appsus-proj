@@ -1,17 +1,47 @@
 .app-header {
-  background-color: rgb(39, 32, 32);
-  color: var(--secondary-clr1);
+  background-color: rgb(58, 58, 58);
   padding: 8px 10px;
+  color: white;
   height:8vh;
+}
+
+header nav *{
+  font-size: 1.4rem;
+  margin-inline: 10px;
+  cursor: pointer;
+}
+header nav a:hover{
+  color: #ddd;
+}
+
+
+header nav a{
+  margin-top: 1rem;
 }
 
 .app-header h1{
   margin:0;
 }
 
+ul.dropdown-app-menu{
+  background-color: rgb(58, 58, 58);
+  top: 51px;
+  right: -13px;
+  padding-block: 5px;
+}
+
+ul.dropdown-app-menu li,
+ul.dropdown-app-menu a{
+  margin:0;
+}
+
+ul.dropdown-app-menu li{
+  margin-bottom: 10px;
+}
+
+ul.dropdown-app-menu a{
+  padding:10px;
+}
+
 @media(max-width: 720px) {
-  .app-header {
-    background-color: var(--clr3);
-    color: var(--secondary-clr2);
-  }
 }

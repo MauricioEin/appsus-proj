@@ -12,7 +12,7 @@ export default {
     template: `
         <div class="note-compose general-border" :style="this.note.style">
             <compose-media 
-                v-if="note.info.type==='note-vid' || note.info.type==='note-img' && isValid"
+                v-if="(note.info.type==='note-vid' || note.info.type==='note-img'|| note.info.type==='note-url') && isValid"
                 :type="note.info.type"
                 :src="note.info.url"
                 :youtubeConverter="youtubeConverter"
@@ -26,7 +26,7 @@ export default {
                 <input 
                     @blur="srcValid"
                     class="note-media-url-input" 
-                    v-if="note.info.type === 'note-img' || note.info.type === 'note-vid'" 
+                    v-if="note.info.type === 'note-img' || note.info.type === 'note-vid' || note.info.type==='note-url'" 
                     type="url" 
                     v-model="note.info.url" 
                     placeholder="Media url"/>
@@ -44,7 +44,7 @@ export default {
                         :todo="note.info.todos[idx]"
                         :key="todoKey" />
                 </form>
-                <bottom-toolbar @setColor="setColor" @saveNote="saveNote" @duplicate="duplicateNote()"/>
+                <bottom-toolbar @setColor="setColor" @saveNote="saveNote" @duplicate="duplicateNote()" @removeNote="removeNote"/>
             </section>
         </div>
     `,
@@ -101,6 +101,11 @@ export default {
         saveNote() {
             this.$emit('saveNote', this.note)
             this.resetVar()
+        },
+        removeNote() {
+            this.$emit('removeNote', this.note)
+            this.resetVar()
+            this.$router.push('/keep/')
         },
         resetVar() {
             this.isShown = false,

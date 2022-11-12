@@ -8,7 +8,7 @@ export default {
                 @error="$emit('srcInvalid')"
                 class="usr-img border-radius-top" 
                 :src="src" />
-                <iframe  
+            <iframe  
                 v-if="type==='note-vid'"
                 @error="$emit('srcInvalid')"
                 class="inline-block" 

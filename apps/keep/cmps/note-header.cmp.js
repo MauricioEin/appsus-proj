@@ -9,7 +9,6 @@ export default {
         </div>  
         <note-filter @filter="emitFilter" />
         <div>
-            <iconify-icon inline icon="ic:baseline-apps"></iconify-icon>
             <span class="usr-icon pill">M</span>
         </div>
     </header>

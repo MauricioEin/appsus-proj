@@ -1,7 +1,5 @@
 import noteTxt from './preview-cmps/note-txt.cmp.js'
 import noteTodos from './preview-cmps/note-todos.cmp.js'
-import noteVid from './preview-cmps/note-vid.cmp.js'
-import noteImg from './preview-cmps/note-img.cmp.js'
 import noteMedia from './preview-cmps/note-media.cmp.js'
 import noteUrl from './preview-cmps/note-url.cmp.js'
 import noteDetails from '../pages/note-details.cmp.js'
@@ -9,7 +7,10 @@ import noteDetails from '../pages/note-details.cmp.js'
 export default {
     props: ['note'],
     template: `
-    <div class="relative note-item-container" >
+    <div class="relative note-item-container" 
+                            :id="note.id"
+                            
+                            >
         <span class="note-checkmark block absolute" @click="toggleSelected" :class="{hidden: !selected}">
             <iconify-icon inline icon="material-symbols:check-circle"></iconify-icon>
         </span>
@@ -53,25 +54,29 @@ export default {
         toggleShowDetails() {
             this.isShown = !this.isShown
         },
-        goToDetails(...args){
-            if (args[0].target.tagName === 'INPUT') return 
+        goToDetails(...args) {
+            if (args[0].target.tagName === 'INPUT') return
             this.$router.push('/keep/' + this.note.id)
+        },
+        startDrag(ev, isPinned){
+            ev.dataTransfer.setData(isPinned, ev.target.id)
+        },
+        dropNote(ev, isPinned){
+            const note = ev.dataTransfer.getData(isPinned);
+            ev.target.appendChild(document.getElementById(note));
         }
     },
     computed: {
-        getType(){
+        getType() {
             const type = this.note.info.type
-            if (type === 'note-img' || type === 'note-vid') return 'note-media'
+            if (type === 'note-img' || type === 'note-vid' || type === 'note-url') return 'note-media'
             return type
         }
     },
     components: {
         noteTxt,
         noteTodos,
-        noteUrl,
-        noteImg,
         noteMedia,
-        noteVid,
         noteDetails,
     }
 }

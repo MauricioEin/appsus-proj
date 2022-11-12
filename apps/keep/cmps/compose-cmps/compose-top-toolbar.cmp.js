@@ -5,6 +5,10 @@ export default {
                         <iconify-icon inline icon="material-symbols:check-box-outline">
                         </iconify-icon>
                     </span>
+                    <span v-if="!isShown" class="btn compose-url" @click="$emit('setType', 'note-url')">
+                    <iconify-icon inline icon="material-symbols:add-link"></iconify-icon>
+                        </iconify-icon>
+                    </span>
                     <span v-if="!isShown" class="btn compose-draw">
                         <iconify-icon inline icon="heroicons:paint-brush">
                         </iconify-icon>

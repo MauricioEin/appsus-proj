@@ -2,26 +2,26 @@ export default {
     template: `
         <div class="btns-note-compose">
             <span class="btn"></span>
-            <span class="btn"></span>
             <span 
-                class="btn" 
-                title="Duplicate note"
-                @click="$emit('duplicate')">
-                <iconify-icon inline icon="pajamas:duplicate"></iconify-icon>
-            </span>
-            <span class="btn btn-color relative">
-                <iconify-icon icon="material-symbols:palette-outline" class="block"></iconify-icon>
-                <div class="note-color-palette absolute hidden general-border">
-                    <span 
-                        class="btn" 
-                        v-for="color in colorPalette" 
-                        :style="'background-color:' + color.color"
-                        @click="$emit('setColor',color.color)">
-                        <span class="color-title hidden">{{color.title}}</span>
-                    </span>
-                </div>
-            </span>
-            <span class="close-btn" @click="$emit('saveNote')">Close</span> 
+            class="btn" 
+            title="Duplicate note"
+            @click="$emit('duplicate')">
+            <iconify-icon inline icon="pajamas:duplicate"></iconify-icon>
+        </span>
+        <span class="btn btn-color relative">
+            <iconify-icon icon="material-symbols:palette-outline" class="block"></iconify-icon>
+            <div class="note-color-palette absolute hidden general-border">
+                <span 
+                    class="btn" 
+                    v-for="color in colorPalette" 
+                    :style="'background-color:' + color.color"
+                    @click="$emit('setColor',color.color)">
+                    <span class="color-title hidden">{{color.title}}</span>
+                </span>
+            </div>
+        </span>
+        <span class="close-btn" @click="$emit('saveNote')">Close</span> 
+        <span class="btn remove-btn" @click="$emit('removeNote')" ><iconify-icon inline icon="codicon:trash"></iconify-icon></span>
         </div>
         `,
     data() {

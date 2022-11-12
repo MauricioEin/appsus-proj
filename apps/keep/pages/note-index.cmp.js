@@ -22,7 +22,8 @@ export default {
                         :selectedNote="selectedNote"
                         @toggleTodoDone="toggleTodoDone"
                         @togglePinned="togglePinned"
-                        @saveNote="saveNote"/>
+                        @saveNote="saveNote"
+                        @removeNote="removeNote"/>
                 </section>
                 <note-details v-if="noteId" @saveNote="saveNote"/>
         </section>
@@ -59,11 +60,15 @@ export default {
         },
         saveNote(note) {
             this.containerKey++
-            if (note.info.todos || note.info.url  ||
+            if (note.info.todos && note.info.todos.length || note.info.url  ||
                 note.info.txt || note.info.title) return noteService.saveNote(note)
                                                             .then(this.loadNotes)
             else if (note.id) noteService.remove(note.id)
             this.note = []
+        },
+        removeNote(note){
+            noteService.remove(note.id)
+               .then(this.loadNotes)
         },
         toggleTodoDone({noteId, idx}){
             noteService.get(noteId)

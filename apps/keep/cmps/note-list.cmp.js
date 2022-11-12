@@ -6,29 +6,31 @@ export default {
     template: `
         <main class="note-list main-layout ">
             <note-compose @saveNote="saveNote" @removeNote="removeNote" :selectedNote="selectedNote"/>
-            <section class="notes-preview-container" @dragover.prevent.stop @drop.prevent.stop="dropNote($event, 'pinnedNote')">
-                <div class="columns div-3" >
-                    <div v-for="note in notes">
-                        <note-preview
-                            v-if="note.isPinned"
-                            @toggleTodoDone="toggleTodoDone"
-                            @togglePinned="togglePinned"
-                            :note="note"/>
+            <section class="all-notes">
+                <section class="notes-preview-container" @dragover.prevent.stop @drop.prevent.stop="dropNote($event, 'pinnedNote')">
+                    <div class="columns div-3" >
+                        <div v-for="note in notes">
+                            <note-preview
+                                v-if="note.isPinned"
+                                @toggleTodoDone="toggleTodoDone"
+                                @togglePinned="togglePinned"
+                                :note="note"/>
+                        </div>
                     </div>
-                </div>
-            </section>
-            <hr/>
-            <section class="notes-preview-container">
-                <div class="columns div-3">
-                    <div v-for="note in notes">
-                        <note-preview  
-                            v-if="!note.isPinned"
-                            draggable="true"
-                            @toggleTodoDone="toggleTodoDone"
-                            @togglePinned="togglePinned"
-                            :note="note"/>
+                </section>
+                <hr/>
+                <section class="notes-preview-container">
+                    <div class="columns div-3">
+                        <div v-for="note in notes">
+                            <note-preview  
+                                v-if="!note.isPinned"
+                                draggable="true"
+                                @toggleTodoDone="toggleTodoDone"
+                                @togglePinned="togglePinned"
+                                :note="note"/>
+                        </div>
                     </div>
-                </div>
+                </section>
             </section>
         </main>
     `,

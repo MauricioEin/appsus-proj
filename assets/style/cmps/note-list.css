@@ -1,7 +1,16 @@
+/* body{
+    max-height: 100vh;
+    overflow-y: auto;
+} */
+
 main.note-list{
     flex-shrink: 100;
 }
 
+.all-notes{
+    height: calc(100vh - 250px);
+    overflow-y: auto;
+}
 
 .notes-preview-container {
     /* column-width: 200px; */

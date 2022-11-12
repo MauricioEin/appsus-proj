@@ -1,9 +1,10 @@
-body {
+.home-page {
     background-image: url(../../img/home-background.jpeg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     height: 100vh;
+    width: 100vw;
 }
 
 .home-page-brand{

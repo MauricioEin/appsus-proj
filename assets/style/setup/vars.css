@@ -12,20 +12,26 @@
 
 
 
-/* user pallete options */
-  --usr-clr-red: rgb(228,144,134);
-  --usr-clr-orng: rgb(242,189,66);
-  --usr-clr-yellow: rgb(254,242,136);
-  --usr-clr-grn: rgb(214,252,157);
-  --usr-clr-teal: rgb(186,253,236);
-  --usr-clr-blu: rgb(210,239,247);
-  --usr-clr-nvy: rgb(179,203,246);
-  --usr-clr-prpl: rgb(208,178,246);
-  --usr-clr-pnk: rgb(246,209,231);
-  --usr-clr-brwn: rgb(225,201,172);
-  --usr-clr-gray: rgb(232,234,237);
+  /* user pallete options */
+  --usr-clr-red: rgb(228, 144, 134);
+  --usr-clr-orng: rgb(242, 189, 66);
+  --usr-clr-yellow: rgb(254, 242, 136);
+  --usr-clr-grn: rgb(214, 252, 157);
+  --usr-clr-teal: rgb(186, 253, 236);
+  --usr-clr-blu: rgb(210, 239, 247);
+  --usr-clr-nvy: rgb(179, 203, 246);
+  --usr-clr-prpl: rgb(208, 178, 246);
+  --usr-clr-pnk: rgb(246, 209, 231);
+  --usr-clr-brwn: rgb(225, 201, 172);
+  --usr-clr-gray: rgb(232, 234, 237);
 
-
+  /* book-app */
+  --dark-green: rgb(33, 50, 45);
+  --mellow-green: rgb(61, 84, 70);
+  --light-green: rgb(101, 121, 108);
+  --green-gray: rgb(158, 167, 162);
+  --green-white: rgb(172, 181, 176);
+  --off-white: rgb(188, 192, 185);
 
   /* sizes variants */
   --nav-width: 240px;

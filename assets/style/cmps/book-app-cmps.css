@@ -1,0 +1,540 @@
+.book .home-page-container {
+    background-image: url(../../../img/books2.jpeg);
+
+    background-size: cover;
+    background-position: left;
+    height: calc(100vh - 73px);
+}
+
+.book .welcome-header {
+    font-family: 'Source Sans Pro';
+}
+
+.book .welcome-header h1 {
+    font-size: 50px;
+    font-weight: 800;
+    color: var(--mellow-green);
+}
+
+.book .welcome-header p {
+    font-size: 1.3rem;
+}
+
+.book .pop {
+    color: var(--dark-green);
+    font-weight: 800;
+}
+
+.book .main-header {
+    background-image: url(../imgs/books1.jpeg);
+}
+
+.book .logo {
+    letter-spacing: .2rem;
+    color: inherit;
+    font-family: 'Lobster', cursive;
+}
+
+.book .logo.bright {
+    color: white;
+}
+
+.book .logo.bright:hover {
+    text-decoration: underline;
+    color: var(--off-white);
+}
+
+.book .main-nav a:hover {
+    color: var(--off-white);
+    text-decoration: underline;
+}
+
+.book .nav-container {
+    background-color: var(--dark-green);
+}
+
+.book .main-nav:not(.home-page-container .main-nav) {
+    /* background-color: var(--dark-green); */
+    font-family: 'Source Sans Pro';
+}
+
+.book .home-page-container>div {
+    background-color: var(--dark-green);
+    background-color: rgba(238, 238, 238, 0.5);
+    color: var(--dark-green);
+}
+
+.book .home-page-container>a.logo:hover {
+    text-decoration: underline;
+}
+
+.book .home-page-container .main-nav a {
+    color: inherit;
+    font-family: 'Source Sans Pro';
+}
+
+.book .book-card {
+    background-color: var(--off-white);
+    cursor: pointer;
+    color: var(--dark-green);
+    font-family: 'News Cycle', sans-serif;
+}
+
+.book .book-card:hover {
+    opacity: .9;
+}
+
+
+.book .book-title {
+    font-size: 2em;
+    text-transform: capitalize;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.book .book-details {
+    background-color: var(--light-green);
+    color: var(--dark-green);
+}
+
+.book .btn-close {
+    font-size: 1.5em;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--green-gray)
+}
+
+.book .btn-close:hover {
+    color: var(--off-white);
+}
+
+.book .book-details a.details-nav{
+    font-family: 'Source Sans Pro';
+    font-size: 1.3rem;
+}
+
+.book .book-review {
+    font-family: 'Source Sans Pro';
+}
+
+.book .book-review h2 {
+    font-weight: 400;
+    text-decoration: underline;
+    color: var(--off-white);
+}
+
+.book .book-review .input-name {
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid var(--off-white);
+    color: var(--off-white)
+}
+
+.book .book-review label span {
+    font-weight: bold;
+}
+
+.book .book-review .btn-switch {
+    font-size: 30px;
+}
+
+.book .book-review .btn-review {
+    font-size: 1.5rem;
+    color: var(--dark-green);
+    background: transparent;
+}
+
+.book .book-review button {
+    border: 0;
+    border-radius: 0;
+    background-color: var(--green-gray);
+}
+
+.book .book-review .btn-review:hover {
+    text-decoration: underline;
+    color: var(--off-white);
+}
+
+.book .book-review .btn-switch:hover {
+    background: var(--off-white);
+}
+
+.book .book-title.search-result {
+    font-family: 'Source Sans Pro';
+    font-size: 1.75rem;
+}
+
+.book .add-book{
+    border: none;
+    background-color: transparent;
+    color: var(--dark-green);
+    font-size: 1.75rem;
+}
+
+.book .add-book:hover{
+    color: var(--light-green);
+}
+
+.book .edit-book form{
+    background-color: var(--green-white);
+}
+
+.book .edit-book label{
+    font-family: 'Source Sans Pro';
+}
+
+.book .edit-book .btns-container a{
+    
+    background-color: var(--green-white);
+}
+
+.book .edit-book .btns-container a:hover{
+    background-color: var(--off-white);
+}
+
+.book .edit-book .btns-container .btn{
+    font-family: 'Source Sans Pro';
+    color: var(--dark-green);
+}
+.book .user-msg {
+    font-family: 'Source Sans Pro';
+    font-size: 1.2rem;
+    color: var(--dark-green);
+    background-color: rgba(238, 238, 238, 0.6);
+    text-align: center;
+}
+
+.book .about-nav li{
+    font-family: 'Source Sans Pro';
+    font-size: 1.5rem;
+}
+
+.book .mini-logo{
+    font-family: 'Lobster', cursive;  
+    text-align: center;
+    color: var(--light-green);
+}
+
+.book .about-nav a.router-link-active{
+    text-decoration: underline;
+    color: black;
+}
+
+.book .about-content{
+    font-family: 'Source Sans Pro';
+    color: var(--light-green);
+}
+
+.book .contact-form{
+    background-color: var(--green-gray);
+}
+
+.book .contact-form div *{
+    font-family: 'Source Sans Pro';
+    font-size: 1.1rem;
+}
+
+.book .main-footer{
+    background-color: var(--off-white);
+}
+
+.book footer p{
+    font-family: 'Source Sans Pro';
+    color: var(--light-green);
+    
+}
+
+.book .welcome-header {
+    width: 350px;
+    margin-top: 270px;
+    padding-inline-start: 20px;
+}
+
+.book .main-header {
+    height: 300px;
+}
+
+.book .main-header .logo {
+    margin: 0;
+    text-align: center;
+}
+
+.book .logo {
+    padding-right: 20px;
+}
+
+.book /* .main-nav:not(.home-page-container .main-nav) {
+    margin-bottom: 20px;
+} */
+
+.book .nav-container>div.flex {
+    align-items: center;
+}
+
+.book .home-page-container>div {
+    margin-top: 100px;
+    align-items: center;
+
+}
+
+.book .nav-container {
+    margin-bottom: 20px;
+}
+
+.book .main-nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.book .main-nav ul li {
+    text-align: center;
+    padding-block: 10px;
+}
+
+.book .main-nav a {
+    padding: 10px 20px;
+}
+
+.book .main-nav input {
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
+.book .main-nav div.filter-by {
+    align-self: center;
+}
+
+.book .books-container {
+    margin-block: 50px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.book .book-card {
+    width: 100%;
+    height: 100%;
+}
+
+.book .book-card .book-cover {
+    width: 100%;
+}
+
+.book .book-card .book-title {
+    text-align: center;
+    margin: 0;
+    padding: .5em;
+}
+
+.book .book-card .book-price {
+    margin-inline-start: 10px;
+}
+
+.book .screen {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.book .book-details {
+    padding: 20px;
+    margin-block: 50px;
+    min-height: fit-content;
+}
+
+.book .book-details .flex {
+    gap: 20px;
+    width: 100%;
+}
+
+.book .book-details .book-cover {
+    float: left;
+    max-width: 50%;
+    margin-bottom: auto;
+}
+
+.book .book-details .btn-close {
+    float: right;
+}
+
+.book .book-details .switch-review {
+    padding-inline: 0;
+}
+
+.book .book-details .book-description {
+    text-align: justify;
+}
+
+.book-details .book-authors span:not(:last-child) a.book-author::after,
+.book .book-details .book-categories span:not(:last-child) a.book-category::after {
+    content: ' | ';
+}
+
+.book .book-review {
+    width: 100%;
+    padding-block: 10px;
+    margin-top: 10px;
+    border-block: .5px solid var(--off-white);
+}
+
+.book .book-review h2 {
+    margin: 0;
+}
+
+.book .book-review label {
+    margin-bottom: 10px;
+}
+
+.book .book-review button {
+    padding-top: 0;
+}
+
+.book .book-review>.grid {
+    grid-template-columns: 30px 1fr 30px;
+    gap: 30px;
+    width: 100%;
+}
+
+.book .book-review label span {
+    margin-bottom: 4px;
+}
+
+.book .book-review .input-name {
+    max-width: 200px;
+}
+
+.book textarea {
+    resize: none;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.book .book-review .btn-switch {
+    padding-inline: 0;
+}
+
+.book .book-review .btn-delete {
+    bottom: 0;
+    right: 0;
+}
+
+.book .book-title.search-result {
+    text-align: left;
+    margin-block: 10px;
+}
+
+.book .add-book {
+    margin-block: auto;
+}
+
+.book .user-msg {
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    padding: 10px;
+    transition: opacity 1s;
+}
+
+.book .edit-book {
+    min-width: 300px;
+    max-width: 500px;
+    margin: 30px;
+}
+
+.book .edit-book form {
+    padding: 30px;
+    margin-block: 30px;
+
+}
+
+.book .edit-book form label {
+    margin-bottom: 20px;
+}
+
+.book .edit-book form input {
+    margin-top: 5px;
+}
+
+.book .edit-book form .input-text input {
+    background-color: transparent;
+}
+
+.book .edit-book .input-select input {
+    width: 100%;
+}
+
+.book .edit-book .input-text input {
+    border: none;
+    border-bottom: 1px solid var(--dark-green)
+}
+
+.book .edit-book .btns-container {
+    gap: 10px;
+}
+
+.book .edit-book .btns-container a {
+    width: 100%;
+}
+
+.book .edit-book .btns-container .btn {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    font-size: 1.2rem;
+    padding-block: 7px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.book .about-nav ul{
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+    margin-bottom: 70px;
+}
+
+.book .about-content{
+    margin-inline:60px !important;
+}
+
+.book .contact-form{
+    padding:30px;
+}
+
+.book .contact-form div *{
+    width: 100%;
+    margin-block: 15px;
+    border-radius: 0;
+    border: none;
+}
+
+.book .main-footer{
+    margin-top:40px;
+    bottom: 0;
+    padding: 20px;
+}
+
+.book footer p{
+    text-align: center;
+}
+
+@media (max-width: 540px) {
+    .book .book-details>div.flex {
+        display: block;
+    }
+
+    .book .book-details .book-cover {
+        margin-right: 10px;
+    }
+}
+
+@media (min-width: 880px) {
+    .book .main-layout:not(.full, .home-page-container *) {
+        margin-inline: auto !important;
+    }
+}

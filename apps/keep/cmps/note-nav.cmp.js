@@ -3,17 +3,17 @@ export default {
     template: `
         <nav class="note-nav flex flex-column nav-width" :class="{shown:toggleNavMenu}">
             <ul class="clean-list"> 
-            <li class="nav-row pill-right flex" @click="setFilter('')">
+            <li class="nav-row pill-right flex" @click="setFilter('')" title="Todos">
                 <span class="btn-nav"><iconify-icon inline icon="ic:outline-lightbulb"></iconify-icon></span>
                 <span class="nav-item inline-block grow capitalize flex align-center"
                     >Notes</span>
             </li>
-            <li v-for="label in labels" class="nav-row pill-right flex" @click="setFilter(label.title)">
+            <li v-for="label in labels" class="nav-row pill-right flex" @click="setFilter(label.title)" :title="label.title">
                 <span class="btn-nav"><iconify-icon inline icon="ci:label"></iconify-icon></span>
                 <span class="nav-item inline-block grow capitalize flex align-center"
                     >{{label.title}}</span>
             </li>
-            <li class="nav-row pill-right flex">
+            <!-- <li class="nav-row pill-right flex" title="Edit labels">
                 <span class="btn-nav"><iconify-icon inline icon="ic:outline-edit"></iconify-icon></span>
                 <span class="nav-item inline-block grow capitalize flex align-center">Edit labels</span>
             </li>
@@ -24,7 +24,7 @@ export default {
             <li class="nav-row pill-right flex">
                 <span class="btn-nav"><iconify-icon inline icon="codicon:trash"></iconify-icon></span>
                 <span class="nav-item inline-block grow capitalize flex align-center">Trash</span>
-            </li>
+            </li> -->
         </ul>
         </nav>
     `

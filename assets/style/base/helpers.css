@@ -12,8 +12,13 @@
     width: 100vw;
 }
 
-.main-layout:not(.full){
+.main-layout:not(.full, .book *) {
     margin-inline:10px;
+}
+
+.book .main-layout:not(.full){
+    margin-inline:20px;
+    max-width: 880px;
 }
 
 .columns {
@@ -64,6 +69,10 @@
 
 .grow{
     flex-grow: 1;
+}
+
+.col-reverse{
+    flex-direction: column-reverse;
 }
 
 /* position helpers */
@@ -127,7 +136,7 @@
     pointer-events: none;
 }
 
-/* font awsome */
+/* font awesome */
 
 .fa {
     font-family: fa;
@@ -147,4 +156,17 @@
 
 .fa.fa-behance::before {
     content: "\f1b4";
+}
+
+/* typography helpers */
+.book .main-font{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.bold{
+    font-weight: 600;
+}
+
+.italic{
+    font-style: italic;
 }

@@ -59,7 +59,7 @@
     height: max-content;
     max-height: 300px;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .note-color-palette>.btn {

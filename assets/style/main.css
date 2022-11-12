@@ -28,3 +28,7 @@
 @import 'cmps/note-list.css';
 @import 'cmps/note-compose.css';
 @import 'cmps/note-nav.css';
+
+/* Book App */
+@import 'apps/book/book-layout.css';
+@import 'cmps/book-app-cmps.css';

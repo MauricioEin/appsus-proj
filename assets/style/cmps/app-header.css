@@ -2,7 +2,7 @@
   background-color: rgb(58, 58, 58);
   padding: 8px 10px;
   color: white;
-  height:8vh;
+  height:73px;
 }
 
 header nav *{
@@ -27,7 +27,15 @@ ul.dropdown-app-menu{
   background-color: rgb(58, 58, 58);
   top: 51px;
   right: -13px;
-  padding-block: 5px;
+  height: 0;
+  transition: height 150ms;
+  z-index: -10;
+}
+
+ul.dropdown-app-menu.shown{
+  height: auto;
+  padding-block:5px;
+  z-index: 10;
 }
 
 ul.dropdown-app-menu li,

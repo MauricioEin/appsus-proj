@@ -14,6 +14,7 @@ const NOTE_KEY = "notesDB"
 const LABEL_KEY = "noteLabelsDB"
 // _createEntities(NOTE_KEY)
 // _createEntities(LABEL_KEY)
+query()
 
 
 function query(isNotes = true) {

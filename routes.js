@@ -8,6 +8,7 @@ import bookApp from './apps/book/pages/book-index.cmp.js'
 import bookDetails from './apps/book/pages/book-details.cpm.js'
 import bookEdit from './apps/book/pages/book-edit.cmp.js'
 import bookSearch from './apps/book/pages/search-page.cmp.js'
+import bookAbout from './apps/book/pages/about-page.cmp.js'
 
 
 const { createRouter, createWebHashHistory } = VueRouter

@@ -20,13 +20,13 @@ export default {
                     <p>{{formattedDate}}</p>
                     <span class="btn"><input class="star" type="checkbox" @change="onStar" :title="starTitle" :checked="mail.isStarred"></span>
 
-                    <span class="btn">Reply</span>
-                    <span class="btn">More</span>
+                    <!-- <span class="btn">Reply</span>
+                    <span class="btn">More</span> -->
                 </div>
             </div>
             <p>{{mail.body}}</p>
-            <button class="pill">↩ Reply</button>
-            <button class="pill">↪ Forward</button>
+            <button class="pill blocked">↩ Reply</button>
+            <button class="pill blocked">↪ Forward</button>
         </main>
         <main v-else class="empty"></main>
     </section>

@@ -17,7 +17,7 @@ export default {
             :count="count" @compose="compose" @folder="showFolder"/>
         <main class="mail-container">
             <mail-list v-if="!selectedMail" :mails="mailsToShow" :key="listKey" :folder="folder"
-            :defIsToRead="isToRead" @sort="doSort" @unread="toUnread"
+            :defIsToRead="isToRead" :sortBy="sortBy" @sort="doSort" @unread="toUnread"
              @details="openDetails" @starred="onStarred" @important="onImportant"
                  @trash="trash" @spam="spam" @eliminate="eliminate" @refresh="listKey++"/>
             <mail-details v-else :id="selectedMail" :folder="folder"

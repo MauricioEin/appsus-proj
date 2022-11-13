@@ -6,7 +6,7 @@ export default {
             v-model="searchStr" 
             type="search" @search="filter"
             placeholder="Search mail">
-        <span class="btn" title="Show search options">🎚</span>
+        <span class="btn blocked" title="Show search options">🎚</span>
 
     </form>
 `,

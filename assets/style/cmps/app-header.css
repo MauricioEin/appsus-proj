@@ -5,7 +5,7 @@
   height: 8vh;
 }
 
-header .appsus {
+.app-header .appsus {
   font-size: 5.5vh;
   position:relative;
   bottom:1vh;

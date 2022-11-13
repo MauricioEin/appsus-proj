@@ -14,8 +14,8 @@ export default {
         <mail-filter @filter="setFilter"/>
         
         <div class="flex">
-            <span class="btn" title="Support">❔</span>
-            <span class="btn" title="settings">⚙</span>
+            <span class="btn blocked" title="Support">❔</span>
+            <span class="btn blocked" title="settings">⚙</span>
         </div>
     </header>
     `,

@@ -136,6 +136,10 @@
     pointer-events: none;
 }
 
+.blocked{
+    cursor:not-allowed !important; 
+}
+
 /* font awesome */
 
 .fa {

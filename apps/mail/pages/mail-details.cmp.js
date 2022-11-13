@@ -25,8 +25,8 @@ export default {
                 </div>
             </div>
             <p>{{mail.body}}</p>
-            <button class="pill">↩ Reply</button>
-            <button class="pill">↪ Forward</button>
+            <button class="pill blocked">↩ Reply</button>
+            <button class="pill blocked">↪ Forward</button>
         </main>
         <main v-else class="empty"></main>
     </section>

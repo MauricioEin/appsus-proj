@@ -31,6 +31,16 @@
         width: 42px;
         overflow: hidden;
     }
+
+    .mail-details header .btns *,
+    .prev-next span {
+        width: 38px;
+    }
+
+    .new-mail{
+        width:98%;
+        right:1%;
+    }
 }
 
 @media (max-width:500px) {
@@ -43,4 +53,8 @@
         z-index: -100
     }
 
+    .mail-details header .btns *,
+    .prev-next span {
+        width: 30px;
+    }
 }

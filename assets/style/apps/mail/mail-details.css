@@ -17,6 +17,8 @@
 
 .mail-details header p {
     font-size: 12px;
+    padding-top:16px;
+    cursor: default;
 
 }
 

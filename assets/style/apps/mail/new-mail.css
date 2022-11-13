@@ -48,3 +48,11 @@
     width: 30px;
     height: 30px;
 }
+
+.new-mail footer .send-btn{
+    color:white;
+    background-color: rgb(37, 66, 224);
+    padding-inline-start: 30px;
+    padding-inline-end: 30px;
+    border-radius: 999px;
+}

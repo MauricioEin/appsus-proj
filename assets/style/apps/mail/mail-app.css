@@ -40,7 +40,7 @@
     position: relative;
     bottom: 12px;
     right: 4px;
-    font-size: 24px;
+    font-size: 24px !important;
 
 
 }

@@ -3,6 +3,7 @@ export default {
     template: `
         <article class="note-media-cmp img-placeholder" :style="style">
                 <img 
+                    v-if="info.type==='note-img'"
                     class="border-radius-top"
                     :class="{all: !info.txt && !info.tile}"
                     :src="info.url" />

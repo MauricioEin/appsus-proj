@@ -2,11 +2,10 @@ export default {
     props:['note'],
     template: `
         <article class="note-media-cmp img-placeholder" :style="style">
-            <a v-if="info.type==='note-img'" :href="info.url" target="_blank">
                 <img 
                     class="border-radius-top"
                     :class="{all: !info.txt && !info.tile}"
-                    :src="info.url" /></a>
+                    :src="info.url" />
             <a v-if="info.type === 'note-url'" :href="info.url" target="_blank" class="note-url">{{info.url}}</a>
             <iframe 
                 v-if="info.type === 'note-vid'" 
